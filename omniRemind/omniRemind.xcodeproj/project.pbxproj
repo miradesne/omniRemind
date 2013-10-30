@@ -39,6 +39,8 @@
 		0E69355918157B520095563C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		0E69355B18157B520095563C /* OmniRemindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OmniRemindViewController.h; sourceTree = "<group>"; };
 		0E69355C18157B520095563C /* OmniRemindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OmniRemindViewController.m; sourceTree = "<group>"; };
+		3A8EE4C018219B3E001EB511 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		3A8EE4C118219B3E001EB511 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				0E69355818157B520095563C /* MainStoryboard_iPad.storyboard */,
 				0E69355B18157B520095563C /* OmniRemindViewController.h */,
 				0E69355C18157B520095563C /* OmniRemindViewController.m */,
+				3A8EE4C218219B43001EB511 /* Calendar */,
 				0E69354418157B520095563C /* Supporting Files */,
 			);
 			path = omniRemind;
@@ -108,6 +111,15 @@
 				0E69355318157B520095563C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A8EE4C218219B43001EB511 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				3A8EE4C018219B3E001EB511 /* CoreDataTableViewController.h */,
+				3A8EE4C118219B3E001EB511 /* CoreDataTableViewController.m */,
+			);
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +325,7 @@
 				0E69356218157B520095563C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
