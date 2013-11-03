@@ -12,42 +12,77 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *lastMonth;
 @property (weak, nonatomic) IBOutlet UIButton *nextMonth;
+@property (weak, nonatomic) IBOutlet UILabel *currentMonth;
 
 @end
 
+#define MONTH_NAME_LENGTH 3
+#define NUMBER_MONTHS_PER_YEAR 12
+#define DATE_COMPONENT_YEAR  @"component_year"
+#define DATE_COMPONENT_MONTH  @"component_month"
+#define DATE_COMPONENT_DAY  @"component_day"
 @implementation CalendarViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"today %i", [self getWeekday:[NSDate date]]);
-    int monthNumber = 11;
-
-    NSDate *date = [NSDate date];
-    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter monthSymbols]
+    [self initCalendar];
 }
 
-- (void)getDate {
-    
-//NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+- (void)initCalendar {
+    NSDate *today = [NSDate date];
 
-    
-    
-//    
-    int monthNumber = 11;   //November
+    int currentMonth = [self getDateComponent:today componentName:DATE_COMPONENT_MONTH];
+    int nextMonth = ([self getDateComponent:today componentName:DATE_COMPONENT_MONTH] + 1) % (NUMBER_MONTHS_PER_YEAR + 1);
+    int lastMonth = ([self getDateComponent:today componentName:DATE_COMPONENT_MONTH] - 1) % (NUMBER_MONTHS_PER_YEAR + 1);
+    NSString *currentMonthName = [self getMonthName:currentMonth];
+    NSString *nextMonthName = [[self getMonthName:nextMonth] substringToIndex:MONTH_NAME_LENGTH];
+    NSString *lastMonthName = [[self getMonthName:lastMonth] substringToIndex:MONTH_NAME_LENGTH];
+    [self.currentMonth setText:currentMonthName];
+    [self.nextMonth setTitle:nextMonthName forState:UIControlStateNormal];
+    [self.lastMonth setTitle:lastMonthName forState:UIControlStateNormal];
+}
+
+
+// Get the dates range for the month of the day passed in.
+- (NSRange)getDatesInTheMonth:(NSDate *)monthOfThisDate {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    return [calendar rangeOfUnit:NSDayCalendarUnit
+                          inUnit:NSMonthCalendarUnit
+                         forDate:monthOfThisDate];
+}
+
+- (NSDate *)getMonth:(NSDate *)fromNow forMonths:(int)forMonths {
+    NSDateComponents *oneMonth = [[NSDateComponents alloc] init];
+    oneMonth.month = forMonths;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    return [calendar dateByAddingComponents:oneMonth toDate:fromNow options:0];
+}
+
+- (NSString *)getMonthName:(int)monthNumber {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    NSString *monthName = [[df monthSymbols] objectAtIndex:(monthNumber-1)];
-    
-
+    return [[df monthSymbols] objectAtIndex:(monthNumber - 1)];
 }
 
+// Get the weekday of a date, exp: Mon, Tue...
 - (int)getWeekday:(NSDate *)date {
     NSCalendar* cal = [NSCalendar currentCalendar];
     NSDateComponents* comp = [cal components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
     return [comp weekday]; // 1 = Sunday, 2 = Monday, etc.
 }
 
-
+// Get a component as int from a NSDate.
+- (int)getDateComponent:(NSDate *)date componentName:(NSString *)componentName {
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    NSDateComponents* components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:date];
+    int component = 0;
+    if ([componentName isEqualToString:DATE_COMPONENT_YEAR]) {
+        component = [components year];
+    } else if ([componentName isEqualToString:DATE_COMPONENT_MONTH]) {
+        component = [components month];
+    } else if ([componentName isEqualToString:DATE_COMPONENT_DAY]) {
+        component = [components day];
+    }
+    return component;
+}
 
 @end

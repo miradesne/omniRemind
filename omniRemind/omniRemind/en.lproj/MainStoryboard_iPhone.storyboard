@@ -137,6 +137,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8A-jf-0Ge">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -146,12 +151,15 @@
                             <constraint firstItem="kZD-0v-jDE" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="90" id="H2E-Dq-bYG"/>
                             <constraint firstItem="YcA-Z4-FzX" firstAttribute="top" secondItem="3" secondAttribute="top" constant="9" id="Hyw-dC-Joi"/>
                             <constraint firstItem="Xvp-X8-V8j" firstAttribute="baseline" secondItem="kZD-0v-jDE" secondAttribute="baseline" type="default" id="IKv-zZ-DvY"/>
+                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="centerX" secondItem="Xvp-X8-V8j" secondAttribute="centerX" type="default" id="JHd-hb-r0D"/>
                             <constraint firstItem="h0g-2y-Ozi" firstAttribute="top" secondItem="JXO-3i-E8C" secondAttribute="top" type="default" id="JdI-xh-jT9"/>
+                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="baseline" secondItem="lTN-hU-MSu" secondAttribute="baseline" type="default" id="K34-2W-OKS"/>
                             <constraint firstItem="h0g-2y-Ozi" firstAttribute="baseline" secondItem="JXO-3i-E8C" secondAttribute="baseline" type="default" id="KBz-M1-GaC"/>
                             <constraint firstItem="HXa-jd-L8C" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="KLf-5t-3oW"/>
                             <constraint firstAttribute="trailing" secondItem="lTN-hU-MSu" secondAttribute="trailing" constant="11" id="QB3-bW-TQF"/>
                             <constraint firstItem="QIX-va-rAq" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="RaF-eU-7vF"/>
                             <constraint firstItem="b7x-H3-c4h" firstAttribute="baseline" secondItem="ZZO-hN-K3g" secondAttribute="baseline" type="default" id="WbR-1n-ysH"/>
+                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="baseline" secondItem="YcA-Z4-FzX" secondAttribute="baseline" type="default" id="Wwr-NO-RyS"/>
                             <constraint firstItem="JXO-3i-E8C" firstAttribute="baseline" secondItem="gtr-5l-ebW" secondAttribute="baseline" type="default" id="Xl3-GS-OeS"/>
                             <constraint firstAttribute="trailing" secondItem="JXO-3i-E8C" secondAttribute="trailing" constant="50" id="a2B-xh-AB2"/>
                             <constraint firstItem="h0g-2y-Ozi" firstAttribute="trailing" secondItem="QIX-va-rAq" secondAttribute="trailing" type="default" id="a44-c6-3fX"/>
@@ -159,6 +167,7 @@
                             <constraint firstItem="Xvp-X8-V8j" firstAttribute="centerX" secondItem="QIX-va-rAq" secondAttribute="centerX" type="default" id="aeP-2e-wWX"/>
                             <constraint firstItem="JXO-3i-E8C" firstAttribute="top" secondItem="gtr-5l-ebW" secondAttribute="top" type="default" id="bDe-uM-cRu"/>
                             <constraint firstItem="ZZO-hN-K3g" firstAttribute="top" secondItem="3" secondAttribute="top" constant="36" id="bYK-dI-HEC"/>
+                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="top" secondItem="3" secondAttribute="top" constant="12" id="cJR-f2-xvs"/>
                             <constraint firstItem="kZD-0v-jDE" firstAttribute="top" secondItem="b7x-H3-c4h" secondAttribute="top" type="default" id="d4O-AJ-jrm"/>
                             <constraint firstItem="gtr-5l-ebW" firstAttribute="top" secondItem="Xvp-X8-V8j" secondAttribute="top" type="default" id="dMs-Mv-C2T"/>
                             <constraint firstItem="lTN-hU-MSu" firstAttribute="top" secondItem="YcA-Z4-FzX" secondAttribute="top" type="default" id="edx-Sg-hzL"/>
@@ -173,6 +182,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentMonth" destination="b8A-jf-0Ge" id="6co-rb-Y7K"/>
                         <outlet property="lastMonth" destination="YcA-Z4-FzX" id="Slj-QM-x5g"/>
                         <outlet property="nextMonth" destination="lTN-hU-MSu" id="A6N-8K-UlQ"/>
                     </connections>
@@ -185,6 +195,7 @@
         <class className="CalendarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="currentMonth" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lastMonth" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nextMonth" candidateClass="UIButton"/>
             </relationships>
