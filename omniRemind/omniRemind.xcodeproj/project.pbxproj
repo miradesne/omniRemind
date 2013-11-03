@@ -19,6 +19,7 @@
 		0E69355718157B520095563C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355518157B520095563C /* MainStoryboard_iPhone.storyboard */; };
 		0E69355A18157B520095563C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355818157B520095563C /* MainStoryboard_iPad.storyboard */; };
 		0E69355D18157B520095563C /* OmniRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69355C18157B520095563C /* OmniRemindViewController.m */; };
+		3A2B61D218242E0F005736CD /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2B61D118242E0F005736CD /* CalendarViewController.m */; };
 		3A8EE4C518219C82001EB511 /* CalendarModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A8EE4C318219C82001EB511 /* CalendarModel.xcdatamodeld */; };
 		3A8EE4C918219CDE001EB511 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8EE4C818219CDE001EB511 /* CoreDataTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,8 @@
 		0E69355918157B520095563C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		0E69355B18157B520095563C /* OmniRemindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OmniRemindViewController.h; sourceTree = "<group>"; };
 		0E69355C18157B520095563C /* OmniRemindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OmniRemindViewController.m; sourceTree = "<group>"; };
+		3A2B61D018242E0E005736CD /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarViewController.h; path = Calendar/CalendarViewController.h; sourceTree = "<group>"; };
+		3A2B61D118242E0F005736CD /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarViewController.m; path = Calendar/CalendarViewController.m; sourceTree = "<group>"; };
 		3A8EE4C418219C82001EB511 /* CalendarModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CalendarModel.xcdatamodel; sourceTree = "<group>"; };
 		3A8EE4C718219CDE001EB511 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = CoreDataModel/CoreDataTableViewController.h; sourceTree = "<group>"; };
 		3A8EE4C818219CDE001EB511 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = CoreDataModel/CoreDataTableViewController.m; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 		3A8EE4C218219B43001EB511 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				3A2B61D018242E0E005736CD /* CalendarViewController.h */,
+				3A2B61D118242E0F005736CD /* CalendarViewController.m */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				0E69355D18157B520095563C /* OmniRemindViewController.m in Sources */,
 				3A8EE4C518219C82001EB511 /* CalendarModel.xcdatamodeld in Sources */,
 				3A8EE4C918219CDE001EB511 /* CoreDataTableViewController.m in Sources */,
+				3A2B61D218242E0F005736CD /* CalendarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
