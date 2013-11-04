@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Amh-qw-znB">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="v0C-ZO-LzJ">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Amh-qw-znB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oa7-cn-wfe">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="1fe-rK-991"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gHo-RW-b1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-559" y="-2"/>
+        </scene>
         <!--Calendar View Controller-->
         <scene sceneID="5">
             <objects>
@@ -17,8 +32,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QIX-va-rAq">
-                                <rect key="frame" x="0.0" y="54" width="315" height="379"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QIX-va-rAq">
+                                <rect key="frame" x="3" y="57" width="315" height="379"/>
                                 <color key="backgroundColor" red="0.2997568525" green="1" blue="0.85410448039999998" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="315" id="UbH-xF-eoE"/>
@@ -32,7 +47,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="eventView" id="Gk6-r6-l5e" customClass="OmniRemindCalendarCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
+                                        <rect key="frame" x="0.0" y="64" width="45" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
@@ -47,6 +62,10 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="calendarCellView" destination="kxb-SY-uaR" id="Og2-xW-9cs"/>
+                                            <segue destination="OgF-Lr-6sO" kind="push" identifier="seeDayView" id="NcA-aA-iqY"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -54,8 +73,8 @@
                                     <outlet property="delegate" destination="2" id="heZ-MV-0gb"/>
                                 </connections>
                             </collectionView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HXa-jd-L8C">
-                                <rect key="frame" x="0.0" y="450" width="320" height="84"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HXa-jd-L8C">
+                                <rect key="frame" x="0.0" y="449" width="320" height="84"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="84" id="FW5-WX-5uL"/>
@@ -161,6 +180,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="gtr-5l-ebW" firstAttribute="baseline" secondItem="Xvp-X8-V8j" secondAttribute="baseline" id="0hx-Ru-sa9"/>
                             <constraint firstItem="YcA-Z4-FzX" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="9" id="4kT-Qx-M2K"/>
@@ -198,7 +218,9 @@
                             <constraint firstItem="b7x-H3-c4h" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="45" id="yVQ-Ez-RES"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="up2-dg-YBt"/>
                     <connections>
+                        <outlet property="collectionView" destination="QIX-va-rAq" id="lqj-mP-KSI"/>
                         <outlet property="currentMonth" destination="b8A-jf-0Ge" id="6co-rb-Y7K"/>
                         <outlet property="lastMonth" destination="YcA-Z4-FzX" id="Slj-QM-x5g"/>
                         <outlet property="nextMonth" destination="lTN-hU-MSu" id="A6N-8K-UlQ"/>
@@ -206,6 +228,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-85" y="-2"/>
+        </scene>
+        <!--Omni Remind Day View Controller-->
+        <scene sceneID="lVl-nh-Meq">
+            <objects>
+                <viewController id="OgF-Lr-6sO" customClass="OmniRemindDayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rTk-sR-UIw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ykz-ql-kNs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dQX-mK-T61">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUs-No-AJW">
+                                <rect key="frame" x="139" y="20" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Q5-TR-eQK">
+                                <rect key="frame" x="34" y="104" width="253" height="444"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Rqv-gu-bQK">
+                                    <size key="itemSize" width="239" height="109"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="21C-RG-nhH">
+                                        <rect key="frame" x="7" y="0.0" width="239" height="109"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="239" height="109"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.97218926530000005" green="0.71609270940000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tVk-13-cHN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CIP-eF-Svy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="406" y="8"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

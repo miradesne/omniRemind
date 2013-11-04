@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CalendarViewController : UIViewController<UICollectionViewDataSource>
+@interface CalendarViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @end

@@ -7,12 +7,13 @@
 //
 
 #import "CalendarViewController.h"
-
+#import "OmniRemindDayViewController.h"
 @interface CalendarViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *lastMonth;
 @property (weak, nonatomic) IBOutlet UIButton *nextMonth;
 @property (weak, nonatomic) IBOutlet UILabel *currentMonth;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) NSString *cardViewName;
 @end
 
@@ -110,5 +111,35 @@
     self.cardViewName = @"eventView";
     
 }
+- (IBAction)viewEventDetail:(UITapGestureRecognizer *)sender {
+    
+}
+
+#pragma mark - Segue
+//transfer the Image to the next view
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self performSegueWithIdentifier:@"seeDayView" sender:collectionView];
+//}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([segue.identifier isEqualToString:@"seeDayView"]) {
+        OmniRemindDayViewController *destViewController = segue.destinationViewController;
+        NSIndexPath *indexPath ;
+        if ([sender isKindOfClass:[UICollectionViewCell class]]) {
+            indexPath = [self.collectionView indexPathForCell:sender];
+        }
+        NSLog([NSString stringWithFormat:@"%@",indexPath]);
+       destViewController.title=[NSString stringWithFormat:@"Cell: %@",indexPath];
+    }
+}
+
+-(void)segueSetup:(UIStoryboardSegue*)segue withIndexPath:(NSIndexPath*)index{
+    
+}
+
 
 @end
