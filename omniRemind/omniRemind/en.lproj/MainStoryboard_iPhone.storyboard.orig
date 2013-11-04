@@ -8,21 +8,24 @@
         <!--Calendar View Controller-->
         <scene sceneID="5">
             <objects>
+<<<<<<< HEAD
                 <viewController id="2" customClass="CalendarViewController" sceneMemberID="viewController">
+=======
+                <viewController id="2" customClass="OmniRemindViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Uvf-7M-PJX"/>
-                        <viewControllerLayoutGuide type="bottom" id="Eqi-Kd-opb"/>
+                        <viewControllerLayoutGuide type="top" id="Xhd-lS-MIg"/>
+                        <viewControllerLayoutGuide type="bottom" id="JWv-K4-Fwo"/>
                     </layoutGuides>
+>>>>>>> MiraOmni
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QIX-va-rAq">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QIX-va-rAq">
                                 <rect key="frame" x="0.0" y="54" width="315" height="379"/>
                                 <color key="backgroundColor" red="0.2997568525" green="1" blue="0.85410448039999998" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="315" id="UbH-xF-eoE"/>
-                                    <constraint firstAttribute="height" constant="379" id="wvw-x9-SzJ"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="ZH9-xu-2aX">
                                     <size key="itemSize" width="45" height="50"/>
@@ -31,14 +34,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="eventView" id="Gk6-r6-l5e" customClass="OmniRemindCalendarCollectionViewCell">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Gk6-r6-l5e" customClass="OmniRemindCalendarCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxb-SY-uaR" customClass="OmniRemindCalendarView">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWW-fG-aV3" customClass="OmniRemindCalendarView">
                                                     <rect key="frame" x="0.0" y="0.0" width="45" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -47,12 +50,11 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="calendarCellView" destination="vWW-fG-aV3" id="Cwe-gr-fLu"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="2" id="ERF-mh-i8X"/>
-                                    <outlet property="delegate" destination="2" id="heZ-MV-0gb"/>
-                                </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HXa-jd-L8C">
                                 <rect key="frame" x="0.0" y="450" width="320" height="84"/>
@@ -64,7 +66,7 @@
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="0bA-8K-jzV">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0bA-8K-jzV" id="uDW-kz-zgK">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0bA-8K-jzV" id="bAM-Od-Jei">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
@@ -154,7 +156,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8A-jf-0Ge">
-                                <rect key="frame" x="137" y="12" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -164,32 +165,55 @@
                         <constraints>
                             <constraint firstItem="gtr-5l-ebW" firstAttribute="baseline" secondItem="Xvp-X8-V8j" secondAttribute="baseline" id="0hx-Ru-sa9"/>
                             <constraint firstItem="YcA-Z4-FzX" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="9" id="4kT-Qx-M2K"/>
+<<<<<<< HEAD
+                            <constraint firstItem="HXa-jd-L8C" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="BR6-ga-JBh"/>
+                            <constraint firstItem="kZD-0v-jDE" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="90" id="H2E-Dq-bYG"/>
+                            <constraint firstItem="YcA-Z4-FzX" firstAttribute="top" secondItem="3" secondAttribute="top" constant="9" id="Hyw-dC-Joi"/>
+                            <constraint firstItem="Xvp-X8-V8j" firstAttribute="baseline" secondItem="kZD-0v-jDE" secondAttribute="baseline" type="default" id="IKv-zZ-DvY"/>
+                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="centerX" secondItem="Xvp-X8-V8j" secondAttribute="centerX" type="default" id="JHd-hb-r0D"/>
+                            <constraint firstItem="h0g-2y-Ozi" firstAttribute="top" secondItem="JXO-3i-E8C" secondAttribute="top" type="default" id="JdI-xh-jT9"/>
+                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="baseline" secondItem="lTN-hU-MSu" secondAttribute="baseline" type="default" id="K34-2W-OKS"/>
+                            <constraint firstItem="h0g-2y-Ozi" firstAttribute="baseline" secondItem="JXO-3i-E8C" secondAttribute="baseline" type="default" id="KBz-M1-GaC"/>
+                            <constraint firstItem="HXa-jd-L8C" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="KLf-5t-3oW"/>
+                            <constraint firstAttribute="trailing" secondItem="lTN-hU-MSu" secondAttribute="trailing" constant="11" id="QB3-bW-TQF"/>
+                            <constraint firstItem="QIX-va-rAq" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="RaF-eU-7vF"/>
+                            <constraint firstItem="b7x-H3-c4h" firstAttribute="baseline" secondItem="ZZO-hN-K3g" secondAttribute="baseline" type="default" id="WbR-1n-ysH"/>
+                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="baseline" secondItem="YcA-Z4-FzX" secondAttribute="baseline" type="default" id="Wwr-NO-RyS"/>
+                            <constraint firstItem="JXO-3i-E8C" firstAttribute="baseline" secondItem="gtr-5l-ebW" secondAttribute="baseline" type="default" id="Xl3-GS-OeS"/>
+=======
+                            <constraint firstAttribute="bottom" secondItem="QIX-va-rAq" secondAttribute="bottom" constant="115" id="Aqg-4l-HJY"/>
                             <constraint firstItem="HXa-jd-L8C" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" id="BR6-ga-JBh"/>
                             <constraint firstItem="kZD-0v-jDE" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="90" id="H2E-Dq-bYG"/>
                             <constraint firstItem="YcA-Z4-FzX" firstAttribute="top" secondItem="3" secondAttribute="top" constant="9" id="Hyw-dC-Joi"/>
                             <constraint firstItem="Xvp-X8-V8j" firstAttribute="baseline" secondItem="kZD-0v-jDE" secondAttribute="baseline" id="IKv-zZ-DvY"/>
-                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="centerX" secondItem="Xvp-X8-V8j" secondAttribute="centerX" id="JHd-hb-r0D"/>
                             <constraint firstItem="h0g-2y-Ozi" firstAttribute="top" secondItem="JXO-3i-E8C" secondAttribute="top" id="JdI-xh-jT9"/>
-                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="baseline" secondItem="lTN-hU-MSu" secondAttribute="baseline" id="K34-2W-OKS"/>
                             <constraint firstItem="h0g-2y-Ozi" firstAttribute="baseline" secondItem="JXO-3i-E8C" secondAttribute="baseline" id="KBz-M1-GaC"/>
                             <constraint firstItem="HXa-jd-L8C" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="KLf-5t-3oW"/>
                             <constraint firstAttribute="trailing" secondItem="lTN-hU-MSu" secondAttribute="trailing" constant="11" id="QB3-bW-TQF"/>
                             <constraint firstItem="QIX-va-rAq" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="RaF-eU-7vF"/>
+                            <constraint firstItem="QIX-va-rAq" firstAttribute="top" secondItem="3" secondAttribute="top" constant="54" id="SII-Om-hxk"/>
                             <constraint firstItem="b7x-H3-c4h" firstAttribute="baseline" secondItem="ZZO-hN-K3g" secondAttribute="baseline" id="WbR-1n-ysH"/>
-                            <constraint firstItem="b8A-jf-0Ge" firstAttribute="baseline" secondItem="YcA-Z4-FzX" secondAttribute="baseline" id="Wwr-NO-RyS"/>
                             <constraint firstItem="JXO-3i-E8C" firstAttribute="baseline" secondItem="gtr-5l-ebW" secondAttribute="baseline" id="Xl3-GS-OeS"/>
+>>>>>>> MiraOmni
                             <constraint firstAttribute="trailing" secondItem="JXO-3i-E8C" secondAttribute="trailing" constant="50" id="a2B-xh-AB2"/>
                             <constraint firstItem="h0g-2y-Ozi" firstAttribute="trailing" secondItem="QIX-va-rAq" secondAttribute="trailing" id="a44-c6-3fX"/>
                             <constraint firstItem="Xvp-X8-V8j" firstAttribute="top" secondItem="kZD-0v-jDE" secondAttribute="top" id="abZ-YN-KRD"/>
                             <constraint firstItem="Xvp-X8-V8j" firstAttribute="centerX" secondItem="QIX-va-rAq" secondAttribute="centerX" id="aeP-2e-wWX"/>
                             <constraint firstItem="JXO-3i-E8C" firstAttribute="top" secondItem="gtr-5l-ebW" secondAttribute="top" id="bDe-uM-cRu"/>
                             <constraint firstItem="ZZO-hN-K3g" firstAttribute="top" secondItem="3" secondAttribute="top" constant="36" id="bYK-dI-HEC"/>
+<<<<<<< HEAD
                             <constraint firstItem="b8A-jf-0Ge" firstAttribute="top" secondItem="3" secondAttribute="top" constant="12" id="cJR-f2-xvs"/>
+                            <constraint firstItem="kZD-0v-jDE" firstAttribute="top" secondItem="b7x-H3-c4h" secondAttribute="top" type="default" id="d4O-AJ-jrm"/>
+                            <constraint firstItem="gtr-5l-ebW" firstAttribute="top" secondItem="Xvp-X8-V8j" secondAttribute="top" type="default" id="dMs-Mv-C2T"/>
+                            <constraint firstItem="lTN-hU-MSu" firstAttribute="top" secondItem="YcA-Z4-FzX" secondAttribute="top" type="default" id="edx-Sg-hzL"/>
+                            <constraint firstItem="QIX-va-rAq" firstAttribute="top" secondItem="3" secondAttribute="top" constant="54" id="fZm-mO-U2t"/>
+                            <constraint firstItem="ZZO-hN-K3g" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="krU-d6-sGa"/>
+=======
                             <constraint firstItem="kZD-0v-jDE" firstAttribute="top" secondItem="b7x-H3-c4h" secondAttribute="top" id="d4O-AJ-jrm"/>
                             <constraint firstItem="gtr-5l-ebW" firstAttribute="top" secondItem="Xvp-X8-V8j" secondAttribute="top" id="dMs-Mv-C2T"/>
                             <constraint firstItem="lTN-hU-MSu" firstAttribute="top" secondItem="YcA-Z4-FzX" secondAttribute="top" id="edx-Sg-hzL"/>
-                            <constraint firstItem="QIX-va-rAq" firstAttribute="top" secondItem="3" secondAttribute="top" constant="54" id="fZm-mO-U2t"/>
                             <constraint firstItem="ZZO-hN-K3g" firstAttribute="leading" secondItem="3" secondAttribute="leading" id="krU-d6-sGa"/>
+>>>>>>> MiraOmni
                             <constraint firstAttribute="bottom" secondItem="HXa-jd-L8C" secondAttribute="bottom" constant="34" id="kvx-Ol-crd"/>
                             <constraint firstItem="lTN-hU-MSu" firstAttribute="bottom" secondItem="YcA-Z4-FzX" secondAttribute="bottom" id="qnU-ro-AtV"/>
                             <constraint firstItem="b7x-H3-c4h" firstAttribute="top" secondItem="ZZO-hN-K3g" secondAttribute="top" id="srr-X1-wFU"/>
@@ -207,7 +231,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="kqR-L9-KoM">
+            <objects>
+                <viewController id="OYv-9w-hOE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="d58-C9-LGg"/>
+                        <viewControllerLayoutGuide type="bottom" id="gm5-j1-X1d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9j7-GS-RFf" customClass="OmniRemindCalendarView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10W-2g-tox" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="17"/>
+        </scene>
     </scenes>
+<<<<<<< HEAD
+    <classes>
+        <class className="CalendarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="currentMonth" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="lastMonth" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nextMonth" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+    </classes>
+=======
+>>>>>>> MiraOmni
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

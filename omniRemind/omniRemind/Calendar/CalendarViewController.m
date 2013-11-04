@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *lastMonth;
 @property (weak, nonatomic) IBOutlet UIButton *nextMonth;
 @property (weak, nonatomic) IBOutlet UILabel *currentMonth;
-
+@property (weak, nonatomic) NSString *cardViewName;
 @end
 
 #define MONTH_NAME_LENGTH 3
@@ -26,7 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initCalendar];
+    [self setUpCollectionView];
 }
+
+#pragma mark - calendarInit
 
 - (void)initCalendar {
     NSDate *today = [NSDate date];
@@ -83,6 +86,29 @@
         component = [components day];
     }
     return component;
+}
+#pragma mark - collectionViewInit
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 35;
+}
+
+
+-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:self.cardViewName  forIndexPath:indexPath];
+    
+    
+    return cell;
+    
+}
+
+-(void)setUpCollectionView{
+    self.cardViewName = @"eventView";
+    
 }
 
 @end

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DEE9F76A-9DA9-4DB7-BFDE-B2C24410171B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>omniRemind</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8B915632-12DF-47EA-A80C-B455FA9B9111</key>
+		<string>https://github.com/miradesne/omniRemind.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>omniRemind/omniRemind.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8B915632-12DF-47EA-A80C-B455FA9B9111</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/miradesne/omniRemind.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8B915632-12DF-47EA-A80C-B455FA9B9111</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8B915632-12DF-47EA-A80C-B455FA9B9111</string>
+			<key>IDESourceControlWCCName</key>
+			<string>omniRemind</string>
+		</dict>
+	</array>
+</dict>
+</plist>
