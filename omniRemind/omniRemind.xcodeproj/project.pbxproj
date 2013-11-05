@@ -10,9 +10,6 @@
 		0E59F90F1827469500942B12 /* OmniRemindCalendarCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E59F90C1827469500942B12 /* OmniRemindCalendarCollectionViewCell.m */; };
 		0E59F9101827469500942B12 /* OmniRemindCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E59F90E1827469500942B12 /* OmniRemindCalendarView.m */; };
 		0E59F9131827554100942B12 /* OmniRemindEventGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E59F9121827554100942B12 /* OmniRemindEventGenerator.m */; };
-		0E59F91B182763F300942B12 /* OmniRemindDayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E59F91A182763F300942B12 /* OmniRemindDayViewCell.m */; };
-		0E59F91E1827640200942B12 /* OmniRemindDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E59F91D1827640200942B12 /* OmniRemindDayView.m */; };
-		0E59F9211827672C00942B12 /* OmniRemindDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E59F9201827672C00942B12 /* OmniRemindDayViewController.m */; };
 		0E69353E18157B520095563C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E69353D18157B520095563C /* UIKit.framework */; };
 		0E69354018157B520095563C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E69353F18157B520095563C /* Foundation.framework */; };
 		0E69354218157B520095563C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E69354118157B520095563C /* CoreGraphics.framework */; };
@@ -25,6 +22,7 @@
 		0E69355718157B520095563C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355518157B520095563C /* MainStoryboard_iPhone.storyboard */; };
 		0E69355A18157B520095563C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355818157B520095563C /* MainStoryboard_iPad.storyboard */; };
 		0E69355D18157B520095563C /* OmniRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69355C18157B520095563C /* OmniRemindViewController.m */; };
+		0ED2CC0B18299A6E003C8B16 /* OmniRemindDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */; };
 		3A2B61D218242E0F005736CD /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2B61D118242E0F005736CD /* CalendarViewController.m */; };
 		3A8EE4C518219C82001EB511 /* CalendarModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A8EE4C318219C82001EB511 /* CalendarModel.xcdatamodeld */; };
 		3A8EE4C918219CDE001EB511 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8EE4C818219CDE001EB511 /* CoreDataTableViewController.m */; };
@@ -37,12 +35,6 @@
 		0E59F90E1827469500942B12 /* OmniRemindCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindCalendarView.m; sourceTree = "<group>"; };
 		0E59F9111827554100942B12 /* OmniRemindEventGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindEventGenerator.h; sourceTree = "<group>"; };
 		0E59F9121827554100942B12 /* OmniRemindEventGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindEventGenerator.m; sourceTree = "<group>"; };
-		0E59F919182763F300942B12 /* OmniRemindDayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindDayViewCell.h; sourceTree = "<group>"; };
-		0E59F91A182763F300942B12 /* OmniRemindDayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindDayViewCell.m; sourceTree = "<group>"; };
-		0E59F91C1827640200942B12 /* OmniRemindDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindDayView.h; sourceTree = "<group>"; };
-		0E59F91D1827640200942B12 /* OmniRemindDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindDayView.m; sourceTree = "<group>"; };
-		0E59F91F1827672C00942B12 /* OmniRemindDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindDayViewController.h; sourceTree = "<group>"; };
-		0E59F9201827672C00942B12 /* OmniRemindDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindDayViewController.m; sourceTree = "<group>"; };
 		0E69353A18157B520095563C /* omniRemind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = omniRemind.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E69353D18157B520095563C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0E69353F18157B520095563C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -60,6 +52,8 @@
 		0E69355918157B520095563C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		0E69355B18157B520095563C /* OmniRemindViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OmniRemindViewController.h; sourceTree = "<group>"; };
 		0E69355C18157B520095563C /* OmniRemindViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OmniRemindViewController.m; sourceTree = "<group>"; };
+		0ED2CC0918299A6E003C8B16 /* OmniRemindDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindDayViewController.h; sourceTree = "<group>"; };
+		0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindDayViewController.m; sourceTree = "<group>"; };
 		3A2B61D018242E0E005736CD /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarViewController.h; path = Calendar/CalendarViewController.h; sourceTree = "<group>"; };
 		3A2B61D118242E0F005736CD /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarViewController.m; path = Calendar/CalendarViewController.m; sourceTree = "<group>"; };
 		3A8EE4C418219C82001EB511 /* CalendarModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CalendarModel.xcdatamodel; sourceTree = "<group>"; };
@@ -93,12 +87,12 @@
 		0E59F916182762F800942B12 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0ED2CC0918299A6E003C8B16 /* OmniRemindDayViewController.h */,
+				0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */,
 				0E69355B18157B520095563C /* OmniRemindViewController.h */,
 				0E69355C18157B520095563C /* OmniRemindViewController.m */,
 				3A2B61D018242E0E005736CD /* CalendarViewController.h */,
 				3A2B61D118242E0F005736CD /* CalendarViewController.m */,
-				0E59F91F1827672C00942B12 /* OmniRemindDayViewController.h */,
-				0E59F9201827672C00942B12 /* OmniRemindDayViewController.m */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -110,10 +104,6 @@
 				0E59F90C1827469500942B12 /* OmniRemindCalendarCollectionViewCell.m */,
 				0E59F90D1827469500942B12 /* OmniRemindCalendarView.h */,
 				0E59F90E1827469500942B12 /* OmniRemindCalendarView.m */,
-				0E59F919182763F300942B12 /* OmniRemindDayViewCell.h */,
-				0E59F91A182763F300942B12 /* OmniRemindDayViewCell.m */,
-				0E59F91C1827640200942B12 /* OmniRemindDayView.h */,
-				0E59F91D1827640200942B12 /* OmniRemindDayView.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -253,18 +243,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E59F91E1827640200942B12 /* OmniRemindDayView.m in Sources */,
 				0E69354A18157B520095563C /* main.m in Sources */,
 				0E69354E18157B520095563C /* OmniRemindAppDelegate.m in Sources */,
 				0E59F9101827469500942B12 /* OmniRemindCalendarView.m in Sources */,
 				0E59F9131827554100942B12 /* OmniRemindEventGenerator.m in Sources */,
 				0E69355D18157B520095563C /* OmniRemindViewController.m in Sources */,
 				0E59F90F1827469500942B12 /* OmniRemindCalendarCollectionViewCell.m in Sources */,
-				0E59F9211827672C00942B12 /* OmniRemindDayViewController.m in Sources */,
 				3A8EE4C518219C82001EB511 /* CalendarModel.xcdatamodeld in Sources */,
+				0ED2CC0B18299A6E003C8B16 /* OmniRemindDayViewController.m in Sources */,
 				3A8EE4C918219CDE001EB511 /* CoreDataTableViewController.m in Sources */,
 				3A2B61D218242E0F005736CD /* CalendarViewController.m in Sources */,
-				0E59F91B182763F300942B12 /* OmniRemindDayViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
