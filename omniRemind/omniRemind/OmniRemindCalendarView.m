@@ -56,6 +56,7 @@
         eventLabel.backgroundColor=[UIColor clearColor];
         eventLabel.text= event;
         eventLabel.font = [eventLabel.font fontWithSize:10.0];
+        eventLabel.textAlignment = NSTextAlignmentCenter;
         [eventLabel sizeToFit];
         [self addSubview:eventLabel];
         positionY+=EVENT_HEIGHT;

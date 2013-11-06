@@ -41,11 +41,22 @@
     NSString *currentMonthName = [self getMonthName:currentMonth];
     NSString *nextMonthName = [[self getMonthName:nextMonth] substringToIndex:MONTH_NAME_LENGTH];
     NSString *lastMonthName = [[self getMonthName:lastMonth] substringToIndex:MONTH_NAME_LENGTH];
-    [self.currentMonth setText:currentMonthName];
+    [self setCalendarTitle:currentMonthName];
     [self.nextMonth setTitle:nextMonthName forState:UIControlStateNormal];
     [self.lastMonth setTitle:lastMonthName forState:UIControlStateNormal];
 }
 
+// Costemize title here.
+- (void)setCalendarTitle:(NSString *)title {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont fontWithName:@"GoodMobiPro-CondBold" size:24];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textColor = [UIColor blackColor];
+    self.navigationItem.titleView = label;
+    label.text = title;
+    [label sizeToFit];
+}
 
 // Get the dates range for the month of the day passed in.
 - (NSRange)getDatesInTheMonth:(NSDate *)monthOfThisDate {
@@ -88,26 +99,28 @@
     }
     return component;
 }
+
+
 #pragma mark - collectionViewInit
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
     return 1;
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 35;
 }
 
 
--(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:self.cardViewName  forIndexPath:indexPath];
-    
-    
+    cell.contentView.layer.borderColor = [[UIColor blackColor] CGColor];
+    cell.contentView.layer.borderWidth = 0.5;
     return cell;
     
 }
 
--(void)setUpCollectionView{
+- (void)setUpCollectionView {
     self.cardViewName = @"eventView";
     
 }
@@ -137,7 +150,7 @@
     }
 }
 
--(void)segueSetup:(UIStoryboardSegue*)segue withIndexPath:(NSIndexPath*)index{
+- (void)segueSetup:(UIStoryboardSegue*)segue withIndexPath:(NSIndexPath*)index {
     
 }
 

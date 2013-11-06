@@ -10,6 +10,4 @@
 #import "OmniRemindCalendarView.h"
 @interface OmniRemindCalendarCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet OmniRemindCalendarView *calendarCellView;
-
-
 @end
