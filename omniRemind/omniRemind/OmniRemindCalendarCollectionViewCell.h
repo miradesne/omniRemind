@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "OmniRemindCalendarView.h"
 @interface OmniRemindCalendarCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *eventLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *eventLabel2;
 @property (weak, nonatomic) IBOutlet OmniRemindCalendarView *calendarCellView;
 @end

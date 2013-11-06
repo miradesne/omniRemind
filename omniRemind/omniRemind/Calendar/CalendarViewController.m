@@ -8,17 +8,20 @@
 
 #import "CalendarViewController.h"
 #import "OmniRemindDayViewController.h"
+#import "OmniRemindCalendarCollectionViewCell.h"
 @interface CalendarViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *lastMonth;
 @property (weak, nonatomic) IBOutlet UIButton *nextMonth;
-@property (weak, nonatomic) IBOutlet UILabel *currentMonth;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) NSString *cardViewName;
+@property (strong, nonatomic) NSArray *dates;
+
 @end
 
 #define MONTH_NAME_LENGTH 3
 #define NUMBER_MONTHS_PER_YEAR 12
+#define NUMBER_DATES_DISPLAY 42
 #define DATE_COMPONENT_YEAR  @"component_year"
 #define DATE_COMPONENT_MONTH  @"component_month"
 #define DATE_COMPONENT_DAY  @"component_day"
@@ -44,6 +47,36 @@
     [self setCalendarTitle:currentMonthName];
     [self.nextMonth setTitle:nextMonthName forState:UIControlStateNormal];
     [self.lastMonth setTitle:lastMonthName forState:UIControlStateNormal];
+    [self initDates];
+}
+
+- (void)initDates {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *today = [NSDate date];
+    NSRange range = [self getDatesInTheMonth:today];
+    NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:today];
+    [comp setDay:1];
+    int weekdayOfCurrentMonthFirstDay = [self getWeekday:[calendar dateFromComponents:comp]];
+    NSLog(@"%@ %i", [calendar dateFromComponents:comp], weekdayOfCurrentMonthFirstDay);
+    
+    
+    NSMutableArray *dates = [[NSMutableArray alloc] init];
+    [comp setMonth:[comp month] - 1];
+    NSRange lastMonthRange = [self getDatesInTheMonth: [calendar dateFromComponents:comp]];
+    NSLog(@"%i %i", [self getWeekday:today], lastMonthRange.length);
+    
+    for (int t = lastMonthRange.length - weekdayOfCurrentMonthFirstDay + 2; t <= lastMonthRange.length; t++) {
+        [dates addObject:[NSString stringWithFormat:@"%i", t]];
+    }
+    for (int t = range.location; t <= range.length; t++) {
+        [dates addObject:[NSString stringWithFormat:@"%i", t]];
+    }
+    int t = 1;
+    while ([dates count] < NUMBER_DATES_DISPLAY) {
+        [dates addObject:[NSString stringWithFormat:@"%i", t++]];
+    }
+    NSLog(@"%@", dates);
+    self.dates = dates;
 }
 
 // Costemize title here.
@@ -81,7 +114,7 @@
 // Get the weekday of a date, exp: Mon, Tue...
 - (int)getWeekday:(NSDate *)date {
     NSCalendar* cal = [NSCalendar currentCalendar];
-    NSDateComponents* comp = [cal components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+    NSDateComponents* comp = [cal components:NSWeekdayCalendarUnit fromDate:date];
     return [comp weekday]; // 1 = Sunday, 2 = Monday, etc.
 }
 
@@ -108,7 +141,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 35;
+    return NUMBER_DATES_DISPLAY;
 }
 
 
@@ -116,6 +149,17 @@
     UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:self.cardViewName  forIndexPath:indexPath];
     cell.contentView.layer.borderColor = [[UIColor blackColor] CGColor];
     cell.contentView.layer.borderWidth = 0.5;
+    OmniRemindCalendarCollectionViewCell *calendarCell = (OmniRemindCalendarCollectionViewCell *)cell;
+    calendarCell.dateLabel.text = self.dates[indexPath.row];
+    // Last month's dates are fill out.
+    int indexFirstDay = [self.dates indexOfObject:@"1"];
+    NSRange range = NSMakeRange(indexFirstDay, [self.dates count] - indexFirstDay);
+//    NSLog(@"%@", range);
+//    NSLog(@"%i", [self.dates indexOfObject:@"1" inRange:range]);
+    if (indexPath.row < indexFirstDay) {
+        calendarCell.dateLabel.textColor = [UIColor grayColor];
+        calendarCell.dateLabel.alpha = 0.5;
+    }
     return cell;
     
 }

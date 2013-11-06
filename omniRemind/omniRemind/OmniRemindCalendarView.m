@@ -25,13 +25,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-         [self setup];
+//         [self setup];
     }
     return self;
 }
 
 -(void)awakeFromNib{
-    [self setup];
+//    [self setup];
 }
 
 -(void)setup
@@ -44,7 +44,7 @@
 }
 
 -(void)viewDidLoad{
-    [self updAteCalendarUI];
+//    [self updAteCalendarUI];
 }
 #define EVENT_WIDTH 50
 #define EVENT_HEIGHT 20
