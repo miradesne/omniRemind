@@ -17,6 +17,10 @@
 @property (weak, nonatomic) NSString *cardViewName;
 @property (strong, nonatomic) NSArray *dates;
 
+// This date is going to determine the month that we are looking at.
+// Would init to the current date at the beginning.
+@property (strong, nonatomic) NSDate *referenceDate;
+
 @end
 
 #define MONTH_NAME_LENGTH 3
@@ -25,6 +29,7 @@
 #define DATE_COMPONENT_YEAR  @"component_year"
 #define DATE_COMPONENT_MONTH  @"component_month"
 #define DATE_COMPONENT_DAY  @"component_day"
+#define TITLE_FONT_SIZE 18
 @implementation CalendarViewController
 
 - (void)viewDidLoad {
@@ -33,18 +38,32 @@
     [self setUpCollectionView];
 }
 
+- (NSDate *)referenceDate {
+    if (!_referenceDate) {
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[NSDate date]];
+        [comp setDay: 1];
+        _referenceDate = [calendar dateFromComponents:comp];
+    }
+    return _referenceDate;
+}
+
 #pragma mark - calendarInit
 
 - (void)initCalendar {
-    NSDate *today = [NSDate date];
-
-    int currentMonth = [self getDateComponent:today componentName:DATE_COMPONENT_MONTH];
-    int nextMonth = ([self getDateComponent:today componentName:DATE_COMPONENT_MONTH] + 1) % (NUMBER_MONTHS_PER_YEAR + 1);
-    int lastMonth = ([self getDateComponent:today componentName:DATE_COMPONENT_MONTH] - 1) % (NUMBER_MONTHS_PER_YEAR + 1);
+    // Swith back and forth to get the day range of next / last month.
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.referenceDate];
+    int currentMonth = [self getDateComponent:self.referenceDate componentName:DATE_COMPONENT_MONTH];
+    [comp setMonth:[comp month] + 1];
+    int nextMonth = [self getDateComponent:[calendar dateFromComponents:comp] componentName:DATE_COMPONENT_MONTH];
+    [comp setMonth:[comp month] - 2];
+    int lastMonth = [self getDateComponent:[calendar dateFromComponents:comp] componentName:DATE_COMPONENT_MONTH];
+    
     NSString *currentMonthName = [self getMonthName:currentMonth];
     NSString *nextMonthName = [[self getMonthName:nextMonth] substringToIndex:MONTH_NAME_LENGTH];
     NSString *lastMonthName = [[self getMonthName:lastMonth] substringToIndex:MONTH_NAME_LENGTH];
-    [self setCalendarTitle:currentMonthName];
+    [self setCalendarTitle:currentMonthName year:[NSString stringWithFormat:@"%i", [self getDateComponent:self.referenceDate componentName:DATE_COMPONENT_YEAR]]];
     [self.nextMonth setTitle:nextMonthName forState:UIControlStateNormal];
     [self.lastMonth setTitle:lastMonthName forState:UIControlStateNormal];
     [self initDates];
@@ -52,18 +71,14 @@
 
 - (void)initDates {
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *today = [NSDate date];
-    NSRange range = [self getDatesInTheMonth:today];
-    NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:today];
+    NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.referenceDate];
     [comp setDay:1];
     int weekdayOfCurrentMonthFirstDay = [self getWeekday:[calendar dateFromComponents:comp]];
-    NSLog(@"%@ %i", [calendar dateFromComponents:comp], weekdayOfCurrentMonthFirstDay);
-    
+    NSRange range = [self getDatesInTheMonth:self.referenceDate];
     
     NSMutableArray *dates = [[NSMutableArray alloc] init];
     [comp setMonth:[comp month] - 1];
     NSRange lastMonthRange = [self getDatesInTheMonth: [calendar dateFromComponents:comp]];
-    NSLog(@"%i %i", [self getWeekday:today], lastMonthRange.length);
     
     for (int t = lastMonthRange.length - weekdayOfCurrentMonthFirstDay + 2; t <= lastMonthRange.length; t++) {
         [dates addObject:[NSString stringWithFormat:@"%i", t]];
@@ -75,20 +90,46 @@
     while ([dates count] < NUMBER_DATES_DISPLAY) {
         [dates addObject:[NSString stringWithFormat:@"%i", t++]];
     }
-    NSLog(@"%@", dates);
     self.dates = dates;
 }
 
 // Costemize title here.
-- (void)setCalendarTitle:(NSString *)title {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont fontWithName:@"GoodMobiPro-CondBold" size:24];
-    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-    label.textColor = [UIColor blackColor];
-    self.navigationItem.titleView = label;
-    label.text = title;
-    [label sizeToFit];
+- (void)setCalendarTitle:(NSString *)month year:(NSString *)year {
+    // Hard code those values.... they are from experiments... I hate UI!!!!!!!!!
+    CGRect headerTitleSubtitleFrame = CGRectMake(0, 0, 200, 44);
+    UIView* _headerTitleSubtitleView = [[UILabel alloc] initWithFrame:headerTitleSubtitleFrame];
+    _headerTitleSubtitleView.backgroundColor = [UIColor clearColor];
+    _headerTitleSubtitleView.autoresizesSubviews = YES;
+    
+    CGSize size = [month sizeWithFont:[UIFont boldSystemFontOfSize:TITLE_FONT_SIZE]];
+    CGRect titleFrame = CGRectMake(105 - 10 - size.width, 10, 200, 24);
+    UILabel *titleView = [[UILabel alloc] initWithFrame:titleFrame];
+    titleView.backgroundColor = [UIColor clearColor];
+    titleView.font = [UIFont boldSystemFontOfSize:TITLE_FONT_SIZE];
+    titleView.textColor = [UIColor blackColor];
+    titleView.shadowColor = [UIColor darkGrayColor];
+    titleView.shadowOffset = CGSizeMake(0, -1);
+    titleView.text = month;
+    titleView.adjustsFontSizeToFitWidth = YES;
+    [_headerTitleSubtitleView addSubview:titleView];
+    
+    CGRect subtitleFrame = CGRectMake(105, 10, 200, 24);
+    UILabel *subtitleView = [[UILabel alloc] initWithFrame:subtitleFrame];
+    subtitleView.backgroundColor = [UIColor clearColor];
+    subtitleView.font = [UIFont boldSystemFontOfSize:TITLE_FONT_SIZE];
+    subtitleView.textColor = [UIColor whiteColor];
+    subtitleView.shadowColor = [UIColor darkGrayColor];
+    subtitleView.shadowOffset = CGSizeMake(0, -1);
+    subtitleView.text = year;
+    subtitleView.adjustsFontSizeToFitWidth = YES;
+    [_headerTitleSubtitleView addSubview:subtitleView];
+    
+    _headerTitleSubtitleView.autoresizingMask = (UIViewAutoresizingFlexibleLeftMargin |
+                                                 UIViewAutoresizingFlexibleRightMargin |
+                                                 UIViewAutoresizingFlexibleTopMargin |
+                                                 UIViewAutoresizingFlexibleBottomMargin);
+    
+    self.navigationItem.titleView = _headerTitleSubtitleView;
 }
 
 // Get the dates range for the month of the day passed in.
@@ -151,23 +192,24 @@
     cell.contentView.layer.borderWidth = 0.5;
     OmniRemindCalendarCollectionViewCell *calendarCell = (OmniRemindCalendarCollectionViewCell *)cell;
     calendarCell.dateLabel.text = self.dates[indexPath.row];
-    // Last month's dates are fill out.
+    // Last / next month's dates are gray out.
     int indexFirstDay = [self.dates indexOfObject:@"1"];
-    NSRange range = NSMakeRange(indexFirstDay, [self.dates count] - indexFirstDay);
-//    NSLog(@"%@", range);
-//    NSLog(@"%i", [self.dates indexOfObject:@"1" inRange:range]);
-    if (indexPath.row < indexFirstDay) {
+    // Here first set the cell to default.
+    calendarCell.dateLabel.textColor = [UIColor blackColor];
+    calendarCell.dateLabel.alpha = 1;
+    NSRange range = NSMakeRange(indexFirstDay + 1, [self.dates count] - indexFirstDay - 1);
+    if (indexPath.row < indexFirstDay || indexPath.row >= [self.dates indexOfObject:@"1" inRange:range]) {
         calendarCell.dateLabel.textColor = [UIColor grayColor];
         calendarCell.dateLabel.alpha = 0.5;
     }
     return cell;
-    
 }
 
 - (void)setUpCollectionView {
     self.cardViewName = @"eventView";
     
 }
+
 - (IBAction)viewEventDetail:(UITapGestureRecognizer *)sender {
     
 }
@@ -198,5 +240,24 @@
     
 }
 
+- (IBAction)goToLastMonth:(id)sender {
+    [self adjustReferenceDate:-1];
+}
+
+- (IBAction)goToNextMonth:(id)sender {
+    [self adjustReferenceDate:1];
+}
+
+// Based on the reference date, change the reference month by delta amount, and reset the UI.
+- (void)adjustReferenceDate:(int)deltaMonth {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.referenceDate];
+    [comp setMonth:[comp month] + deltaMonth];
+    [comp setDay: 1];
+    self.referenceDate = [calendar dateFromComponents:comp];
+    [self initCalendar];
+    [self setUpCollectionView];
+    [self.collectionView reloadData];
+}
 
 @end

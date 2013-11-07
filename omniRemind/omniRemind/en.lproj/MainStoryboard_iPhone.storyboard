@@ -104,6 +104,9 @@
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="goToLastMonth:" destination="2" eventType="touchUpInside" id="a2s-vk-y3a"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="mXK-gd-wmH">
@@ -115,6 +118,9 @@
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="goToNextMonth:" destination="2" eventType="touchUpInside" id="roI-Kc-rKw"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
