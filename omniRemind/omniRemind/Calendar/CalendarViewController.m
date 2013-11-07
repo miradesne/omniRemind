@@ -14,8 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *lastMonth;
 @property (weak, nonatomic) IBOutlet UIButton *nextMonth;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) NSString *cardViewName;
+@property (weak, nonatomic) NSString *dayViewName;
 @property (strong, nonatomic) NSArray *dates;
+@property (strong, nonatomic) NSArray *dateComponents;
 
 // This date is going to determine the month that we are looking at.
 // Would init to the current date at the beginning.
@@ -77,6 +78,7 @@
     NSRange range = [self getDatesInTheMonth:self.referenceDate];
     
     NSMutableArray *dates = [[NSMutableArray alloc] init];
+    NSMutableArray *dateComponents = [[NSMutableArray alloc] init];
     [comp setMonth:[comp month] - 1];
     NSRange lastMonthRange = [self getDatesInTheMonth: [calendar dateFromComponents:comp]];
     
@@ -187,7 +189,7 @@
 
 
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:self.cardViewName  forIndexPath:indexPath];
+    UICollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:self.dayViewName  forIndexPath:indexPath];
     cell.contentView.layer.borderColor = [[UIColor blackColor] CGColor];
     cell.contentView.layer.borderWidth = 0.5;
     OmniRemindCalendarCollectionViewCell *calendarCell = (OmniRemindCalendarCollectionViewCell *)cell;
@@ -206,7 +208,7 @@
 }
 
 - (void)setUpCollectionView {
-    self.cardViewName = @"eventView";
+    self.dayViewName = @"eventView";
     
 }
 
@@ -231,8 +233,12 @@
         if ([sender isKindOfClass:[UICollectionViewCell class]]) {
             indexPath = [self.collectionView indexPathForCell:sender];
         }
-        NSLog([NSString stringWithFormat:@"%@",indexPath]);
-       destViewController.title=[NSString stringWithFormat:@"Cell: %@",indexPath];
+        //OmniRemindCalendarCollectionViewCell *cell = (OmniRemindCalendarCollectionViewCell*)[self.collectionView dequeueReusableCellWithReuseIdentifier:self.dayViewName  forIndexPath:indexPath];
+        
+        UILabel *titleView = (UILabel*)self.navigationItem.titleView;
+        destViewController.title = [NSString stringWithFormat:@"%@ %@",titleView.text,self.dates[indexPath.row]];
+        destViewController.indexPath = indexPath;
+        
     }
 }
 

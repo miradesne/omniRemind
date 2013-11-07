@@ -10,4 +10,6 @@
 
 @interface OmniRemindDayViewController : UITableViewController
 
+@property (nonatomic,weak) NSIndexPath *indexPath;
+@property (nonatomic,weak) NSDate *date ;
 @end

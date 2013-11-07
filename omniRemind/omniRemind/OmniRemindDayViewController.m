@@ -9,20 +9,29 @@
 #import "OmniRemindDayViewController.h"
 
 @interface OmniRemindDayViewController ()
-
+@property (nonatomic,strong) NSMutableArray* events;
 @end
 
 @implementation OmniRemindDayViewController
+
+
+
+#pragma mark - initialization
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        [self initializeSampleData];
     }
     return self;
 }
 
+- (void)initializeSampleData{
+    NSArray *startTime = @[@"0.34",@"5:00",@"2:00"];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -105,16 +114,14 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 
- */
 
 @end
