@@ -235,7 +235,7 @@
         }
         //OmniRemindCalendarCollectionViewCell *cell = (OmniRemindCalendarCollectionViewCell*)[self.collectionView dequeueReusableCellWithReuseIdentifier:self.dayViewName  forIndexPath:indexPath];
         
-        UILabel *titleView = (UILabel*)self.navigationItem.titleView;
+        UILabel *titleView = (UILabel*)[self.navigationItem.titleView subviews][0];
         destViewController.title = [NSString stringWithFormat:@"%@ %@",titleView.text,self.dates[indexPath.row]];
         destViewController.indexPath = indexPath;
         

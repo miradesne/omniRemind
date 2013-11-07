@@ -22,25 +22,29 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
         [self initializeSampleData];
     }
     return self;
 }
 
 - (void)initializeSampleData{
-    NSArray *startTime = @[@"0.34",@"5:00",@"2:00"];
+    NSDateComponents *startTime = [[NSDateComponents alloc] init];
+    [startTime setHour:6];
+    [startTime setMinute:30];
+    NSDateComponents *endTime = [[NSDateComponents alloc]init];
+    [endTime setHour:8];
+    [endTime setMinute:0];
+    NSMutableDictionary *event = [[NSMutableDictionary alloc]initWithDictionary:@{@"startTime":startTime,@"endTime":endTime}];
+    
+    [self.events addObject:event];
+    
     
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self updateCalendarUI];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,26 +57,55 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 24;
 }
+
+#define CELL_HEIGHT 44
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return CELL_HEIGHT;
+}
+
+
+#define TIME_LABEL_HEIGHT 40
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"timeCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, -6+indexPath.row*CELL_HEIGHT, 20, TIME_LABEL_HEIGHT)];
+    if (indexPath.row == 0){
+        timeLabel.text = [NSString stringWithFormat:@"12 AM"];
+    }
+    else if (indexPath.row < 12) {
+        timeLabel.text = [NSString stringWithFormat:@"%d AM",indexPath.row];
+    }
+    else if (indexPath.row == 12){
+        timeLabel.text = [NSString stringWithFormat:@"12 PM"];
+    }
+    else{
+        timeLabel.text = [NSString stringWithFormat:@"%d PM",indexPath.row-12];
+    }
     
-    // Configure the cell...
+    timeLabel.backgroundColor = [UIColor whiteColor];
+    timeLabel.textColor = [UIColor grayColor];
+    timeLabel.font = [UIFont systemFontOfSize:10];
+    [timeLabel sizeToFit];
+    [self.tableView addSubview:timeLabel];
+    
     
     return cell;
+}
+
+- (void)updateCalendarUI{
+    
 }
 
 /*

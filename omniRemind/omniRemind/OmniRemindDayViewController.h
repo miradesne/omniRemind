@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OmniRemindDayViewController : UITableViewController
+@interface OmniRemindDayViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,weak) NSIndexPath *indexPath;
 @property (nonatomic,weak) NSDate *date ;
