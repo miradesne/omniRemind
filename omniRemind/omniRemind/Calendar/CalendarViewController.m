@@ -78,7 +78,7 @@
     NSRange range = [self getDatesInTheMonth:self.referenceDate];
     
     NSMutableArray *dates = [[NSMutableArray alloc] init];
-    NSMutableArray *dateComponents = [[NSMutableArray alloc] init];
+   // NSMutableArray *dateComponents = [[NSMutableArray alloc] init];//maybe?
     [comp setMonth:[comp month] - 1];
     NSRange lastMonthRange = [self getDatesInTheMonth: [calendar dateFromComponents:comp]];
     
