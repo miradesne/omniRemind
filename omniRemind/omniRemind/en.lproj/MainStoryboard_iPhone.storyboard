@@ -5,6 +5,22 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller - Today-->
+        <scene sceneID="fOr-BP-PYU">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="gYa-XT-M3Z" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Today" image="today.png" id="Ncq-mq-3MQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k4U-hC-OR1">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dyK-vV-Ra6" kind="relationship" relationship="rootViewController" id="zBf-fI-AzS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gc2-ic-rdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="449" y="-752"/>
+        </scene>
         <!--Calendar View Controller-->
         <scene sceneID="5">
             <objects>
@@ -236,7 +252,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="shN-KR-A5A" kind="relationship" relationship="viewControllers" id="Wnu-Xi-5Tp"/>
-                        <segue destination="dyK-vV-Ra6" kind="relationship" relationship="viewControllers" id="tbA-8d-mP8"/>
+                        <segue destination="gYa-XT-M3Z" kind="relationship" relationship="viewControllers" id="7He-C2-19p"/>
                         <segue destination="Tlc-Do-BmY" kind="relationship" relationship="viewControllers" id="YAo-qu-TdF"/>
                     </connections>
                 </tabBarController>
@@ -332,6 +348,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LA0-aV-2NI"/>
+        <segue reference="zBf-fI-AzS"/>
     </inferredMetricsTieBreakers>
 </document>
