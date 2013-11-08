@@ -200,10 +200,19 @@
     calendarCell.dateLabel.textColor = [UIColor blackColor];
     calendarCell.dateLabel.alpha = 1;
     NSRange range = NSMakeRange(indexFirstDay + 1, [self.dates count] - indexFirstDay - 1);
-    if (indexPath.row < indexFirstDay || indexPath.row >= [self.dates indexOfObject:@"1" inRange:range]) {
+    int deltaMonth = 0;
+    // If it's last month.
+    if (indexPath.row < indexFirstDay) {
+        deltaMonth = -1;
+    } else if (indexPath.row >= [self.dates indexOfObject:@"1" inRange:range]) {
+        deltaMonth = 1;
+    }
+    if (deltaMonth != 0) {
         calendarCell.dateLabel.textColor = [UIColor grayColor];
         calendarCell.dateLabel.alpha = 0.5;
     }
+    int day = [((NSString *)self.dates[indexPath.row]) intValue];
+    calendarCell.date = [self createDateFromReferenceDate:day deltaMonth:deltaMonth];
     return cell;
 }
 
@@ -264,6 +273,15 @@
     [self initCalendar];
     [self setUpCollectionView];
     [self.collectionView reloadData];
+}
+
+// create Date:  year | referenceDate.month + deltaMonth | day
+- (NSDateComponents *)createDateFromReferenceDate:(int)day deltaMonth:(int)deltaMonth {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.referenceDate];
+    [comp setMonth:[comp month] + deltaMonth];
+    [comp setDay: day];
+    return comp;
 }
 
 @end

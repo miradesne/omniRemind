@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *eventLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *eventLabel2;
 @property (weak, nonatomic) IBOutlet OmniRemindCalendarView *calendarCellView;
+@property (strong, nonatomic) NSDateComponents *date;
 @end
