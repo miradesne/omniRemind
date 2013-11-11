@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Event" syncable="YES">
         <attribute name="end_time" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="event_detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remind_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="remind_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="start_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="repeat_attribute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repeat" inverseName="repeated" inverseEntity="Repeat" syncable="YES"/>
+    </entity>
+    <entity name="Repeat" syncable="YES">
+        <attribute name="repeat_by" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="repeat_end" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="repeat_start" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="repeat_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="repeated" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="repeat_attribute" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="-7047" positionY="-315" width="128" height="103"/>
+        <element name="Repeat" positionX="-16677" positionY="-189" width="128" height="118"/>
+        <element name="Event" positionX="-16371" positionY="-181" width="128" height="163"/>
     </elements>
 </model>
