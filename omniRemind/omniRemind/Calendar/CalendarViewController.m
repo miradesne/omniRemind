@@ -44,6 +44,12 @@
 //    [testObject save];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+    [super viewWillAppear:animated];
+    
+}
+
 - (NSDate *)referenceDate {
     if (!_referenceDate) {
         NSCalendar *calendar = [NSCalendar currentCalendar];
