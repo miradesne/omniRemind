@@ -27,6 +27,16 @@
 		0E69355718157B520095563C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355518157B520095563C /* MainStoryboard_iPhone.storyboard */; };
 		0E69355A18157B520095563C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355818157B520095563C /* MainStoryboard_iPad.storyboard */; };
 		0ED2CC0B18299A6E003C8B16 /* OmniRemindDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */; };
+		3A154E531831ED6E006B2653 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E521831ED6E006B2653 /* Parse.framework */; };
+		3A154E551831ED98006B2653 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E541831ED98006B2653 /* AudioToolbox.framework */; };
+		3A154E571831ED9E006B2653 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E561831ED9E006B2653 /* CFNetwork.framework */; };
+		3A154E591831EDAA006B2653 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E581831EDAA006B2653 /* CoreLocation.framework */; };
+		3A154E5B1831EDB3006B2653 /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E5A1831EDB3006B2653 /* libz.1.1.3.dylib */; };
+		3A154E5D1831EDBE006B2653 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E5C1831EDBE006B2653 /* MobileCoreServices.framework */; };
+		3A154E5F1831EDC7006B2653 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E5E1831EDC7006B2653 /* QuartzCore.framework */; };
+		3A154E611831EDCD006B2653 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E601831EDCD006B2653 /* Security.framework */; };
+		3A154E631831EDD3006B2653 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E621831EDD3006B2653 /* StoreKit.framework */; };
+		3A154E651831EDD9006B2653 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E641831EDD9006B2653 /* SystemConfiguration.framework */; };
 		3A2B61D218242E0F005736CD /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2B61D118242E0F005736CD /* CalendarViewController.m */; };
 		3A8EE4C518219C82001EB511 /* CalendarModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A8EE4C318219C82001EB511 /* CalendarModel.xcdatamodeld */; };
 		3A8EE4C918219CDE001EB511 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8EE4C818219CDE001EB511 /* CoreDataTableViewController.m */; };
@@ -63,6 +73,16 @@
 		0E69355918157B520095563C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		0ED2CC0918299A6E003C8B16 /* OmniRemindDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindDayViewController.h; sourceTree = "<group>"; };
 		0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindDayViewController.m; sourceTree = "<group>"; };
+		3A154E521831ED6E006B2653 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		3A154E541831ED98006B2653 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3A154E561831ED9E006B2653 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		3A154E581831EDAA006B2653 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3A154E5A1831EDB3006B2653 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
+		3A154E5C1831EDBE006B2653 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		3A154E5E1831EDC7006B2653 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3A154E601831EDCD006B2653 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3A154E621831EDD3006B2653 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		3A154E641831EDD9006B2653 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3A2B61D018242E0E005736CD /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarViewController.h; path = Calendar/CalendarViewController.h; sourceTree = "<group>"; };
 		3A2B61D118242E0F005736CD /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarViewController.m; path = Calendar/CalendarViewController.m; sourceTree = "<group>"; };
 		3A8EE4C418219C82001EB511 /* CalendarModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CalendarModel.xcdatamodel; sourceTree = "<group>"; };
@@ -75,9 +95,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A154E651831EDD9006B2653 /* SystemConfiguration.framework in Frameworks */,
+				3A154E631831EDD3006B2653 /* StoreKit.framework in Frameworks */,
+				3A154E611831EDCD006B2653 /* Security.framework in Frameworks */,
+				3A154E5F1831EDC7006B2653 /* QuartzCore.framework in Frameworks */,
+				3A154E5D1831EDBE006B2653 /* MobileCoreServices.framework in Frameworks */,
+				3A154E5B1831EDB3006B2653 /* libz.1.1.3.dylib in Frameworks */,
+				3A154E591831EDAA006B2653 /* CoreLocation.framework in Frameworks */,
+				0E69354218157B520095563C /* CoreGraphics.framework in Frameworks */,
+				3A154E571831ED9E006B2653 /* CFNetwork.framework in Frameworks */,
+				3A154E551831ED98006B2653 /* AudioToolbox.framework in Frameworks */,
 				0E69353E18157B520095563C /* UIKit.framework in Frameworks */,
 				0E69354018157B520095563C /* Foundation.framework in Frameworks */,
-				0E69354218157B520095563C /* CoreGraphics.framework in Frameworks */,
+				3A154E531831ED6E006B2653 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +179,16 @@
 		0E69353C18157B520095563C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A154E641831EDD9006B2653 /* SystemConfiguration.framework */,
+				3A154E621831EDD3006B2653 /* StoreKit.framework */,
+				3A154E601831EDCD006B2653 /* Security.framework */,
+				3A154E5E1831EDC7006B2653 /* QuartzCore.framework */,
+				3A154E5C1831EDBE006B2653 /* MobileCoreServices.framework */,
+				3A154E5A1831EDB3006B2653 /* libz.1.1.3.dylib */,
+				3A154E581831EDAA006B2653 /* CoreLocation.framework */,
+				3A154E561831ED9E006B2653 /* CFNetwork.framework */,
+				3A154E541831ED98006B2653 /* AudioToolbox.framework */,
+				3A154E521831ED6E006B2653 /* Parse.framework */,
 				0E69353D18157B520095563C /* UIKit.framework */,
 				0E69353F18157B520095563C /* Foundation.framework */,
 				0E69354118157B520095563C /* CoreGraphics.framework */,
@@ -380,6 +420,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "omniRemind/omniRemind-Prefix.pch";
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";
@@ -394,6 +438,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "omniRemind/omniRemind-Prefix.pch";
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";

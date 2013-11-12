@@ -9,6 +9,8 @@
 #import "CalendarViewController.h"
 #import "OmniRemindDayViewController.h"
 #import "OmniRemindCalendarCollectionViewCell.h"
+#import <Parse/Parse.h>
+
 @interface CalendarViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *lastMonth;
@@ -37,6 +39,9 @@
     [super viewDidLoad];
     [self initCalendar];
     [self setUpCollectionView];
+//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+//    [testObject setObject:@"bar" forKey:@"foo"];
+//    [testObject save];
 }
 
 - (NSDate *)referenceDate {
