@@ -110,25 +110,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="up2-dg-YBt">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="cb2-vW-Xk6">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YcA-Z4-FzX">
-                                <rect key="frame" x="16" y="8" width="53" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="bhe-ha-LOM"/>
-                                    <constraint firstAttribute="width" constant="53" id="tNq-xl-Ue7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="PHA-gB-W6J">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uFd-1S-dzI">
+                                <rect key="frame" x="16" y="5" width="71" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Button">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Button">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue-Bold"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="goToLastMonth:" destination="2" eventType="touchUpInside" id="a2s-vk-y3a"/>
+                                    <action selector="goToLastMonth:" destination="2" eventType="touchUpInside" id="9fE-n0-pbY"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -149,7 +140,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="QIX-va-rAq" id="lqj-mP-KSI"/>
-                        <outlet property="lastMonth" destination="YcA-Z4-FzX" id="Slj-QM-x5g"/>
+                        <outlet property="lastMonth" destination="uFd-1S-dzI" id="QEC-Mz-wOp"/>
                         <outlet property="nextMonth" destination="lTN-hU-MSu" id="A6N-8K-UlQ"/>
                     </connections>
                 </viewController>
@@ -348,6 +339,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="zBf-fI-AzS"/>
+        <segue reference="LA0-aV-2NI"/>
     </inferredMetricsTieBreakers>
 </document>
