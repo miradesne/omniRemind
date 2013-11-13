@@ -12,6 +12,8 @@
 @implementation CourseDataFetcher
 
 + (PFObject *)fetchCourse:(NSString *)courseName {
+    // Make sure the course name has the right format to query.
+    courseName = [self fixCourseName:courseName];
     PFQuery *query = [PFQuery queryWithClassName:COURSE_TABLE];
     [query whereKey:COURSE_TITLE_KEY equalTo:courseName];
     NSArray *courses = [query findObjects];
@@ -42,6 +44,15 @@
     PFQuery *query = [PFQuery queryWithClassName:EXAM_TABLE];
     [query whereKey:@"course" equalTo:course];
     return [query findObjects];
+}
+
++ (NSString *)fixCourseName:(NSString *)course {
+    [course uppercaseString];
+    // Format to <xxxx xxx> such as <COMP 446>.
+    if ([course characterAtIndex:4] != ' ') {
+        course = [NSString stringWithFormat:@"%@ %@", [course substringToIndex:4], [course substringFromIndex:4]];
+    }
+    return  course;
 }
 
 @end
