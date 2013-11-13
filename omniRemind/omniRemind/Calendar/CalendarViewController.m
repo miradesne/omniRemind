@@ -39,8 +39,6 @@
     [super viewDidLoad];
     [self initCalendar];
     [self setUpCollectionView];
-    [CourseDataFetcher fetch];
-
 }
 
 - (NSDate *)referenceDate {
