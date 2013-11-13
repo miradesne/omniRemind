@@ -9,6 +9,12 @@
 #import "OmniRemindAddViewController.h"
 
 @interface OmniRemindAddViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *titleInput;
+@property (weak, nonatomic) IBOutlet UITextField *startTime;
+@property (weak, nonatomic) IBOutlet UITextField *startDate;
+@property (weak, nonatomic) IBOutlet UITextField *endTime;
+@property (weak, nonatomic) IBOutlet UITextField *locationInput;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *addSegmentedControl;
 
 @end
 
@@ -27,6 +33,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    UIView *targetView = [self.view viewWithTag:109];
+    [targetView addGestureRecognizer:tap];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -49,5 +60,20 @@
     self.tabBarController.selectedIndex = 0;
     
 }
+
+# pragma mark - input
+- (void)dismissKeyboard{
+   // [self.view removeGestureRecognizer:self.tap];
+    [self.view endEditing:YES];
+    
+}
+
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    for (UIView * txt in self.view.subviews){
+//        if ([txt isKindOfClass:[UITextField class]]) {
+//            [txt resignFirstResponder];
+//        }
+//    }
+//}
 
 @end

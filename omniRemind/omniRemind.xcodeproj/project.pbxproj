@@ -28,6 +28,8 @@
 		0E69355A18157B520095563C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355818157B520095563C /* MainStoryboard_iPad.storyboard */; };
 		0E697BB01832CC3800D37AD4 /* plus-sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E697BAF1832CC3800D37AD4 /* plus-sign.png */; };
 		0E697BB31832CE0400D37AD4 /* OmniRemindAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E697BB21832CE0400D37AD4 /* OmniRemindAddViewController.m */; };
+		0EB0E24E1833B791008506BE /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB0E24D1833B791008506BE /* disclosure.png */; };
+		0EB0E2501833C305008506BE /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB0E24F1833C305008506BE /* pencil.png */; };
 		0EBEA9F018329EEB006BAA52 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EBEA9EF18329EEB006BAA52 /* Parse.framework */; };
 		0ED2CC0B18299A6E003C8B16 /* OmniRemindDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */; };
 		3A154E551831ED98006B2653 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E541831ED98006B2653 /* AudioToolbox.framework */; };
@@ -76,6 +78,8 @@
 		0E697BAF1832CC3800D37AD4 /* plus-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-sign.png"; sourceTree = "<group>"; };
 		0E697BB11832CE0400D37AD4 /* OmniRemindAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindAddViewController.h; sourceTree = "<group>"; };
 		0E697BB21832CE0400D37AD4 /* OmniRemindAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindAddViewController.m; sourceTree = "<group>"; };
+		0EB0E24D1833B791008506BE /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
+		0EB0E24F1833C305008506BE /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		0EBEA9EF18329EEB006BAA52 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = omniRemind/frameWork/Parse.framework; sourceTree = "<group>"; };
 		0ED2CC0918299A6E003C8B16 /* OmniRemindDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindDayViewController.h; sourceTree = "<group>"; };
 		0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindDayViewController.m; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 		0E21ABE7182CC20000C22BA0 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				0EB0E24F1833C305008506BE /* pencil.png */,
+				0EB0E24D1833B791008506BE /* disclosure.png */,
 				0E697BAF1832CC3800D37AD4 /* plus-sign.png */,
 				0E21ABEE182CC3A500C22BA0 /* reminder.png */,
 				0E21ABEC182CC35100C22BA0 /* calendar.png */,
@@ -302,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB0E2501833C305008506BE /* pencil.png in Resources */,
 				0E21ABED182CC35100C22BA0 /* calendar.png in Resources */,
 				0E69354818157B520095563C /* InfoPlist.strings in Resources */,
 				0E69355018157B520095563C /* Default.png in Resources */,
@@ -312,6 +319,7 @@
 				0E69355718157B520095563C /* MainStoryboard_iPhone.storyboard in Resources */,
 				0E21ABEF182CC3A500C22BA0 /* reminder.png in Resources */,
 				0E69355A18157B520095563C /* MainStoryboard_iPad.storyboard in Resources */,
+				0EB0E24E1833B791008506BE /* disclosure.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
