@@ -187,6 +187,36 @@
             endingLineNumber = "223"
             landmarkName = "-getEventNumber:withEndTime:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OmniRemindDayViewController getEventNumber:withEndTime:]"
+                  moduleName = "omniRemind"
+                  urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindDayViewController.m"
+                  timestampString = "406046846.904867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OmniRemindDayViewController getEventNumber:withEndTime:]"
+                  moduleName = "omniRemind"
+                  urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindDayViewController.m"
+                  timestampString = "406046846.905049"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "289">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
