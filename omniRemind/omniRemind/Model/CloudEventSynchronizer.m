@@ -26,4 +26,10 @@
     return event;
 }
 
++ (PFObject *)getEventFromId:(NSString *)cloudEventId {
+    PFQuery *query = [PFQuery queryWithClassName:EVENT_TABLE];
+    [query whereKey:@"id" equalTo:cloudEventId];
+    return [[query findObjects] lastObject];
+}
+
 @end

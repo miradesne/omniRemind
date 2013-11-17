@@ -74,7 +74,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapView.delegate = self;
-//    [[self locationManager] startUpdatingLocation];
+    [[self locationManager] startUpdatingLocation];
     if (self.cloudEventId && self.myLocationKey && self.otherLocationKey) {
         [self setupLocationSyncTimer];
     }
