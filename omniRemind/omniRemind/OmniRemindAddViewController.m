@@ -83,12 +83,34 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if ([textField.inputView isKindOfClass:[UIDatePicker class]]) {
-        UIDatePicker *picker = (UIDatePicker*)textField.inputView;
-        textField.text = [NSString stringWithFormat:@"%@",picker.date];
-    }
+    
     [textField resignFirstResponder];
     return NO;
+}
+
+- (void)done{
+    [self.view endEditing:YES];
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if ([textField.inputView isKindOfClass:[UIDatePicker class]]) {
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        NSString *theDate;
+        if ([textField isEqual:self.startDate]) {
+            [dateFormat setDateFormat:@"yyyy-MM-dd"];
+            theDate = [dateFormat stringFromDate:self.datePicker.date];
+            
+        }
+        else{
+            [dateFormat setDateFormat:@"h:mm a"];
+            theDate = [dateFormat stringFromDate:self.timePicker.date];
+        }
+        
+        textField.text = [NSString stringWithFormat:@"%@",theDate];
+        
+    }
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)setUpInput{
@@ -125,7 +147,4 @@
     
 }
 
-- (void)done{
-    [self.view endEditing:YES];
-}
 @end
