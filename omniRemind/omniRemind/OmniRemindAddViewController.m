@@ -15,8 +15,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *endTime;
 @property (weak, nonatomic) IBOutlet UITextField *locationInput;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *addSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIView *addEventView;
+@property (weak, nonatomic) IBOutlet UIView *addClassView;
 @property (strong, nonatomic) UIDatePicker *datePicker;
 @property (strong, nonatomic) UIDatePicker *timePicker;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @end
 
 @implementation OmniRemindAddViewController
@@ -123,6 +126,7 @@
     [self addDatePicker:YES forInput:self.startDate];
     [self addDatePicker:NO forInput:self.startTime];
     [self addDatePicker:NO forInput:self.endTime];
+    self.addClassView.hidden = YES;
 }
 
 - (void)addDatePicker:(Boolean)isDate forInput:(UITextField*)inputField{
@@ -145,6 +149,66 @@
     
     inputField.inputAccessoryView = pickerToolbar;
     
+}
+
+# pragma mark - courseSearching
+- (IBAction)changedSelection:(id)sender {
+    int isCourse = self.addSegmentedControl.selectedSegmentIndex;
+    if (isCourse) {
+        self.addEventView.hidden = YES;
+        self.addClassView.hidden = NO;
+        self.searchButton.hidden = YES;
+        [self showCourseSearchAlert];
+    }
+    else{
+        self.addEventView.hidden = NO;
+        self.addClassView.hidden = YES;
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    NSString *searchTerm;
+    if (buttonIndex == 1) {
+        searchTerm = [alertView textFieldAtIndex:0].text;
+                dispatch_queue_t imageFetchQ=dispatch_queue_create("fetch Image", NULL);
+        self.searchButton.hidden = YES ;
+        dispatch_async(imageFetchQ,^{
+            NSLog(searchTerm);
+            //MiraBug
+           //PFObject *courseObject = [CourseDataFetcher fetchCourse:searchTerm];
+            
+           // NSArray *assignments = [CourseDataFetcher fetchAssignments:courseObject];
+            
+            
+        });
+    }
+    else {
+        [self addSearchButton];
+        
+    }
+    
+    
+    
+}
+
+- (void)showCourseSearchAlert{
+    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Class Search"
+                                                          message:@""
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel"
+                                                otherButtonTitles:@"Search", nil];
+    
+    myAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [myAlertView show];
+}
+
+- (IBAction)searchCourse:(id)sender {
+    [self showCourseSearchAlert];
+}
+
+- (void)addSearchButton{
+    self.searchButton.hidden = NO;
 }
 
 @end
