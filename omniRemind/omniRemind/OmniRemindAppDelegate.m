@@ -8,6 +8,19 @@
 
 #import "OmniRemindAppDelegate.h"
 #import <Parse/Parse.h>
+#import "CourseDataFetcher.h"
+
+@interface OmniRemindAppDelegate() <UIAlertViewDelegate>
+@property (strong, nonatomic) NSDictionary *pushInfo;
+@end
+
+#define NOTIFICATION_TYPE_KEY @"nType"
+#define COURSE_INFO_TYPE_KEY @"cType"
+#define TYPE_COURSE @"course"
+#define TYPE_ASSIGNMENT @"assignment"
+#define COURSE_NAME_KEY2 @"course"
+#define DETAIL_DESCRIPTION_KEY @"description"
+#define DETAIL_URL_KEY @"url"
 
 @implementation OmniRemindAppDelegate
 
@@ -52,7 +65,35 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     }
     NSLog(@"receive inside bg");
     NSLog(@"%@", userInfo);
-    [PFPush handlePush:userInfo];
+    [self handlePush:userInfo];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    NSLog(@"%i", buttonIndex);
+    self.pushInfo = nil;
+}
+
+//NSDateFormatter *df = [[NSDateFormatter alloc] init];
+//[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//NSDate *myDate = [df dateFromString: @"1992-12-30 23:59:59"];
+
+- (void)handlePush:(NSDictionary *)push {
+    self.pushInfo = push;
+    NSString *title;
+    NSString *info;
+    if ([TYPE_COURSE isEqualToString:push[NOTIFICATION_TYPE_KEY]]) {
+        if ([TYPE_ASSIGNMENT isEqualToString:push[COURSE_INFO_TYPE_KEY]]) {
+            title = @"Assignment Notification";
+            info = [NSString stringWithFormat:@"Course: %@\nName: %@\nDue: %@\nDescription: %@\nUrl: %@",
+                    push[COURSE_NAME_KEY2],
+                    push[ASSIGNMENT_NAME_KEY],
+                    push[ASSIGNMENT_DUE_DATE_KEY],
+                    push[DETAIL_DESCRIPTION_KEY],
+                    push[DETAIL_URL_KEY]];
+        }
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:info delegate:self cancelButtonTitle:nil otherButtonTitles:@"yes", @"no", nil];
+    [alertView show];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
