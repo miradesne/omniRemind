@@ -16,21 +16,10 @@
     // Override point for customization after application launch.
     [Parse setApplicationId:@"lw8hrBQcOJEO6JVTSTmdXjrsSFZIXqF7YrWzet8r"
                   clientKey:@"A8KUM9TfOZA0zLmp4BnkYnT0mZT5lSSwZH33g92r"];
-    if (application.applicationState != UIApplicationStateBackground) {
-        // Track an app open here if we launch with a push, unless
-        // "content_available" was used to trigger a background push (introduced
-        // in iOS 7). In that case, we skip tracking here to avoid double counting
-        // the app-open.
-        BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
-        BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
-        BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-        if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-            [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-        }
-    }
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
+    NSLog(@"In finish lunching,....");
     return YES;
 }
 
@@ -41,14 +30,18 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
     [currentInstallation saveInBackground];
+    [PFPush storeDeviceToken:deviceToken];
+    [PFPush subscribeToChannelInBackground:@""];
+    NSLog(@"sb");
 }
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [PFPush handlePush:userInfo];
-    if (application.applicationState == UIApplicationStateInactive) {
-        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-    }
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Fail to reg");
 }
 
 - (void)application:(UIApplication *)application
@@ -57,6 +50,9 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     if (application.applicationState == UIApplicationStateInactive) {
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
     }
+    NSLog(@"receive inside bg");
+    NSLog(@"%@", userInfo);
+    [PFPush handlePush:userInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

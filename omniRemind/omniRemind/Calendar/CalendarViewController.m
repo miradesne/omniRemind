@@ -41,6 +41,14 @@
     [self setUpCollectionView];
 }
 
+- (void)registerChannel:(NSString *)channelName {
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation addUniqueObject:channelName forKey:@"channels"];
+    [currentInstallation saveInBackground];
+    NSLog(@"reg");
+}
+
+
 - (void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = NO;
     [super viewWillAppear:animated];
