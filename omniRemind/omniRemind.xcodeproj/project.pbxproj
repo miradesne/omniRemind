@@ -32,6 +32,7 @@
 		0EB0E2501833C305008506BE /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB0E24F1833C305008506BE /* pencil.png */; };
 		0EBEA9F018329EEB006BAA52 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EBEA9EF18329EEB006BAA52 /* Parse.framework */; };
 		0ED2CC0B18299A6E003C8B16 /* OmniRemindDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */; };
+		3A12361E1845941900EDA67D /* OmniRemindWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A12361D1845941900EDA67D /* OmniRemindWebViewController.m */; };
 		3A154E551831ED98006B2653 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E541831ED98006B2653 /* AudioToolbox.framework */; };
 		3A154E571831ED9E006B2653 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E561831ED9E006B2653 /* CFNetwork.framework */; };
 		3A154E591831EDAA006B2653 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E581831EDAA006B2653 /* CoreLocation.framework */; };
@@ -90,6 +91,8 @@
 		0EBEA9EF18329EEB006BAA52 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = omniRemind/frameWork/Parse.framework; sourceTree = "<group>"; };
 		0ED2CC0918299A6E003C8B16 /* OmniRemindDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindDayViewController.h; sourceTree = "<group>"; };
 		0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindDayViewController.m; sourceTree = "<group>"; };
+		3A12361C1845941900EDA67D /* OmniRemindWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindWebViewController.h; sourceTree = "<group>"; };
+		3A12361D1845941900EDA67D /* OmniRemindWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindWebViewController.m; sourceTree = "<group>"; };
 		3A154E541831ED98006B2653 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3A154E561831ED9E006B2653 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3A154E581831EDAA006B2653 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -187,6 +190,8 @@
 				3A2B61D118242E0F005736CD /* CalendarViewController.m */,
 				0E697BB11832CE0400D37AD4 /* OmniRemindAddViewController.h */,
 				0E697BB21832CE0400D37AD4 /* OmniRemindAddViewController.m */,
+				3A12361C1845941900EDA67D /* OmniRemindWebViewController.h */,
+				3A12361D1845941900EDA67D /* OmniRemindWebViewController.m */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				0E69354A18157B520095563C /* main.m in Sources */,
 				0E69354E18157B520095563C /* OmniRemindAppDelegate.m in Sources */,
 				0E59F9101827469500942B12 /* OmniRemindCalendarView.m in Sources */,
+				3A12361E1845941900EDA67D /* OmniRemindWebViewController.m in Sources */,
 				3A7D877518341DA300EB58AB /* OmniRemindMapViewController.m in Sources */,
 				0E59F9131827554100942B12 /* OmniRemindEventGenerator.m in Sources */,
 				0E21ABF4182CC7C400C22BA0 /* OmniRemindEventDetailViewController.m in Sources */,

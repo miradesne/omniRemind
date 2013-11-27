@@ -7,8 +7,9 @@
 //
 
 #import "OmniRemindAppDelegate.h"
-#import <Parse/Parse.h>
 #import "CourseDataFetcher.h"
+#import "OmniRemindWebViewController.h"
+#import <Parse/Parse.h>
 
 @interface OmniRemindAppDelegate() <UIAlertViewDelegate>
 @property (strong, nonatomic) NSDictionary *pushInfo;
@@ -69,8 +70,25 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    NSLog(@"%i", buttonIndex);
-    self.pushInfo = nil;
+    if (buttonIndex == 0) {
+        // Yes. Add it.
+        self.pushInfo = nil;
+    } else if (buttonIndex == 1) {
+        // No. :<
+        self.pushInfo = nil;
+    } else {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        OmniRemindWebViewController *uvc = [storyboard instantiateViewControllerWithIdentifier:@"OmniRemindWebViewController"];
+        uvc.URL = self.pushInfo[DETAIL_URL_KEY];
+        [self.window.rootViewController presentViewController:uvc animated:NO completion:^{
+            
+        }];
+
+    }
+}
+
+- (void)checkPush {
+    [self handlePush:self.pushInfo];
 }
 
 //NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -92,7 +110,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
                     push[DETAIL_URL_KEY]];
         }
     }
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:info delegate:self cancelButtonTitle:nil otherButtonTitles:@"yes", @"no", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:info delegate:self cancelButtonTitle:nil otherButtonTitles:@"Yes", @"No", @"Assignment Page", nil];
+    
     [alertView show];
 }
 
