@@ -402,7 +402,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="EUb-03-44p" kind="push" id="Jpn-sA-G9W"/>
+                                                    <segue destination="EUb-03-44p" kind="push" identifier="addRepeat" id="Jpn-sA-G9W"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="disclosure.png" translatesAutoresizingMaskIntoConstraints="NO" id="OUf-d7-lGU">
@@ -423,7 +423,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="EUb-03-44p" kind="push" id="OSR-Za-4AW"/>
+                                                    <segue destination="EUb-03-44p" kind="push" identifier="addReminder" id="OSR-Za-4AW"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus-sign.png" translatesAutoresizingMaskIntoConstraints="NO" id="eqm-OV-ZST">
@@ -465,7 +465,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cwm-wt-jtS"/>
-                                    <barButtonItem title="Done" id="pEe-7m-LRS"/>
+                                    <barButtonItem title="Add" id="pEe-7m-LRS"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -504,10 +504,10 @@
             </objects>
             <point key="canvasLocation" x="981" y="1433"/>
         </scene>
-        <!--View Controller-->
+        <!--Omni Remind Add Detail View Controller-->
         <scene sceneID="Tso-Hg-K2F">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" id="EUb-03-44p" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="EUb-03-44p" customClass="OmniRemindAddDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ug7-FE-eSw"/>
                         <viewControllerLayoutGuide type="bottom" id="ujw-pd-LfP"/>
@@ -515,6 +515,13 @@
                     <view key="view" contentMode="scaleToFill" id="vMW-dq-XOk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Loa-83-fkL">
+                                <rect key="frame" x="0.0" y="64" width="320" height="459"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="BZo-uh-9Xf"/>
@@ -589,7 +596,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LA0-aV-2NI"/>
         <segue reference="OSR-Za-4AW"/>
+        <segue reference="LA0-aV-2NI"/>
     </inferredMetricsTieBreakers>
 </document>

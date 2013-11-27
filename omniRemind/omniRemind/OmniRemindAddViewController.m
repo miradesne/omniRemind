@@ -7,6 +7,10 @@
 //
 
 #import "OmniRemindAddViewController.h"
+#import "OmniRemindAddDetailViewController.h"
+#import "CourseDataFetcher.h"
+#import "OmniRemindCourse.h"
+
 
 @interface OmniRemindAddViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleInput;
@@ -152,6 +156,8 @@
 }
 
 # pragma mark - courseSearching
+
+#define COURSE_INFO_HEIGHT 30
 - (IBAction)changedSelection:(id)sender {
     int isCourse = self.addSegmentedControl.selectedSegmentIndex;
     if (isCourse) {
@@ -163,29 +169,43 @@
     else{
         self.addEventView.hidden = NO;
         self.addClassView.hidden = YES;
+        [[self.addClassView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
     
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     NSString *searchTerm;
-    if (buttonIndex == 1) {
-        searchTerm = [alertView textFieldAtIndex:0].text;
-                dispatch_queue_t imageFetchQ=dispatch_queue_create("fetch Image", NULL);
-        self.searchButton.hidden = YES ;
-        dispatch_async(imageFetchQ,^{
-            NSLog(searchTerm);
-            //MiraBug
-           //PFObject *courseObject = [CourseDataFetcher fetchCourse:searchTerm];
+    if (alertView.tag == 1100) {
+        if (buttonIndex == 1) {
+            searchTerm = [alertView textFieldAtIndex:0].text;
+            dispatch_queue_t imageFetchQ=dispatch_queue_create("fetch Image", NULL);
+            self.searchButton.hidden = YES ;
+            dispatch_async(imageFetchQ,^{
+                // NSLog(searchTerm);
+                //MiraBug
+                //PFObject *courseObject = [CourseDataFetcher fetchCourse:searchTerm];
+                
+                // NSArray *assignments = [CourseDataFetcher fetchAssignments:courseObject];
+                OmniRemindCourse *searchedCourse = [[OmniRemindCourse alloc] initWithDefaultValue];
+                //searchedCourse = nil;
+                dispatch_async(dispatch_get_main_queue(),^{
+                    if (searchedCourse) {
+                        [self showSearchedCourse:searchedCourse];
+                    }
+                    
+                    else {
+                        [self didNotFindCourse];
+                    }
+                });
+                
+            });
+        }
+        else {
+            [self addSearchButton];
             
-           // NSArray *assignments = [CourseDataFetcher fetchAssignments:courseObject];
-            
-            
-        });
-    }
-    else {
-        [self addSearchButton];
-        
+        }
+
     }
     
     
@@ -200,7 +220,65 @@
                                                 otherButtonTitles:@"Search", nil];
     
     myAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    myAlertView.tag = 1100;
     [myAlertView show];
+}
+
+- (void)didNotFindCourse{
+    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Course not found!"
+                                                          message:@""
+                                                         delegate:self
+                                                cancelButtonTitle:@"Ok"
+                                                otherButtonTitles:nil];
+    [myAlertView show];
+    [self addSearchButton];
+    
+
+}
+
+- (void)showSearchedCourse: (OmniRemindCourse*)searchedCourse{
+    unsigned int numberOfProperties = 0;
+    objc_property_t *propertyArray = class_copyPropertyList([OmniRemindCourse class], &numberOfProperties);
+    
+    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 280, COURSE_INFO_HEIGHT)];
+    infoLabel.text = @"Course Information" ;
+    infoLabel.backgroundColor = [UIColor clearColor];
+    infoLabel.font = [UIFont systemFontOfSize:18];
+    infoLabel.textAlignment = NSTextAlignmentCenter;
+    //[courseInfoLabel sizeToFit];
+    [self.addClassView addSubview:infoLabel];
+    
+    
+    
+    int height = 40;
+    for (int i = 0; i < numberOfProperties; i++) {
+        objc_property_t property = propertyArray[i];
+        NSString *propertyName = [[NSString alloc] initWithUTF8String:property_getName(property)];
+        id propertyValue = [searchedCourse valueForKey:propertyName];
+        NSString *courseInfo = [NSString stringWithFormat:@"%@ : %@",propertyName,propertyValue];
+        
+        if ([propertyName isEqualToString:@"courseDescription"]) {
+            UITextView *courseDescriptionLabel = [[UITextView alloc] initWithFrame:CGRectMake(20, height+i*COURSE_INFO_HEIGHT, 280, COURSE_INFO_HEIGHT)];
+            courseDescriptionLabel.text = courseInfo;
+            courseDescriptionLabel.editable = NO;
+            courseDescriptionLabel.textContainer.lineFragmentPadding = 0;
+            [self.addClassView addSubview:courseDescriptionLabel];
+
+        }
+        else{
+            UILabel *courseInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, height+i*COURSE_INFO_HEIGHT, 280, COURSE_INFO_HEIGHT)];
+            courseInfoLabel.text = courseInfo ;
+            courseInfoLabel.backgroundColor = [UIColor clearColor];
+            courseInfoLabel.font = [UIFont systemFontOfSize:12];
+            courseInfoLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            courseInfoLabel.numberOfLines = 0;
+            //[courseInfoLabel sizeToFit];
+            [self.addClassView addSubview:courseInfoLabel];
+        }
+        
+    }
+    
+    
 }
 
 - (IBAction)searchCourse:(id)sender {
@@ -210,5 +288,31 @@
 - (void)addSearchButton{
     self.searchButton.hidden = NO;
 }
+
+#pragma mark - Segue
+//transfer the Image to the next view
+//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self performSegueWithIdentifier:@"seeDayView" sender:collectionView];
+//}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *addType = @"";
+    if ([segue.identifier isEqualToString:@"addRepeat"]) {
+        addType = @"Repeat";
+        
+    }
+    else{
+        addType = @"Reminder";
+    }
+    
+    OmniRemindAddDetailViewController *destViewController = segue.destinationViewController;
+    destViewController.title = addType;
+    
+}
+
+
 
 @end

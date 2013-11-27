@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CourseDataFetcher.h"
+#import <objc/runtime.h>
 
 @interface OmniRemindAddViewController : UIViewController<UIAlertViewDelegate>
 
