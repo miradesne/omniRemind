@@ -11,6 +11,8 @@
 #import "OmniRemindCalendarCollectionViewCell.h"
 #import <Parse/Parse.h>
 #import "CourseDataFetcher.h"
+#import "EventScheduler.h"
+
 @interface CalendarViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *lastMonth;

@@ -33,7 +33,7 @@
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
-    NSLog(@"In finish lunching,....");
+    NSLog(@"launch options: %@", launchOptions);
     return YES;
 }
 
@@ -46,7 +46,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
     [currentInstallation saveInBackground];
     [PFPush storeDeviceToken:deviceToken];
     [PFPush subscribeToChannelInBackground:@""];
-    NSLog(@"sb");
 }
 
 - (void)application:(UIApplication *)application
@@ -55,18 +54,46 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo {
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"Fail to reg");
+    NSLog(@"Fail to reg, probably because of running on the simulator instead of real phone");
 }
 
 - (void)application:(UIApplication *)application
 didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    if (application.applicationState == UIApplicationStateInactive) {
-        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-    }
-    NSLog(@"receive inside bg");
-    NSLog(@"%@", userInfo);
     [self handlePush:userInfo];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSLog(@"Receive local notification %@", notification);
+}
+
+// Check if the push has been finished, used when the alert view returns.
+- (void)checkPush {
+    [self handlePush:self.pushInfo];
+}
+
+//NSDateFormatter *df = [[NSDateFormatter alloc] init];
+//[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//NSDate *myDate = [df dateFromString: @"1992-12-30 23:59:59"];
+
+- (void)handlePush:(NSDictionary *)push {
+    self.pushInfo = push;
+    NSString *title;
+    NSString *info;
+    if ([TYPE_COURSE isEqualToString:push[NOTIFICATION_TYPE_KEY]]) {
+        if ([TYPE_ASSIGNMENT isEqualToString:push[COURSE_INFO_TYPE_KEY]]) {
+            title = @"Assignment Notification";
+            info = [NSString stringWithFormat:@"Course: %@\nName: %@\nDue: %@\nDescription: %@\nUrl: %@\n\nSave the assignment event to the calendar?",
+                    push[COURSE_NAME_KEY2],
+                    push[ASSIGNMENT_NAME_KEY],
+                    push[ASSIGNMENT_DUE_DATE_KEY],
+                    push[DETAIL_DESCRIPTION_KEY],
+                    push[DETAIL_URL_KEY]];
+        }
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:info delegate:self cancelButtonTitle:nil otherButtonTitles:@"Yes", @"No", @"Assignment Page", nil];
+    
+    [alertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -83,36 +110,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
         [self.window.rootViewController presentViewController:uvc animated:NO completion:^{
             
         }];
-
+        
     }
-}
-
-- (void)checkPush {
-    [self handlePush:self.pushInfo];
-}
-
-//NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-//NSDate *myDate = [df dateFromString: @"1992-12-30 23:59:59"];
-
-- (void)handlePush:(NSDictionary *)push {
-    self.pushInfo = push;
-    NSString *title;
-    NSString *info;
-    if ([TYPE_COURSE isEqualToString:push[NOTIFICATION_TYPE_KEY]]) {
-        if ([TYPE_ASSIGNMENT isEqualToString:push[COURSE_INFO_TYPE_KEY]]) {
-            title = @"Assignment Notification";
-            info = [NSString stringWithFormat:@"Course: %@\nName: %@\nDue: %@\nDescription: %@\nUrl: %@",
-                    push[COURSE_NAME_KEY2],
-                    push[ASSIGNMENT_NAME_KEY],
-                    push[ASSIGNMENT_DUE_DATE_KEY],
-                    push[DETAIL_DESCRIPTION_KEY],
-                    push[DETAIL_URL_KEY]];
-        }
-    }
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:info delegate:self cancelButtonTitle:nil otherButtonTitles:@"Yes", @"No", @"Assignment Page", nil];
-    
-    [alertView show];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
