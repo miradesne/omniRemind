@@ -35,6 +35,7 @@
 		0EB6245518481055002D32C1 /* OmniRemindInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6245418481055002D32C1 /* OmniRemindInputViewController.m */; };
 		0EBEA9F018329EEB006BAA52 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EBEA9EF18329EEB006BAA52 /* Parse.framework */; };
 		0ED2CC0B18299A6E003C8B16 /* OmniRemindDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */; };
+		3A12361E1845941900EDA67D /* OmniRemindWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A12361D1845941900EDA67D /* OmniRemindWebViewController.m */; };
 		3A154E551831ED98006B2653 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E541831ED98006B2653 /* AudioToolbox.framework */; };
 		3A154E571831ED9E006B2653 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E561831ED9E006B2653 /* CFNetwork.framework */; };
 		3A154E591831EDAA006B2653 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E581831EDAA006B2653 /* CoreLocation.framework */; };
@@ -45,9 +46,15 @@
 		3A154E631831EDD3006B2653 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E621831EDD3006B2653 /* StoreKit.framework */; };
 		3A154E651831EDD9006B2653 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A154E641831EDD9006B2653 /* SystemConfiguration.framework */; };
 		3A2B61D218242E0F005736CD /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A2B61D118242E0F005736CD /* CalendarViewController.m */; };
+		3A5703131835BDFA004E25F1 /* Circle_Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A5703121835BDFA004E25F1 /* Circle_Yellow.png */; };
+		3A5703161835C2F2004E25F1 /* CloudEventSynchronizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A5703151835C2F2004E25F1 /* CloudEventSynchronizer.m */; };
+		3A7D877518341DA300EB58AB /* OmniRemindMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7D877418341DA300EB58AB /* OmniRemindMapViewController.m */; };
+		3A7D877718341EFB00EB58AB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7D877618341EFB00EB58AB /* MapKit.framework */; };
 		3A8EE4C518219C82001EB511 /* CalendarModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A8EE4C318219C82001EB511 /* CalendarModel.xcdatamodeld */; };
 		3A8EE4C918219CDE001EB511 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8EE4C818219CDE001EB511 /* CoreDataTableViewController.m */; };
+		3A8F84B61835B82600178E05 /* Circle_Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F84B51835B82600178E05 /* Circle_Green.png */; };
 		3A98DA06183312B6005905F9 /* CourseDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98DA05183312B6005905F9 /* CourseDataFetcher.m */; };
+		3AC0F49C18349CD20067191B /* GeoPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0F49B18349CD20067191B /* GeoPointAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +100,8 @@
 		0EBEA9EF18329EEB006BAA52 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = omniRemind/frameWork/Parse.framework; sourceTree = "<group>"; };
 		0ED2CC0918299A6E003C8B16 /* OmniRemindDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindDayViewController.h; sourceTree = "<group>"; };
 		0ED2CC0A18299A6E003C8B16 /* OmniRemindDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindDayViewController.m; sourceTree = "<group>"; };
+		3A12361C1845941900EDA67D /* OmniRemindWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindWebViewController.h; sourceTree = "<group>"; };
+		3A12361D1845941900EDA67D /* OmniRemindWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindWebViewController.m; sourceTree = "<group>"; };
 		3A154E541831ED98006B2653 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3A154E561831ED9E006B2653 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3A154E581831EDAA006B2653 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -104,11 +113,20 @@
 		3A154E641831EDD9006B2653 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3A2B61D018242E0E005736CD /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarViewController.h; path = Calendar/CalendarViewController.h; sourceTree = "<group>"; };
 		3A2B61D118242E0F005736CD /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarViewController.m; path = Calendar/CalendarViewController.m; sourceTree = "<group>"; };
+		3A5703121835BDFA004E25F1 /* Circle_Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle_Yellow.png; sourceTree = "<group>"; };
+		3A5703141835C2F2004E25F1 /* CloudEventSynchronizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudEventSynchronizer.h; path = Model/CloudEventSynchronizer.h; sourceTree = "<group>"; };
+		3A5703151835C2F2004E25F1 /* CloudEventSynchronizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudEventSynchronizer.m; path = Model/CloudEventSynchronizer.m; sourceTree = "<group>"; };
+		3A7D877318341DA300EB58AB /* OmniRemindMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindMapViewController.h; sourceTree = "<group>"; };
+		3A7D877418341DA300EB58AB /* OmniRemindMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindMapViewController.m; sourceTree = "<group>"; };
+		3A7D877618341EFB00EB58AB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3A8EE4C418219C82001EB511 /* CalendarModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CalendarModel.xcdatamodel; sourceTree = "<group>"; };
 		3A8EE4C718219CDE001EB511 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataTableViewController.h; path = CoreDataModel/CoreDataTableViewController.h; sourceTree = "<group>"; };
 		3A8EE4C818219CDE001EB511 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = CoreDataModel/CoreDataTableViewController.m; sourceTree = "<group>"; };
+		3A8F84B51835B82600178E05 /* Circle_Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle_Green.png; sourceTree = "<group>"; };
 		3A98DA04183312B6005905F9 /* CourseDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDataFetcher.h; path = Model/CourseDataFetcher.h; sourceTree = "<group>"; };
 		3A98DA05183312B6005905F9 /* CourseDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDataFetcher.m; path = Model/CourseDataFetcher.m; sourceTree = "<group>"; };
+		3AC0F49A18349CD20067191B /* GeoPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeoPointAnnotation.h; path = Model/GeoPointAnnotation.h; sourceTree = "<group>"; };
+		3AC0F49B18349CD20067191B /* GeoPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeoPointAnnotation.m; path = Model/GeoPointAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7D877718341EFB00EB58AB /* MapKit.framework in Frameworks */,
 				3A154E651831EDD9006B2653 /* SystemConfiguration.framework in Frameworks */,
 				3A154E631831EDD3006B2653 /* StoreKit.framework in Frameworks */,
 				3A154E611831EDCD006B2653 /* Security.framework in Frameworks */,
@@ -138,6 +157,8 @@
 		0E21ABE7182CC20000C22BA0 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				3A8F84B51835B82600178E05 /* Circle_Green.png */,
+				3A5703121835BDFA004E25F1 /* Circle_Yellow.png */,
 				0EB0E24F1833C305008506BE /* pencil.png */,
 				0EB0E24D1833B791008506BE /* disclosure.png */,
 				0E697BAF1832CC3800D37AD4 /* plus-sign.png */,
@@ -157,6 +178,10 @@
 				3A98DA05183312B6005905F9 /* CourseDataFetcher.m */,
 				0E541FDA18437F1D00B7054F /* OmniRemindCourse.h */,
 				0E541FDB18437F1D00B7054F /* OmniRemindCourse.m */,
+				3AC0F49A18349CD20067191B /* GeoPointAnnotation.h */,
+				3AC0F49B18349CD20067191B /* GeoPointAnnotation.m */,
+				3A5703141835C2F2004E25F1 /* CloudEventSynchronizer.h */,
+				3A5703151835C2F2004E25F1 /* CloudEventSynchronizer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -164,6 +189,8 @@
 		0E59F916182762F800942B12 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3A7D877318341DA300EB58AB /* OmniRemindMapViewController.h */,
+				3A7D877418341DA300EB58AB /* OmniRemindMapViewController.m */,
 				0E21ABF8182CCADC00C22BA0 /* OmniRemindReminderViewController.h */,
 				0E21ABF9182CCADC00C22BA0 /* OmniRemindReminderViewController.m */,
 				0ED2CC0918299A6E003C8B16 /* OmniRemindDayViewController.h */,
@@ -178,6 +205,8 @@
 				0E697BB21832CE0400D37AD4 /* OmniRemindAddViewController.m */,
 				0E541FD7184376E800B7054F /* OmniRemindAddDetailViewController.h */,
 				0E541FD8184376E800B7054F /* OmniRemindAddDetailViewController.m */,
+				3A12361C1845941900EDA67D /* OmniRemindWebViewController.h */,
+				3A12361D1845941900EDA67D /* OmniRemindWebViewController.m */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -213,6 +242,7 @@
 		0E69353C18157B520095563C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A7D877618341EFB00EB58AB /* MapKit.framework */,
 				0EBEA9EF18329EEB006BAA52 /* Parse.framework */,
 				3A154E641831EDD9006B2653 /* SystemConfiguration.framework */,
 				3A154E621831EDD3006B2653 /* StoreKit.framework */,
@@ -329,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EB0E2501833C305008506BE /* pencil.png in Resources */,
+				3A8F84B61835B82600178E05 /* Circle_Green.png in Resources */,
 				0E21ABED182CC35100C22BA0 /* calendar.png in Resources */,
 				0E69354818157B520095563C /* InfoPlist.strings in Resources */,
 				0E69355018157B520095563C /* Default.png in Resources */,
@@ -338,6 +369,7 @@
 				0E21ABF1182CC3EB00C22BA0 /* today.png in Resources */,
 				0E69355718157B520095563C /* MainStoryboard_iPhone.storyboard in Resources */,
 				0E21ABEF182CC3A500C22BA0 /* reminder.png in Resources */,
+				3A5703131835BDFA004E25F1 /* Circle_Yellow.png in Resources */,
 				0E69355A18157B520095563C /* MainStoryboard_iPad.storyboard in Resources */,
 				0EB0E24E1833B791008506BE /* disclosure.png in Resources */,
 			);
@@ -354,11 +386,15 @@
 				0E69354E18157B520095563C /* OmniRemindAppDelegate.m in Sources */,
 				0E541FDC18437F1D00B7054F /* OmniRemindCourse.m in Sources */,
 				0E59F9101827469500942B12 /* OmniRemindCalendarView.m in Sources */,
+				3A12361E1845941900EDA67D /* OmniRemindWebViewController.m in Sources */,
+				3A7D877518341DA300EB58AB /* OmniRemindMapViewController.m in Sources */,
 				0E59F9131827554100942B12 /* OmniRemindEventGenerator.m in Sources */,
 				0E21ABF4182CC7C400C22BA0 /* OmniRemindEventDetailViewController.m in Sources */,
+				3AC0F49C18349CD20067191B /* GeoPointAnnotation.m in Sources */,
 				0E59F90F1827469500942B12 /* OmniRemindCalendarCollectionViewCell.m in Sources */,
 				0E697BB31832CE0400D37AD4 /* OmniRemindAddViewController.m in Sources */,
 				3A8EE4C518219C82001EB511 /* CalendarModel.xcdatamodeld in Sources */,
+				3A5703161835C2F2004E25F1 /* CloudEventSynchronizer.m in Sources */,
 				0ED2CC0B18299A6E003C8B16 /* OmniRemindDayViewController.m in Sources */,
 				3A8EE4C918219CDE001EB511 /* CoreDataTableViewController.m in Sources */,
 				0EB6245518481055002D32C1 /* OmniRemindInputViewController.m in Sources */,
@@ -411,7 +447,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -443,7 +480,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -460,8 +498,8 @@
 		0E69356118157B520095563C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
@@ -471,7 +509,7 @@
 				GCC_PREFIX_HEADER = "omniRemind/omniRemind-Prefix.pch";
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A43FCA68-232C-4B94-808C-BA36EAFFFF1D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -479,8 +517,8 @@
 		0E69356218157B520095563C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
@@ -490,7 +528,7 @@
 				GCC_PREFIX_HEADER = "omniRemind/omniRemind-Prefix.pch";
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "A43FCA68-232C-4B94-808C-BA36EAFFFF1D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

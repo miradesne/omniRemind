@@ -612,6 +612,72 @@
             </objects>
             <point key="canvasLocation" x="1594" y="1441"/>
         </scene>
+        <!--Omni Remind Map View Controller-->
+        <scene sceneID="7do-Uu-Bfk">
+            <objects>
+                <viewController id="mxT-hf-pFp" customClass="OmniRemindMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ze-a0-Bo7"/>
+                        <viewControllerLayoutGuide type="bottom" id="x5G-DC-Q0I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N0T-Ig-0ym">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sEG-ck-kIr">
+                                <rect key="frame" x="0.0" y="-2" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="sEG-ck-kIr" id="tCn-JQ-h66"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oId-Wa-RCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-333" y="1478"/>
+        </scene>
+        <!--Omni Remind Web View Controller-->
+        <scene sceneID="ri7-2E-hKd">
+            <objects>
+                <viewController storyboardIdentifier="OmniRemindWebViewController" id="ciu-Zo-E7l" customClass="OmniRemindWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qwC-PJ-uFC"/>
+                        <viewControllerLayoutGuide type="bottom" id="OQm-Tk-tsu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sSq-p7-TUK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZN-HG-gEa">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFf-MT-PIE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Back" id="v2l-rG-VXE">
+                                        <connections>
+                                            <action selector="back:" destination="ciu-Zo-E7l" id="zjf-5y-sob"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="hZN-HG-gEa" id="Ygm-cy-mBw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qlL-cE-dET" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341" y="2241"/>
+        </scene>
         <!--Navigation Controller - New-->
         <scene sceneID="1Xe-fP-eAy">
             <objects>

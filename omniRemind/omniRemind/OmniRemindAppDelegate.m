@@ -7,7 +7,21 @@
 //
 
 #import "OmniRemindAppDelegate.h"
+#import "CourseDataFetcher.h"
+#import "OmniRemindWebViewController.h"
 #import <Parse/Parse.h>
+
+@interface OmniRemindAppDelegate() <UIAlertViewDelegate>
+@property (strong, nonatomic) NSDictionary *pushInfo;
+@end
+
+#define NOTIFICATION_TYPE_KEY @"nType"
+#define COURSE_INFO_TYPE_KEY @"cType"
+#define TYPE_COURSE @"course"
+#define TYPE_ASSIGNMENT @"assignment"
+#define COURSE_NAME_KEY2 @"course"
+#define DETAIL_DESCRIPTION_KEY @"description"
+#define DETAIL_URL_KEY @"url"
 
 @implementation OmniRemindAppDelegate
 
@@ -16,10 +30,91 @@
     // Override point for customization after application launch.
     [Parse setApplicationId:@"lw8hrBQcOJEO6JVTSTmdXjrsSFZIXqF7YrWzet8r"
                   clientKey:@"A8KUM9TfOZA0zLmp4BnkYnT0mZT5lSSwZH33g92r"];
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+     UIRemoteNotificationTypeAlert|
+     UIRemoteNotificationTypeSound];
+    NSLog(@"In finish lunching,....");
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+    [PFPush storeDeviceToken:deviceToken];
+    [PFPush subscribeToChannelInBackground:@""];
+    NSLog(@"sb");
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Fail to reg");
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    if (application.applicationState == UIApplicationStateInactive) {
+        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
+    }
+    NSLog(@"receive inside bg");
+    NSLog(@"%@", userInfo);
+    [self handlePush:userInfo];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        // Yes. Add it.
+        self.pushInfo = nil;
+    } else if (buttonIndex == 1) {
+        // No. :<
+        self.pushInfo = nil;
+    } else {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        OmniRemindWebViewController *uvc = [storyboard instantiateViewControllerWithIdentifier:@"OmniRemindWebViewController"];
+        uvc.URL = self.pushInfo[DETAIL_URL_KEY];
+        [self.window.rootViewController presentViewController:uvc animated:NO completion:^{
+            
+        }];
+
+    }
+}
+
+- (void)checkPush {
+    [self handlePush:self.pushInfo];
+}
+
+//NSDateFormatter *df = [[NSDateFormatter alloc] init];
+//[df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//NSDate *myDate = [df dateFromString: @"1992-12-30 23:59:59"];
+
+- (void)handlePush:(NSDictionary *)push {
+    self.pushInfo = push;
+    NSString *title;
+    NSString *info;
+    if ([TYPE_COURSE isEqualToString:push[NOTIFICATION_TYPE_KEY]]) {
+        if ([TYPE_ASSIGNMENT isEqualToString:push[COURSE_INFO_TYPE_KEY]]) {
+            title = @"Assignment Notification";
+            info = [NSString stringWithFormat:@"Course: %@\nName: %@\nDue: %@\nDescription: %@\nUrl: %@",
+                    push[COURSE_NAME_KEY2],
+                    push[ASSIGNMENT_NAME_KEY],
+                    push[ASSIGNMENT_DUE_DATE_KEY],
+                    push[DETAIL_DESCRIPTION_KEY],
+                    push[DETAIL_URL_KEY]];
+        }
+    }
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:info delegate:self cancelButtonTitle:nil otherButtonTitles:@"Yes", @"No", @"Assignment Page", nil];
+    
+    [alertView show];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

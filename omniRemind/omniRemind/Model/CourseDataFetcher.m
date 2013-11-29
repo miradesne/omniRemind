@@ -47,12 +47,7 @@
 }
 
 + (NSString *)fixCourseName:(NSString *)course {
-    [course uppercaseString];
-    // Format to <xxxx xxx> such as <COMP 446>.
-    if ([course characterAtIndex:4] != ' ') {
-        course = [NSString stringWithFormat:@"%@ %@", [course substringToIndex:4], [course substringFromIndex:4]];
-    }
-    return  course;
+    return [course uppercaseString];
 }
 
 @end
