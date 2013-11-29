@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
-
-@interface OmniRemindAddViewController : UIViewController<UIAlertViewDelegate>
+#import "OmniRemindInputViewController.h"
+@interface OmniRemindAddViewController : OmniRemindInputViewController<UIAlertViewDelegate>
 
 @end

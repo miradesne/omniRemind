@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface OmniRemindAddDetailViewController : UIViewController
+#import "OmniRemindInputViewController.h"
+@interface OmniRemindAddDetailViewController : OmniRemindInputViewController
 @property (weak,nonatomic) NSString *type;
 
 @end

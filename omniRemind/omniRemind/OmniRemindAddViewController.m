@@ -11,7 +11,6 @@
 #import "CourseDataFetcher.h"
 #import "OmniRemindCourse.h"
 
-
 @interface OmniRemindAddViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleInput;
 @property (weak, nonatomic) IBOutlet UITextField *startTime;
@@ -41,7 +40,6 @@
 {
     [super viewDidLoad];
 	
-    [self setUpInput];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -120,13 +118,8 @@
     return YES;
 }
 
-- (void)setUpInput{
-    // Do any additional setup after loading the view.
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-    UIView *targetView = [self.view viewWithTag:109];
-    [targetView addGestureRecognizer:tap];
+- (void)extraSetup{
+
     [self addDatePicker:YES forInput:self.startDate];
     [self addDatePicker:NO forInput:self.startTime];
     [self addDatePicker:NO forInput:self.endTime];
