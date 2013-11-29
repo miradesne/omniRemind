@@ -156,13 +156,14 @@
     if (isCourse) {
         self.addEventView.hidden = YES;
         self.addClassView.hidden = NO;
-        self.searchButton.hidden = YES;
         [self showCourseSearchAlert];
     }
     else{
         self.addEventView.hidden = NO;
         self.addClassView.hidden = YES;
-        [[self.addClassView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        NSMutableArray *subviewArray = [[NSMutableArray alloc]initWithArray:[self.addClassView subviews]];
+        [subviewArray removeObject:self.searchButton];
+        [subviewArray makeObjectsPerformSelector:@selector(removeFromSuperview)];
     }
     
 }
@@ -172,30 +173,28 @@
     if (alertView.tag == 1100) {
         if (buttonIndex == 1) {
             searchTerm = [alertView textFieldAtIndex:0].text;
-            dispatch_queue_t imageFetchQ=dispatch_queue_create("fetch Image", NULL);
-            self.searchButton.hidden = YES ;
-            dispatch_async(imageFetchQ,^{
-                // NSLog(searchTerm);
+//            self.searchButton.hidden = YES ;
+//                NSLog(searchTerm);
                 //MiraBug
-                //PFObject *courseObject = [CourseDataFetcher fetchCourse:searchTerm];
-                
-                // NSArray *assignments = [CourseDataFetcher fetchAssignments:courseObject];
-                OmniRemindCourse *searchedCourse = [[OmniRemindCourse alloc] initWithDefaultValue];
+            PFObject *courseObject = [CourseDataFetcher fetchCourse:searchTerm];
+            NSLog(@"%@", courseObject);
+            if (courseObject) {
+                NSArray *assignments = [CourseDataFetcher fetchAssignments:courseObject];
+                OmniRemindCourse *searchedCourse = [[OmniRemindCourse alloc] initWithFetchedCourse:courseObject];
                 //searchedCourse = nil;
                 dispatch_async(dispatch_get_main_queue(),^{
                     if (searchedCourse) {
                         [self showSearchedCourse:searchedCourse];
-                    }
-                    
-                    else {
+                    } else {
                         [self didNotFindCourse];
                     }
                 });
-                
-            });
+
+            }
+            
         }
         else {
-            [self addSearchButton];
+//            [self addSearchButton];
             
         }
 
@@ -224,7 +223,7 @@
                                                 cancelButtonTitle:@"Ok"
                                                 otherButtonTitles:nil];
     [myAlertView show];
-    [self addSearchButton];
+//    [self addSearchButton];
     
 
 }
@@ -278,9 +277,9 @@
     [self showCourseSearchAlert];
 }
 
-- (void)addSearchButton{
-    self.searchButton.hidden = NO;
-}
+//- (void)addSearchButton{
+//    self.searchButton.hidden = NO;
+//}
 
 #pragma mark - Segue
 //transfer the Image to the next view

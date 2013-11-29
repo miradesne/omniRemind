@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface OmniRemindCourse : NSObject
 @property (strong,nonatomic) NSString *courseInstructor;
 @property (strong,nonatomic) NSString *courseName;
 @property (strong,nonatomic) NSString *courseTitle;
 @property (strong,nonatomic) NSString *courseDescription;
-@property (nonatomic) int courseCrn;
+@property (strong,nonatomic) NSString *courseCrn;
 
 - (id) initWithDefaultValue;
+- (id) initWithFetchedCourse:(PFObject*)course;
+
 @end

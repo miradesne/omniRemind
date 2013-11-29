@@ -442,14 +442,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUV-e9-hdW">
-                                        <rect key="frame" x="0.0" y="117" width="320" height="41"/>
+                                        <rect key="frame" x="0.0" y="418" width="320" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.83759421489999997" green="0.96474380950000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Search a course">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="searchCourse:" destination="j8o-G3-0wf" eventType="touchUpInside" id="txc-ga-0ss"/>
+                                            <action selector="searchCourse:" destination="j8o-G3-0wf" eventType="touchUpInside" id="erP-bO-7lU"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -494,7 +494,7 @@
                         <outlet property="addSegmentedControl" destination="Y80-w1-GWb" id="twy-gM-25b"/>
                         <outlet property="endTime" destination="T8Q-5g-srm" id="EnQ-8r-j0w"/>
                         <outlet property="locationInput" destination="CvY-r5-gra" id="wI7-tK-eNf"/>
-                        <outlet property="searchButton" destination="lUV-e9-hdW" id="y6e-3C-5gU"/>
+                        <outlet property="searchButton" destination="lUV-e9-hdW" id="5HO-dJ-Jp9"/>
                         <outlet property="startDate" destination="I8m-Jc-D6q" id="w38-WP-v3H"/>
                         <outlet property="startTime" destination="UXN-XM-ZiZ" id="zr5-KI-HBD"/>
                         <outlet property="titleInput" destination="5fW-Zc-KCZ" id="sYU-VC-5KA"/>
