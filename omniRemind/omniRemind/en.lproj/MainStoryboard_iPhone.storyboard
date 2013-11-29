@@ -465,7 +465,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cwm-wt-jtS"/>
-                                    <barButtonItem title="Add" id="pEe-7m-LRS"/>
+                                    <barButtonItem title="Add" id="pEe-7m-LRS">
+                                        <connections>
+                                            <action selector="addEvent:" destination="j8o-G3-0wf" id="c1v-wf-CG6"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -610,7 +614,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TZ9-KD-4ZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1594" y="1441"/>
+            <point key="canvasLocation" x="1586" y="1441"/>
         </scene>
         <!--Omni Remind Map View Controller-->
         <scene sceneID="7do-Uu-Bfk">
@@ -744,7 +748,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="OSR-Za-4AW"/>
         <segue reference="LA0-aV-2NI"/>
+        <segue reference="Jpn-sA-G9W"/>
     </inferredMetricsTieBreakers>
 </document>

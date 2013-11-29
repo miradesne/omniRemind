@@ -9,6 +9,7 @@
 #import "OmniRemindAppDelegate.h"
 #import "CourseDataFetcher.h"
 #import "OmniRemindWebViewController.h"
+#import "OmniRemindDataManager.h"
 #import <Parse/Parse.h>
 
 @interface OmniRemindAppDelegate() <UIAlertViewDelegate>
@@ -72,6 +73,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         // Yes. Add it.
+        OmniRemindDataManager *manager = [[OmniRemindDataManager alloc] init];
+        [manager storeAssignment:(PFObject *)self.pushInfo];
         self.pushInfo = nil;
     } else if (buttonIndex == 1) {
         // No. :<

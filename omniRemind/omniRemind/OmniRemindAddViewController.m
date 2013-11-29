@@ -10,6 +10,7 @@
 #import "OmniRemindAddDetailViewController.h"
 #import "CourseDataFetcher.h"
 #import "OmniRemindCourse.h"
+#import "OmniRemindDataManager.h"
 
 @interface OmniRemindAddViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleInput;
@@ -23,6 +24,8 @@
 @property (strong, nonatomic) UIDatePicker *datePicker;
 @property (strong, nonatomic) UIDatePicker *timePicker;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
+@property (strong,nonatomic) OmniRemindDataManager *manager;
+@property (strong,nonatomic) PFObject *fetchedCourse;
 @end
 
 @implementation OmniRemindAddViewController
@@ -72,6 +75,13 @@
         _timePicker.datePickerMode = UIDatePickerModeTime;
     }
     return _timePicker;
+}
+
+- (OmniRemindDataManager*) manager{
+    if (!_manager) {
+        _manager = [[OmniRemindDataManager alloc]init];
+    }
+    return _manager;
 }
 
 # pragma mark - toolBar
@@ -179,8 +189,8 @@
             PFObject *courseObject = [CourseDataFetcher fetchCourse:searchTerm];
             NSLog(@"%@", courseObject);
             if (courseObject) {
-                NSArray *assignments = [CourseDataFetcher fetchAssignments:courseObject];
                 OmniRemindCourse *searchedCourse = [[OmniRemindCourse alloc] initWithFetchedCourse:courseObject];
+                self.fetchedCourse = courseObject;
                 //searchedCourse = nil;
                 dispatch_async(dispatch_get_main_queue(),^{
                     if (searchedCourse) {
@@ -193,10 +203,10 @@
             }
             
         }
-        else {
+//        else {
 //            [self addSearchButton];
-            
-        }
+//            
+//        }
 
     }
     
@@ -275,6 +285,21 @@
 
 - (IBAction)searchCourse:(id)sender {
     [self showCourseSearchAlert];
+}
+
+#pragma mark - DataBase
+
+- (IBAction)addEvent:(id)sender {
+    int isCourse = self.addSegmentedControl.selectedSegmentIndex;
+    if (isCourse) {
+        [self.manager storeCourse:self.fetchedCourse];
+
+    }
+    else{
+        
+    }
+    
+    
 }
 
 //- (void)addSearchButton{
