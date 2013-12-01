@@ -67,18 +67,33 @@
 
 - (void)storeAssignment:(PFObject*)assignment{
     NSString *assignmentName = assignment[ASSIGNMENT_NAME_KEY];
-    NSDate *endTime = assignment[ASSIGNMENT_DUE_DATE_KEY];
-//    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//    NSString *formattedAssignmentDue = [assignmentDue substringToIndex:assignmentDue.length-5];
-//    NSLog(@"%@",formattedAssignmentDue);
-//    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *comp = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:endTime];
-    [comp setMinute:comp.minute - 15];
-    NSDate *startTime = [calendar dateFromComponents:comp];
-    NSDictionary *reminder = @{REMIND_TIME_KEY: startTime,REMIND_MESSAGE_KEY: assignmentName};
-    
-    [Event storeEventWithEventInfo:assignmentName date:endTime from:startTime to:endTime at:nil withRepeat:nil withReminder:reminder inManagedObjectContext:self.managedObjectContext];
+    id endTime = assignment[ASSIGNMENT_DUE_DATE_KEY];
+    NSDate *dueDate;
+    if ([endTime isKindOfClass:[NSString class]]) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        NSString *assignmentDue = (NSString*)endTime;
+        NSString *formattedAssignmentDue = [endTime substringToIndex:assignmentDue.length-5];
+        NSLog(@"%@",formattedAssignmentDue);
+        [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        dueDate = [df dateFromString:assignmentDue];
+
+    }
+    else if ([endTime isKindOfClass:[NSDate class]]){
+        dueDate = (NSDate*)endTime;
+    }
+    if (dueDate) {
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDateComponents *comp = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:dueDate];
+        [comp setMinute:comp.minute - 15];
+        NSDate *startTime = [calendar dateFromComponents:comp];
+        NSDictionary *reminder = @{REMIND_TIME_KEY: startTime,REMIND_MESSAGE_KEY: assignmentName};
+        
+        [Event storeEventWithEventInfo:assignmentName date:endTime from:startTime to:endTime at:nil withRepeat:nil withReminder:reminder inManagedObjectContext:self.managedObjectContext];
+
+    }
+    else{
+        NSLog(@"bug!!! didn't get the dueDate");
+    }
     
 }
 
