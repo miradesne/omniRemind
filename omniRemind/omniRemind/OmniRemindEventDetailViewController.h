@@ -10,4 +10,10 @@
 
 @interface OmniRemindEventDetailViewController : UIViewController
 
+@property (strong, nonatomic) NSString *eventTitle;
+@property (strong, nonatomic) NSString *startTime;
+@property (strong, nonatomic) NSString *endTime;
+@property (strong, nonatomic) NSString *location;
+
+
 @end

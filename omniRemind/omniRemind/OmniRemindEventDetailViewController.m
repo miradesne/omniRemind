@@ -19,4 +19,25 @@
 @implementation OmniRemindEventDetailViewController
 
 
+- (void)setEventTitle:(NSString *)eventTitle {
+    _eventTitle = eventTitle;
+    self.titleLabel.text = eventTitle;
+}
+
+- (void)setStartTime:(NSString *)startTime {
+    _startTime = startTime;
+    self.startTimeLabel.text = startTime;
+}
+
+- (void)setEndTime:(NSString *)endTime {
+    _endTime = endTime;
+    self.endTimeLabel.text = endTime;
+}
+
+- (void)setLocation:(NSString *)location {
+    _location = location;
+    self.locationLabel.text = location;
+}
+
+
 @end

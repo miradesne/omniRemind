@@ -159,13 +159,16 @@
                         <gestureRecognizers/>
                         <inset key="scrollIndicatorInsets" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeCell" id="Fwm-bl-e3F">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="timeCell" id="Fwm-bl-e3F">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fwm-bl-e3F" id="eS6-Pw-Bhc">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="3uS-sg-FBV" kind="push" identifier="seeEventDetail" id="wua-Gx-oF2"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -181,7 +184,6 @@
                 <tapGestureRecognizer id="SW1-SR-vhb">
                     <connections>
                         <action selector="tapOnEvent:" destination="dyK-vV-Ra6" id="8tl-Yd-sDV"/>
-                        <segue destination="faA-Vw-UU4" kind="push" identifier="seeEventDetail" id="iGJ-Ju-v5g"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -196,7 +198,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Q8V-B3-oCV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SoZ-sd-cf8" customClass="OmniRemindEventDetail">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxv-VD-Du5">
@@ -268,6 +270,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="KVm-Jz-Edx"/>
                     <connections>
                         <outlet property="endTimeLabel" destination="CJ0-6D-QDa" id="g7L-bL-pHX"/>
                         <outlet property="locationLabel" destination="DiI-KO-mZN" id="dgM-19-Blf"/>
