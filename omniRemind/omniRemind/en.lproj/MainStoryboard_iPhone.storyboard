@@ -434,24 +434,49 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.83759421493508801" green="0.96474380952778183" blue="1" alpha="0.35000000000000003" colorSpace="calibratedRGB"/>
                                     </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view tag="101" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MzF-tT-T0F">
-                                <rect key="frame" x="0.0" y="65" width="320" height="459"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUV-e9-hdW">
-                                        <rect key="frame" x="0.0" y="418" width="320" height="41"/>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ebX-SN-DhT">
+                                        <rect key="frame" x="136" y="380" width="51" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.83759421489999997" green="0.96474380950000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Search a course">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="searchCourse:" destination="j8o-G3-0wf" eventType="touchUpInside" id="erP-bO-7lU"/>
-                                        </connections>
-                                    </button>
+                                    </switch>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cloud" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpQ-wz-znT">
+                                        <rect key="frame" x="86" y="385" width="46" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Local" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKx-Un-l5O">
+                                        <rect key="frame" x="193" y="385" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cta-fW-0as">
+                                        <rect key="frame" x="118" y="351" width="84" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view tag="101" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MzF-tT-T0F">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUV-e9-hdW">
+                                                <rect key="frame" x="0.0" y="418" width="320" height="41"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.83759421489999997" green="0.96474380950000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Search a course">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="searchCourse:" destination="j8o-G3-0wf" eventType="touchUpInside" id="erP-bO-7lU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -462,6 +487,12 @@
                                     <barButtonItem title="Cancel" id="hFD-4T-xfK">
                                         <connections>
                                             <action selector="cancelCreate:" destination="j8o-G3-0wf" id="pN0-7x-AXh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eRc-Ng-MCN"/>
+                                    <barButtonItem title="Cloud Event Search" id="NjM-Q0-7y1">
+                                        <connections>
+                                            <action selector="searchCloudEvent:" destination="j8o-G3-0wf" id="KSO-2e-ZNa"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cwm-wt-jtS"/>
@@ -497,6 +528,7 @@
                         <outlet property="addEventView" destination="Uzi-ai-kQu" id="4Dg-nM-znL"/>
                         <outlet property="addSegmentedControl" destination="Y80-w1-GWb" id="twy-gM-25b"/>
                         <outlet property="endTime" destination="T8Q-5g-srm" id="EnQ-8r-j0w"/>
+                        <outlet property="eventType" destination="ebX-SN-DhT" id="Tnt-AV-clh"/>
                         <outlet property="locationInput" destination="CvY-r5-gra" id="wI7-tK-eNf"/>
                         <outlet property="searchButton" destination="lUV-e9-hdW" id="5HO-dJ-Jp9"/>
                         <outlet property="startDate" destination="I8m-Jc-D6q" id="w38-WP-v3H"/>

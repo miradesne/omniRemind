@@ -18,4 +18,6 @@
 
 @interface CloudEventSynchronizer : NSObject
 
++ (PFObject *)getEventFromId:(NSString *)cloudEventId;
+
 @end

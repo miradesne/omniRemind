@@ -11,6 +11,7 @@
 #import "CourseDataFetcher.h"
 #import "OmniRemindCourse.h"
 #import "OmniRemindDataManager.h"
+#import "CloudEventSynchronizer.h"
 
 @interface OmniRemindAddViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleInput;
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (strong,nonatomic) OmniRemindDataManager *manager;
 @property (strong,nonatomic) PFObject *fetchedCourse;
+@property (weak, nonatomic) IBOutlet UISwitch *eventType;
 @end
 
 @implementation OmniRemindAddViewController
@@ -209,6 +211,16 @@
 //            
 //        }
 
+    } else if (alertView.tag == 1200) {
+        if (buttonIndex == 1) {
+            NSString *cloudEventId = [alertView textFieldAtIndex:0].text;
+            PFObject *event = [CloudEventSynchronizer getEventFromId:cloudEventId];
+            if (!event) {
+                [self showCloudEventNotFoundAlertView];
+            } else {
+                [self addCloudEvent:event];
+            }
+        }
     }
     
     
@@ -341,5 +353,37 @@
                     }];
 }
 
+- (IBAction)searchCloudEvent:(id)sender {
+    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Cloud Event Search"
+                                                          message:@"Please type the cloud event id here"
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel"
+                                                otherButtonTitles:@"Search", nil];
+    
+    myAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    myAlertView.tag = 1200;
+    [myAlertView show];
+}
+
+- (void)showCloudEventNotFoundAlertView {
+    UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Cloud Event Not Found"
+                                                          message:@"The event id does not exist"
+                                                         delegate:self
+                                                cancelButtonTitle:@"Cancel"
+                                                otherButtonTitles:nil];
+    myAlertView.tag = 1300;
+    [myAlertView show];
+}
+
+- (void)addCloudEvent:(PFObject *)event {
+    self.titleInput.text = event[EVENT_TITLE_KEY];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    self.startDate.text = [dateFormat stringFromDate:event[EVENT_DATE_KEY]];
+    [dateFormat setDateFormat:@"h:mm a"];
+    self.startTime.text = [dateFormat stringFromDate:event[EVENT_FROM_KEY]];
+    self.endTime.text = [dateFormat stringFromDate:event[EVENT_TO_KEY]];
+    self.eventType.on = YES;
+}
 
 @end
