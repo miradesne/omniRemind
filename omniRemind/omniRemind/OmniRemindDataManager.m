@@ -27,16 +27,42 @@
     return manager;
 }
 
-//- (NSManagedObjectContext*)managedObjectContext{
-//    if (!_managedObjectContext) {
-//        [self constructDatabase];
-//        
-//    }
-//    return _managedObjectContext;
-//}
+- (void)constructDatabase{
+    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    url = [url URLByAppendingPathComponent:@"another"];
+    UIManagedDocument *document = [[UIManagedDocument alloc]initWithFileURL:url];
+    if(![[NSFileManager defaultManager]fileExistsAtPath:[url path]]){
+        [document saveToURL:url forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success){
+            if (success){
+                NSLog(@"successfully print");
+                self.managedObjectContext = document.managedObjectContext;
+            }
+            else{
+                NSLog(@"fail..");
+            }
+        }];
+    }else if (document.documentState==UIDocumentStateClosed){
+        NSLog(@"closed!");
+        
+        
+        [document openWithCompletionHandler:^(BOOL success){
+            
+            if(success){
+                NSLog(@"mirasuccess");
+                self.managedObjectContext = document.managedObjectContext;
+            }
+            else{
+                NSLog(@"cannot open it");
+            }
+        }];
+    }else{
+        self.managedObjectContext = document.managedObjectContext;
+    }
+}
 
 
 
+#pragma mark - storeEvents
 - (void)storeEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder{
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -101,38 +127,38 @@
     
 }
 
+#pragma mark - fetchEvent
 
--(void)constructDatabase{
-    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    url = [url URLByAppendingPathComponent:@"another"];
-    UIManagedDocument *document = [[UIManagedDocument alloc]initWithFileURL:url];
-    if(![[NSFileManager defaultManager]fileExistsAtPath:[url path]]){
-        [document saveToURL:url forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success){
-            if (success){
-                NSLog(@"successfully print");
-                self.managedObjectContext = document.managedObjectContext;
-            }
-            else{
-                NSLog(@"fail..");
-            }
-        }];
-    }else if (document.documentState==UIDocumentStateClosed){
-        NSLog(@"closed!");
+- (NSArray*)fetchEventsWithDate:(NSDateComponents*)comp{
+    NSArray *events;
+    if (comp) {
+        NSCalendar *calender = [NSCalendar currentCalendar];
+        [comp setHour:0];
+        [comp setMinute:0];
+        [comp setSecond:0];
+        NSDate *startDate = [calender dateFromComponents:comp];
+        NSLog(@"%@",startDate);
+        [comp setHour:23];
+        [comp setMinute:59];
+        [comp setSecond:59];
+        NSDate *endDate = [calender dateFromComponents:comp];
+        NSLog(@"%@",endDate);
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(event_date >= %@) AND (event_date <= %@)", startDate, endDate];
+        NSLog(@"(event_date >= %@) AND (event_date <= %@)", startDate, endDate);
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:EVENT_START_TIME_KEY ascending:YES]];
+        request.predicate = nil;
         
-        
-        [document openWithCompletionHandler:^(BOOL success){
-            
-            if(success){
-                NSLog(@"mirasuccess");
-                self.managedObjectContext = document.managedObjectContext;
-            }
-            else{
-                NSLog(@"cannot open it");
-            }
-        }];
-    }else{
-        self.managedObjectContext = document.managedObjectContext;
+        NSError *error = nil;
+        events = [self.managedObjectContext executeFetchRequest:request error:&error];
     }
+    
+        events;
+    
+    
+    return events;
 }
+
+
 
 @end

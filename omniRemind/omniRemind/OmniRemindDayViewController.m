@@ -8,9 +8,12 @@
 
 #import "OmniRemindDayViewController.h"
 #import "OmniRemindEventDetailViewController.h"
+#import "OmniRemindDataManager.h"
+#import "Event+Create.h"
 @interface OmniRemindDayViewController ()
 @property (nonatomic,strong) NSMutableArray* events;
 @property (nonatomic,strong) NSMutableArray* occupied;
+@property (nonatomic,strong) OmniRemindDataManager *manager;
 @end
 
 @implementation OmniRemindDayViewController
@@ -29,7 +32,10 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
        // self.events = nil;
-        [self initializeSampleData];
+        if (!self.manager) {
+            self.manager = [[OmniRemindDataManager alloc]init];
+        }
+//        [self initializeSampleData];
     }
     return self;
 }
@@ -77,6 +83,22 @@
     
 }
 
+- (void)loadActuallData{
+    NSArray *fetchedEvents = [self.manager fetchEventsWithDate:self.dateComp];
+    
+    
+    
+    
+    NSLog(@"%@",fetchedEvents);
+    self.events = [[NSMutableArray alloc]initWithArray:fetchedEvents];
+    for (int i = 0 ; i < 24 ; i++){
+        [self.occupied addObject:[NSNumber numberWithInt:0]];
+    }
+    
+    
+    [self calculateOccupied];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -84,7 +106,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
+    [self loadActuallData];
     [self updateCalendarUI];
 }
 
@@ -148,9 +170,10 @@
 
 
 - (void)calculateOccupied{
-    for (NSMutableDictionary *event in self.events){
-        NSDateComponents *startTime = [event objectForKey:@"startTime"];
-        NSDateComponents *endTime = [event objectForKey:@"endTime"];
+    for (Event *event in self.events){
+        
+        NSDateComponents *startTime = [self getDatecomponentFromNSDate:event.start_time];
+        NSDateComponents *endTime = [self getDatecomponentFromNSDate:event.end_time];
         int startHour = startTime.hour;
         int endHour = endTime.hour;
         if (endTime.minute > 0) {
@@ -166,16 +189,16 @@
 }
 - (void)updateCalendarUI{
     int indent = 0;
-    for (NSMutableDictionary *event in self.events){
+    for (Event *event in self.events){
        indent = [self drawEvent:event withIndent:indent];
         
     }
 }
 
 #define EVENT_LABEL_HEIGHT 20
-- (int)drawEvent:(NSMutableDictionary*)event withIndent:(int)indentation{
-    NSDateComponents *startTime = [event objectForKey:@"startTime"];
-    NSDateComponents *endTime = [event objectForKey:@"endTime"];
+- (int)drawEvent:(Event*)event withIndent:(int)indentation{
+    NSDateComponents *startTime = [self getDatecomponentFromNSDate:event.start_time];
+    NSDateComponents *endTime = [self getDatecomponentFromNSDate:event.end_time];
     int startHour = startTime.hour;
     int endHour = endTime.hour;
     int numberOfEvent = [self getEventNumber:startHour withEndTime:endHour+1];
@@ -196,8 +219,8 @@
         endHour -= 12;
     }
     timeLabel.text = [NSString stringWithFormat:@"%d - %d",startHour,endHour];
-    titleLabel.text = [event objectForKey:@"eventTitle"];
-    locationLabel.text = [event objectForKey:@"eventLocation"];
+    titleLabel.text = event.event_title;
+    locationLabel.text = event.event_location;
     timeLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.font = [UIFont fontWithName:@"TrebuchetMS-Bold" size:12];
     titleLabel.numberOfLines = 0 ;
@@ -222,6 +245,13 @@
     NSArray *period = [self.occupied subarrayWithRange:NSMakeRange(startHour, endHour-startHour)];
     return [[period valueForKeyPath:@"@max.intValue"] integerValue];
 
+}
+
+
+- (NSDateComponents*)getDatecomponentFromNSDate:(NSDate*)date{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:date];
+    return comp;
 }
 
 #pragma mark - transitionToDetailView

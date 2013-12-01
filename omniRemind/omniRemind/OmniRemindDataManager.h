@@ -13,4 +13,5 @@
 @interface OmniRemindDataManager : NSObject
 - (void)storeAssignment:(PFObject*)assignment;
 - (void)storeCourse:(PFObject*)course;
+- (NSArray*)fetchEventsWithDate:(NSDateComponents*)comp;
 @end

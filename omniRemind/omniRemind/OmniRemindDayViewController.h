@@ -12,5 +12,5 @@
 @interface OmniRemindDayViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,weak) NSIndexPath *indexPath;
-@property (nonatomic,weak) NSDate *date ;
+@property (nonatomic,weak) NSDateComponents *dateComp ;
 @end
