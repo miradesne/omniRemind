@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OmniRemindEventDetailViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
+@interface OmniRemindEventDetailViewController : UIViewController
 
 @end
