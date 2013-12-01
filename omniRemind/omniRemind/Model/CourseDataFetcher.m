@@ -37,7 +37,17 @@
 + (NSArray *)fetchAssignments:(PFObject *)course {
     PFQuery *query = [PFQuery queryWithClassName:ASSIGNMENT_TABLE];
     [query whereKey:@"course" equalTo:course];
-    return [query findObjects];
+    NSArray *result = [query findObjects];
+    if ([result count]) {
+        for (PFObject *assignment in result) {
+            NSDate *date = assignment[ASSIGNMENT_DUE_DATE_KEY];
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:date];
+            [comp setHour:comp.hour + 6];
+            assignment[ASSIGNMENT_DUE_DATE_KEY] = [calendar dateFromComponents:comp];
+        }
+    }
+    return result;
 }
 
 + (NSArray *)fetchExams:(PFObject *)course {
