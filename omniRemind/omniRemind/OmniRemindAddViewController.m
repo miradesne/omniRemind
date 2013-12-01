@@ -42,6 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.manager = [[OmniRemindDataManager alloc]init];
 	
 }
 
@@ -77,18 +78,18 @@
     return _timePicker;
 }
 
-- (OmniRemindDataManager*) manager{
-    if (!_manager) {
-        _manager = [[OmniRemindDataManager alloc]init];
-    }
-    return _manager;
-}
+//- (OmniRemindDataManager*) manager{
+//    if (!_manager) {
+//        _manager = [[OmniRemindDataManager alloc]init];
+//    }
+//    return _manager;
+//}
 
 # pragma mark - toolBar
 
 - (IBAction)cancelCreate:(id)sender {
-    self.tabBarController.selectedIndex = 0;
-    
+    //self.tabBarController.selectedIndex = 0;
+    [self dismissCurrentController];
 }
 
 # pragma mark - input
@@ -299,6 +300,8 @@
         
     }
     
+    [self dismissCurrentController];
+    
     
 }
 
@@ -306,7 +309,7 @@
 //    self.searchButton.hidden = NO;
 //}
 
-#pragma mark - Segue
+#pragma mark - Segue and other transitions
 //transfer the Image to the next view
 //- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -330,6 +333,23 @@
     
 }
 
+- (void)dismissCurrentController{
+    // Get views. controllerIndex is passed in as the controller we want to go to.
+    int controllerIndex = 0;
+    UIView * fromView = self.tabBarController.selectedViewController.view;
+    UIView * toView = [[self.tabBarController.viewControllers objectAtIndex:controllerIndex] view];
+    
+    // Transition using a page curl.
+    [UIView transitionFromView:fromView
+                        toView:toView
+                      duration:0.5
+                       options:(controllerIndex > self.tabBarController.selectedIndex ? UIViewAnimationOptionTransitionCurlUp : UIViewAnimationOptionTransitionCurlDown)
+                    completion:^(BOOL finished) {
+                        if (finished) {
+                            self.tabBarController.selectedIndex = controllerIndex;
+                        }
+                    }];
+}
 
 
 @end

@@ -27,13 +27,15 @@
     return manager;
 }
 
-- (NSManagedObjectContext*)managedObjectContext{
-    if (!_managedObjectContext) {
-        _managedObjectContext = [[NSManagedObjectContext alloc]init];
-        
-    }
-    return _managedObjectContext;
-}
+//- (NSManagedObjectContext*)managedObjectContext{
+//    if (!_managedObjectContext) {
+//        [self constructDatabase];
+//        
+//    }
+//    return _managedObjectContext;
+//}
+
+
 
 - (void)storeEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder{
     
@@ -75,6 +77,7 @@
     [comp setMinute:comp.minute - 15];
     NSDate *startTime = [calendar dateFromComponents:comp];
     NSDictionary *reminder = @{REMIND_TIME_KEY: startTime,REMIND_MESSAGE_KEY: assignmentName};
+    
     [Event storeEventWithEventInfo:assignmentName date:endTime from:startTime to:endTime at:nil withRepeat:nil withReminder:reminder inManagedObjectContext:self.managedObjectContext];
     
 }
@@ -99,9 +102,17 @@
             }
         }];
     }else if (document.documentState==UIDocumentStateClosed){
+        NSLog(@"closed!");
+        
+        
         [document openWithCompletionHandler:^(BOOL success){
+            
             if(success){
+                NSLog(@"mirasuccess");
                 self.managedObjectContext = document.managedObjectContext;
+            }
+            else{
+                NSLog(@"cannot open it");
             }
         }];
     }else{
