@@ -293,10 +293,10 @@
     NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self.referenceDate];
     [comp setMonth:[comp month] + deltaMonth];
     [comp setDay: 1];
-//    self.referenceDate = [calendar dateFromComponents:comp];
-//    [self initCalendar];
-//    [self setUpCollectionView];
-//    [self.collectionView reloadData];
+    self.referenceDate = [calendar dateFromComponents:comp];
+    [self initCalendar];
+    [self setUpCollectionView];
+    [self.collectionView reloadData];
 }
 
 // create Date:  year | referenceDate.month + deltaMonth | day
