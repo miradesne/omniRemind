@@ -12,7 +12,7 @@
 #import "GeoPointAnnotation.h"
 #import "CloudEventSynchronizer.h"
 
-#define LOCATION_SYNC_INTERVAL 1.0
+#define LOCATION_SYNC_INTERVAL 5.0
 
 @interface OmniRemindMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -33,14 +33,20 @@
 }
 
 - (void)syncLocation:(NSTimer *)timer {
-    [self syncLocation];
+    [self syncLocation2];
 }
 
 - (void)syncLocation {
     NSLog(@"fuck");
+    NSLog(@"%@", self.locationManager.location);
 }
 
+// Sync with the event, get the other's position, update ours.
 - (void)syncLocation2 {
+    static float l = 38;
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLocation:[[CLLocation alloc] initWithLatitude:l longitude:-122]];
+    l += 0.1;
+
     PFQuery *query = [PFQuery queryWithClassName:EVENT_TABLE];
     
     // Retrieve the object by id
@@ -48,21 +54,22 @@
         
         // Now let's update it with some new data. In this case, only cheatMode and score
         // will get sent to the cloud. playerName hasn't changed.
+        NSLog(@"UPPP");
+        event[self.otherLocationKey] = point;
         [self updateLocation:event];
-        event[self.myLocationKey] = self.locationManager.location;
+        CLLocation *location = self.locationManager.location;
+        event[self.myLocationKey] = [PFGeoPoint geoPointWithLocation:[[CLLocation alloc] initWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude]];
         [event saveInBackground];
-        
     }];
 }
 
 - (CLLocationManager *)locationManager {
-    if (_locationManager != nil) {
-        return _locationManager;
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+//        [_locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+        [_locationManager setDelegate:self];
+//        [_locationManager setPurpose:@"Your current location is used to demonstrate PFGeoPoint and Geo Queries."];
     }
-    _locationManager = [[CLLocationManager alloc] init];
-//    [_locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-    [_locationManager setDelegate:self];
-//    [_locationManager setPurpose:@"Your current location is used to demonstrate PFGeoPoint and Geo Queries."];
     return _locationManager;
 }
 
@@ -75,9 +82,15 @@
     [super viewDidLoad];
     self.mapView.delegate = self;
     [[self locationManager] startUpdatingLocation];
-    if (self.cloudEventId && self.myLocationKey && self.otherLocationKey) {
+    
+    self.cloudEventId = @"w5Xg6Y0Acb";
+    self.myLocationKey = @"location1";
+    self.otherLocationKey = @"location2";
+    
+    
+//    if (self.cloudEventId && self.myLocationKey && self.otherLocationKey) {
         [self setupLocationSyncTimer];
-    }
+//    }
 }
 
 // Track use self.
@@ -103,22 +116,11 @@
         if ([mapView.delegate respondsToSelector:@selector(mapView:annotationView:calloutAccessoryControlTapped:)]) {
             view.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         }
-//        view.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,30,30)];
         UIImage *image = [UIImage imageNamed:@"Circle_Yellow.png"];
         // Scale to fit.
         view.image = [UIImage imageWithCGImage:[image CGImage] scale:image.scale * 8 orientation:image.imageOrientation];
     }
     return view;
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    CLLocation *location = _locationManager.location;
-    static float l = 38;
-    [self.mapView removeAnnotations:self.mapView.annotations];
-    PFGeoPoint *point = [PFGeoPoint geoPointWithLocation:[[CLLocation alloc] initWithLatitude:l longitude:-122]];
-    GeoPointAnnotation *gp = [[GeoPointAnnotation alloc] initWithGeoPoint:point];
-    [self.mapView addAnnotation:gp];
-    l += 0.1;
 }
 
 - (void)updateLocation:(PFObject *)object {
