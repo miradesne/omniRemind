@@ -7,16 +7,20 @@
 //
 
 #import "CloudEventSynchronizer.h"
-
+#import "Event+Create.h"
 @implementation CloudEventSynchronizer
 
-+ (void)syncEvent:(NSDictionary *)eventInfo {
++ (void)syncEvent:(NSString *)eventTitle startDate:(NSDate *)startDate startTime:(NSDate *)startTime endTime:(NSDate *)endTime at:(NSString*)location myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey withRepeat:(NSDictionary*)repeatDict
+     withReminder:(NSDictionary*)reminder manager:(NSManagedObjectContext *)manager {
     PFObject *event = [PFObject objectWithClassName:EVENT_TABLE];
-    event[EVENT_TITLE_KEY] = eventInfo[EVENT_TITLE_KEY];
-    event[EVENT_DATE_KEY] = eventInfo[EVENT_DATE_KEY];
-    event[EVENT_FROM_KEY] = eventInfo[EVENT_FROM_KEY];
-    event[EVENT_TO_KEY] = eventInfo[EVENT_TO_KEY];
-    [event saveInBackground];
+    event[EVENT_TITLE_KEY] = eventTitle;
+    event[EVENT_DATE_KEY] = startDate;
+    event[EVENT_FROM_KEY] = startTime;
+    event[EVENT_TO_KEY] = endTime;
+    [event saveEventually:^(BOOL succeeded, NSError *error) {
+        [Event storeCloudEventWithEventInfo:eventTitle date:startDate from:startTime to:endTime at:location withRepeat:repeatDict withReminder:reminder myLocationKey:myLocationKey otherLocationKey:otherLocationKey cloudEventId:[event objectId] inManagedObjectContext:manager];
+    }];
+   
 }
 
 + (PFObject *)getEventLocation:(NSString *)cloudEventId {

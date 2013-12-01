@@ -10,6 +10,7 @@
 #import "CourseDataFetcher.h"
 #import "Repeat+Set.h"
 #import "Event+Create.h"
+#import "CloudEventSynchronizer.h"
 
 
 
@@ -63,6 +64,19 @@
 
 
 #pragma mark - storeEvents
+
+- (void)storeCloudEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *dateToPut = [dateFormat dateFromString:date];
+    [dateFormat setDateFormat:@"yyyy-MM-dd h:mm a"];
+    NSString *startTimeString = [date stringByAppendingString:[NSString stringWithFormat:@" %@", time1]];
+    NSString *endTimeString = [date stringByAppendingString:[NSString stringWithFormat:@" %@", time2]];
+    NSDate *startTime = [dateFormat dateFromString:startTimeString];
+    NSDate *endTime = [dateFormat dateFromString:endTimeString];
+    [CloudEventSynchronizer syncEvent:eventTitle startDate:dateToPut startTime:startTime endTime:endTime at:location myLocationKey:myLocationKey otherLocationKey:otherLocationKey withRepeat:repeatDict withReminder:reminder manager:self.managedObjectContext];
+}
+
 - (void)storeEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder{
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

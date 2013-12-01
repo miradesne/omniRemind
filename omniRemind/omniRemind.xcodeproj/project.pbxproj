@@ -33,7 +33,6 @@
 		0E6CC1C31849265F0045A109 /* Repeat+Set.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC1C21849265F0045A109 /* Repeat+Set.m */; };
 		0E6CC1C61849266F0045A109 /* Event+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC1C51849266F0045A109 /* Event+Create.m */; };
 		0E6CC1D5184930AD0045A109 /* Repeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC1D4184930AD0045A109 /* Repeat.m */; };
-		0E6CC1D8184930AE0045A109 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC1D7184930AE0045A109 /* Event.m */; };
 		0E6CC1DA184942B90045A109 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6CC1D9184942B90045A109 /* CoreData.framework */; };
 		0E73D1E4184AF814000425B5 /* correct-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E73D1E3184AF814000425B5 /* correct-small.png */; };
 		0E73D1E7184AFDEC000425B5 /* OmniRemindAddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73D1E6184AFDEC000425B5 /* OmniRemindAddReminderViewController.m */; };
@@ -62,6 +61,7 @@
 		3A8EE4C918219CDE001EB511 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8EE4C818219CDE001EB511 /* CoreDataTableViewController.m */; };
 		3A8F84B61835B82600178E05 /* Circle_Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F84B51835B82600178E05 /* Circle_Green.png */; };
 		3A98DA06183312B6005905F9 /* CourseDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98DA05183312B6005905F9 /* CourseDataFetcher.m */; };
+		3AA20122184BD97300ACDBDB /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA20121184BD97300ACDBDB /* Event.m */; };
 		3AC0F49C18349CD20067191B /* GeoPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0F49B18349CD20067191B /* GeoPointAnnotation.m */; };
 /* End PBXBuildFile section */
 
@@ -107,8 +107,6 @@
 		0E6CC1C51849266F0045A109 /* Event+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+Create.m"; sourceTree = "<group>"; };
 		0E6CC1D3184930AD0045A109 /* Repeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repeat.h; sourceTree = "<group>"; };
 		0E6CC1D4184930AD0045A109 /* Repeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repeat.m; sourceTree = "<group>"; };
-		0E6CC1D6184930AE0045A109 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		0E6CC1D7184930AE0045A109 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		0E6CC1D9184942B90045A109 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0E73D1E2184AEEA4000425B5 /* correct-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "correct-md.png"; path = "../correct-md.png"; sourceTree = "<group>"; };
 		0E73D1E3184AF814000425B5 /* correct-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "correct-small.png"; path = "icons/correct-small.png"; sourceTree = "<group>"; };
@@ -148,6 +146,8 @@
 		3A8F84B51835B82600178E05 /* Circle_Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle_Green.png; sourceTree = "<group>"; };
 		3A98DA04183312B6005905F9 /* CourseDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDataFetcher.h; path = Model/CourseDataFetcher.h; sourceTree = "<group>"; };
 		3A98DA05183312B6005905F9 /* CourseDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDataFetcher.m; path = Model/CourseDataFetcher.m; sourceTree = "<group>"; };
+		3AA20120184BD97300ACDBDB /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		3AA20121184BD97300ACDBDB /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		3AC0F49A18349CD20067191B /* GeoPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeoPointAnnotation.h; path = Model/GeoPointAnnotation.h; sourceTree = "<group>"; };
 		3AC0F49B18349CD20067191B /* GeoPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeoPointAnnotation.m; path = Model/GeoPointAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -323,11 +323,11 @@
 		3A8EE4C618219C8B001EB511 /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
+				3AA20120184BD97300ACDBDB /* Event.h */,
+				3AA20121184BD97300ACDBDB /* Event.m */,
 				3A8EE4C318219C82001EB511 /* CalendarModel.xcdatamodeld */,
 				0E6CC1D3184930AD0045A109 /* Repeat.h */,
 				0E6CC1D4184930AD0045A109 /* Repeat.m */,
-				0E6CC1D6184930AE0045A109 /* Event.h */,
-				0E6CC1D7184930AE0045A109 /* Event.m */,
 				0E6CC1C11849265F0045A109 /* Repeat+Set.h */,
 				0E6CC1C21849265F0045A109 /* Repeat+Set.m */,
 				0E6CC1C41849266F0045A109 /* Event+Create.h */,
@@ -435,10 +435,10 @@
 				0E59F90F1827469500942B12 /* OmniRemindCalendarCollectionViewCell.m in Sources */,
 				0E697BB31832CE0400D37AD4 /* OmniRemindAddViewController.m in Sources */,
 				3A8EE4C518219C82001EB511 /* CalendarModel.xcdatamodeld in Sources */,
-				0E6CC1D8184930AE0045A109 /* Event.m in Sources */,
 				3A5703161835C2F2004E25F1 /* CloudEventSynchronizer.m in Sources */,
 				0ED2CC0B18299A6E003C8B16 /* OmniRemindDayViewController.m in Sources */,
 				0E6CC1BA1849204B0045A109 /* OmniRemindDataManager.m in Sources */,
+				3AA20122184BD97300ACDBDB /* Event.m in Sources */,
 				3A8EE4C918219CDE001EB511 /* CoreDataTableViewController.m in Sources */,
 				0EB6245518481055002D32C1 /* OmniRemindInputViewController.m in Sources */,
 				0E6CC1C61849266F0045A109 /* Event+Create.m in Sources */,
