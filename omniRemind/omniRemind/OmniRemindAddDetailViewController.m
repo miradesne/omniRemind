@@ -9,8 +9,15 @@
 #import "OmniRemindAddDetailViewController.h"
 
 @interface OmniRemindAddDetailViewController ()
+
+@property (strong,nonatomic) NSMutableDictionary *repeatDict;
 @property (weak, nonatomic) IBOutlet UIButton *repeatButton;
 @property (weak, nonatomic) IBOutlet UIButton *repeatEveryButton;
+@property (weak, nonatomic) IBOutlet UITextField *startDateTextField;
+@property (weak, nonatomic) IBOutlet UITextField *afterOccurenceTextField;
+@property (weak, nonatomic) IBOutlet UITextField *endDateTextField;
+@property (weak, nonatomic) IBOutlet UIButton *endSelectOccurencesButton;
+@property (weak, nonatomic) IBOutlet UIButton *endSelectDateButton;
 
 @end
 
@@ -36,5 +43,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - selectActions
 
 @end

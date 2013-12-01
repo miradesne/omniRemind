@@ -600,12 +600,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tzi-wH-Tm6">
-                                <rect key="frame" x="194" y="265" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yL9-rb-zp1">
                                 <rect key="frame" x="37" y="315" width="33" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -659,13 +653,25 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdK-Qt-Eml">
+                                <rect key="frame" x="26" y="359" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Repeat" id="BZo-uh-9Xf"/>
                     <connections>
+                        <outlet property="afterOccurenceTextField" destination="hDa-Ou-9Oe" id="gND-08-673"/>
+                        <outlet property="endDateTextField" destination="MWm-xn-YfB" id="KeW-aa-QeZ"/>
+                        <outlet property="endSelectDateButton" destination="rdK-Qt-Eml" id="WiQ-0o-vD2"/>
+                        <outlet property="endSelectOccurencesButton" destination="yL9-rb-zp1" id="uuE-xs-hrw"/>
                         <outlet property="repeatButton" destination="mGw-nz-cYd" id="JV3-RF-NH6"/>
                         <outlet property="repeatEveryButton" destination="B7R-Yj-eCh" id="RQC-vP-PAj"/>
+                        <outlet property="startDateTextField" destination="Amx-CX-Pr1" id="gDT-Jk-A4t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TZ9-KD-4ZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
