@@ -72,7 +72,7 @@
     if ([endTime isKindOfClass:[NSString class]]) {
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
         NSString *assignmentDue = (NSString*)endTime;
-        NSString *formattedAssignmentDue = [endTime substringToIndex:assignmentDue.length-5];
+        NSString *formattedAssignmentDue = [endTime substringToIndex:assignmentDue.length];
         NSLog(@"%@",formattedAssignmentDue);
         [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         dueDate = [df dateFromString:assignmentDue];
@@ -88,7 +88,7 @@
         NSDate *startTime = [calendar dateFromComponents:comp];
         NSDictionary *reminder = @{REMIND_TIME_KEY: startTime,REMIND_MESSAGE_KEY: assignmentName};
         
-        [Event storeEventWithEventInfo:assignmentName date:endTime from:startTime to:endTime at:nil withRepeat:nil withReminder:reminder inManagedObjectContext:self.managedObjectContext];
+        [Event storeEventWithEventInfo:assignmentName date:dueDate from:startTime to:dueDate at:nil withRepeat:nil withReminder:reminder inManagedObjectContext:self.managedObjectContext];
 
     }
     else{
