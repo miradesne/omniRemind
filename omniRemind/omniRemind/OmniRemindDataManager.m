@@ -110,7 +110,7 @@
     if (dueDate) {
         NSCalendar *calendar = [NSCalendar currentCalendar];
         NSDateComponents *comp = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:dueDate];
-        [comp setMinute:comp.minute - 15];
+        [comp setHour:comp.hour - 1];
         NSDate *startTime = [calendar dateFromComponents:comp];
         NSDictionary *reminder = @{REMIND_TIME_KEY: startTime,REMIND_MESSAGE_KEY: assignmentName};
         
@@ -147,7 +147,7 @@
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(event_date >= %@) AND (event_date <= %@)", startDate, endDate];
         NSLog(@"(event_date >= %@) AND (event_date <= %@)", startDate, endDate);
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:EVENT_START_TIME_KEY ascending:YES]];
-        request.predicate = nil;
+        request.predicate = predicate;
         
         NSError *error = nil;
         events = [self.managedObjectContext executeFetchRequest:request error:&error];
