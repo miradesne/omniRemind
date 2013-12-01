@@ -93,16 +93,16 @@
 }
 
 # pragma mark - input
-- (void)dismissKeyboard{
-    [self.view endEditing:YES];
-    
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
-    [textField resignFirstResponder];
-    return NO;
-}
+//- (void)dismissKeyboard{
+//    [self.view endEditing:YES];
+//    
+//}
+//
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+//    
+//    [textField resignFirstResponder];
+//    return NO;
+//}
 
 - (void)done{
     [self.view endEditing:YES];
@@ -319,17 +319,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSString *addType = @"";
-    if ([segue.identifier isEqualToString:@"addRepeat"]) {
-        addType = @"Repeat";
-        
-    }
-    else{
-        addType = @"Reminder";
-    }
     
-    OmniRemindAddDetailViewController *destViewController = segue.destinationViewController;
-    destViewController.title = addType;
     
 }
 

@@ -8,6 +8,10 @@
 
 #import "Repeat+Set.h"
 
+#define REPEAT_BY_KEY @"repeatBy"
+#define REPEAT_END @"repeatEnd"
+#define REPEAT_START @"repeatBy"
+#define REPEAT_TYPE @"repeatBy"
 @implementation Repeat (Set)
 + (Repeat *)repeatWithDictionary:(NSDictionary*)repeatDict inManagedObjectContext:(NSManagedObjectContext*)context{
     Repeat *repeat = nil;

@@ -35,6 +35,8 @@
 		0E6CC1D5184930AD0045A109 /* Repeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC1D4184930AD0045A109 /* Repeat.m */; };
 		0E6CC1D8184930AE0045A109 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC1D7184930AE0045A109 /* Event.m */; };
 		0E6CC1DA184942B90045A109 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E6CC1D9184942B90045A109 /* CoreData.framework */; };
+		0E73D1E4184AF814000425B5 /* correct-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E73D1E3184AF814000425B5 /* correct-small.png */; };
+		0E73D1E7184AFDEC000425B5 /* OmniRemindAddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E73D1E6184AFDEC000425B5 /* OmniRemindAddReminderViewController.m */; };
 		0EB0E24E1833B791008506BE /* disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB0E24D1833B791008506BE /* disclosure.png */; };
 		0EB0E2501833C305008506BE /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 0EB0E24F1833C305008506BE /* pencil.png */; };
 		0EB6245518481055002D32C1 /* OmniRemindInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EB6245418481055002D32C1 /* OmniRemindInputViewController.m */; };
@@ -107,6 +109,10 @@
 		0E6CC1D6184930AE0045A109 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		0E6CC1D7184930AE0045A109 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		0E6CC1D9184942B90045A109 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0E73D1E2184AEEA4000425B5 /* correct-md.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "correct-md.png"; path = "../correct-md.png"; sourceTree = "<group>"; };
+		0E73D1E3184AF814000425B5 /* correct-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "correct-small.png"; path = "icons/correct-small.png"; sourceTree = "<group>"; };
+		0E73D1E5184AFDEC000425B5 /* OmniRemindAddReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindAddReminderViewController.h; sourceTree = "<group>"; };
+		0E73D1E6184AFDEC000425B5 /* OmniRemindAddReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindAddReminderViewController.m; sourceTree = "<group>"; };
 		0EB0E24D1833B791008506BE /* disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disclosure.png; sourceTree = "<group>"; };
 		0EB0E24F1833C305008506BE /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil.png; sourceTree = "<group>"; };
 		0EB6245318481055002D32C1 /* OmniRemindInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindInputViewController.h; sourceTree = "<group>"; };
@@ -172,6 +178,8 @@
 		0E21ABE7182CC20000C22BA0 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				0E73D1E3184AF814000425B5 /* correct-small.png */,
+				0E73D1E2184AEEA4000425B5 /* correct-md.png */,
 				3A8F84B51835B82600178E05 /* Circle_Green.png */,
 				3A5703121835BDFA004E25F1 /* Circle_Yellow.png */,
 				0EB0E24F1833C305008506BE /* pencil.png */,
@@ -220,6 +228,8 @@
 				0E541FD8184376E800B7054F /* OmniRemindAddDetailViewController.m */,
 				3A12361C1845941900EDA67D /* OmniRemindWebViewController.h */,
 				3A12361D1845941900EDA67D /* OmniRemindWebViewController.m */,
+				0E73D1E5184AFDEC000425B5 /* OmniRemindAddReminderViewController.h */,
+				0E73D1E6184AFDEC000425B5 /* OmniRemindAddReminderViewController.m */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -386,6 +396,7 @@
 				3A8F84B61835B82600178E05 /* Circle_Green.png in Resources */,
 				0E21ABED182CC35100C22BA0 /* calendar.png in Resources */,
 				0E69354818157B520095563C /* InfoPlist.strings in Resources */,
+				0E73D1E4184AF814000425B5 /* correct-small.png in Resources */,
 				0E69355018157B520095563C /* Default.png in Resources */,
 				0E69355218157B520095563C /* Default@2x.png in Resources */,
 				0E697BB01832CC3800D37AD4 /* plus-sign.png in Resources */,
@@ -407,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E69354A18157B520095563C /* main.m in Sources */,
+				0E73D1E7184AFDEC000425B5 /* OmniRemindAddReminderViewController.m in Sources */,
 				0E69354E18157B520095563C /* OmniRemindAppDelegate.m in Sources */,
 				0E541FDC18437F1D00B7054F /* OmniRemindCourse.m in Sources */,
 				0E59F9101827469500942B12 /* OmniRemindCalendarView.m in Sources */,
@@ -526,8 +538,8 @@
 		0E69356118157B520095563C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
@@ -537,7 +549,7 @@
 				GCC_PREFIX_HEADER = "omniRemind/omniRemind-Prefix.pch";
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A43FCA68-232C-4B94-808C-BA36EAFFFF1D";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -545,8 +557,8 @@
 		0E69356218157B520095563C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
@@ -556,7 +568,7 @@
 				GCC_PREFIX_HEADER = "omniRemind/omniRemind-Prefix.pch";
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A43FCA68-232C-4B94-808C-BA36EAFFFF1D";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

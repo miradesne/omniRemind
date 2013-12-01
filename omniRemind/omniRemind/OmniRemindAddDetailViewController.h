@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "OmniRemindInputViewController.h"
-@interface OmniRemindAddDetailViewController : OmniRemindInputViewController
-@property (weak,nonatomic) NSString *type;
+@interface OmniRemindAddDetailViewController : OmniRemindInputViewController<UIActionSheetDelegate>
 
 @end

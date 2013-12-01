@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OmniRemindInputViewController : UIViewController
+@interface OmniRemindInputViewController : UIViewController<UITextFieldDelegate>
 
 - (void)extraSetup;
 @end
