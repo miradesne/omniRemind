@@ -544,8 +544,8 @@
 		0E69356118157B520095563C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
@@ -556,7 +556,7 @@
 				GCC_PREFIX_HEADER = "omniRemind/omniRemind-Prefix.pch";
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A43FCA68-232C-4B94-808C-BA36EAFFFF1D";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -564,8 +564,8 @@
 		0E69356218157B520095563C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 蔡文轩 Cai (5DYS686N99)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
@@ -576,7 +576,7 @@
 				GCC_PREFIX_HEADER = "omniRemind/omniRemind-Prefix.pch";
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "A43FCA68-232C-4B94-808C-BA36EAFFFF1D";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
