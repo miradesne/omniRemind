@@ -30,6 +30,9 @@
 @property (weak, nonatomic) IBOutlet UISwitch *eventType;
 @end
 
+
+#define LOCATION_KEY1 @"location1"
+#define LOCATION_KEY2 @"location2"
 @implementation OmniRemindAddViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -306,15 +309,16 @@
     int isCourse = self.addSegmentedControl.selectedSegmentIndex;
     if (isCourse) {
         [self.manager storeCourse:self.fetchedCourse];
-
+    } else{
+        // Add a event.
+        if (self.eventType.on) {
+            // So this is a cloud event.
+            [self.manager storeCloudEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text myLocationKey:LOCATION_KEY1 otherLocationKey:LOCATION_KEY2 withRepeat:@{} withReminder:@{}];
+        } else {
+            [self.manager storeEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text withRepeat:@{} withReminder:@{}];
+        }
     }
-    else{
-        
-    }
-    
     [self dismissCurrentController];
-    
-    
 }
 
 //- (void)addSearchButton{
