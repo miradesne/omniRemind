@@ -14,6 +14,7 @@
 
 @interface OmniRemindAppDelegate() <UIAlertViewDelegate>
 @property (strong, nonatomic) NSDictionary *pushInfo;
+@property (strong, nonatomic) OmniRemindDataManager *manager;
 @end
 
 #define NOTIFICATION_TYPE_KEY @"nType"
@@ -78,6 +79,9 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 //NSDate *myDate = [df dateFromString: @"1992-12-30 23:59:59"];
 
 - (void)handlePush:(NSDictionary *)push {
+    if (!self.manager) {
+        self.manager = [[OmniRemindDataManager alloc] init];
+    }
     self.pushInfo = push;
     NSString *title;
     NSString *info;
@@ -100,6 +104,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         // Yes. Add it.
+        [self.manager storeAssignment:(PFObject *)self.pushInfo];
         self.pushInfo = nil;
     } else if (buttonIndex == 1) {
         // No. :<
