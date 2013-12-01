@@ -260,11 +260,15 @@
         if ([sender isKindOfClass:[UICollectionViewCell class]]) {
             indexPath = [self.collectionView indexPathForCell:sender];
         }
-        //OmniRemindCalendarCollectionViewCell *cell = (OmniRemindCalendarCollectionViewCell*)[self.collectionView dequeueReusableCellWithReuseIdentifier:self.dayViewName  forIndexPath:indexPath];
+        OmniRemindCalendarCollectionViewCell *cell =
+        (OmniRemindCalendarCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+        
         
         UILabel *titleView = (UILabel*)[self.navigationItem.titleView subviews][0];
         destViewController.title = [NSString stringWithFormat:@"%@ %@",titleView.text,self.dates[indexPath.row]];
         destViewController.indexPath = indexPath;
+        NSLog(@"%@",cell.date);
+        destViewController.dateComp = cell.date;
         
     }
 }
