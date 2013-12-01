@@ -459,24 +459,24 @@
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view tag="101" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MzF-tT-T0F">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <view tag="101" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MzF-tT-T0F">
+                                <rect key="frame" x="0.0" y="55" width="320" height="459"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUV-e9-hdW">
+                                        <rect key="frame" x="0.0" y="418" width="320" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUV-e9-hdW">
-                                                <rect key="frame" x="0.0" y="418" width="320" height="41"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.83759421489999997" green="0.96474380950000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Search a course">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="searchCourse:" destination="j8o-G3-0wf" eventType="touchUpInside" id="erP-bO-7lU"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
+                                        <color key="backgroundColor" red="0.83759421489999997" green="0.96474380950000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Search a course">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="searchCourse:" destination="j8o-G3-0wf" eventType="touchUpInside" id="erP-bO-7lU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -663,6 +663,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Repeat" id="BZo-uh-9Xf"/>
+                    <connections>
+                        <outlet property="repeatButton" destination="mGw-nz-cYd" id="JV3-RF-NH6"/>
+                        <outlet property="repeatEveryButton" destination="B7R-Yj-eCh" id="RQC-vP-PAj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TZ9-KD-4ZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

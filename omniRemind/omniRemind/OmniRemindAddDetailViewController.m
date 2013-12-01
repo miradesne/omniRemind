@@ -9,6 +9,8 @@
 #import "OmniRemindAddDetailViewController.h"
 
 @interface OmniRemindAddDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *repeatButton;
+@property (weak, nonatomic) IBOutlet UIButton *repeatEveryButton;
 
 @end
 
