@@ -10,6 +10,8 @@
 
 @interface OmniRemindInputViewController ()
 
+
+
 @end
 
 @implementation OmniRemindInputViewController
@@ -39,8 +41,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];
-    UIView *targetView = [self.view viewWithTag:109];
-    [targetView addGestureRecognizer:tap];
+    [self.view addGestureRecognizer:tap];
     [self extraSetup];
     
 }
@@ -48,6 +49,10 @@
 - (void)extraSetup{
     
 }
+
+
+# pragma mark - init
+
 
 # pragma mark - input
 - (void)dismissKeyboard{
@@ -61,6 +66,22 @@
     [textField resignFirstResponder];
     return NO;
 }
+
+- (void)done{
+    [self.view endEditing:YES];
+}
+
+
+- (UIViewController *)backViewController
+{
+    NSInteger numberOfViewControllers = self.navigationController.viewControllers.count;
+    
+    if (numberOfViewControllers < 2)
+        return nil;
+    else
+        return [self.navigationController.viewControllers objectAtIndex:numberOfViewControllers - 2];
+}
+
 
 
 @end

@@ -195,12 +195,12 @@
                   symbolName = "-[OmniRemindDayViewController getEventNumber:withEndTime:]"
                   moduleName = "omniRemind"
                   urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindDayViewController.m"
-                  timestampString = "407622348.025103"
+                  timestampString = "407629318.384944"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "246"
                   endingLineNumber = "246"
-                  offsetFromSymbolStart = "184">
+                  offsetFromSymbolStart = "136">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -209,12 +209,12 @@
                   symbolName = "-[OmniRemindDayViewController getEventNumber:withEndTime:]"
                   moduleName = "omniRemind"
                   urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindDayViewController.m"
-                  timestampString = "407622348.025345"
+                  timestampString = "407629318.38519"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "246"
                   endingLineNumber = "246"
-                  offsetFromSymbolStart = "289">
+                  offsetFromSymbolStart = "224">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -438,6 +438,38 @@
             startingLineNumber = "203"
             endingLineNumber = "203"
             landmarkName = "-drawEvent:withIndent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "omniRemind/OmniRemindAddDetailViewController.m"
+            timestampString = "407628863.35747"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-textFieldShouldEndEditing:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "omniRemind/OmniRemindAddViewController.m"
+            timestampString = "407628788.782182"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-textFieldShouldEndEditing:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
