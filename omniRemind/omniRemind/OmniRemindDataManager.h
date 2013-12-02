@@ -22,4 +22,6 @@
 
 - (void)storeCloudEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey withRepeat:(NSDictionary*)repeatDict cloudId:(NSString *)cloudId
                     withReminder:(NSDictionary*)reminder;
+
+- (NSArray*)fetchTasksToDo;
 @end

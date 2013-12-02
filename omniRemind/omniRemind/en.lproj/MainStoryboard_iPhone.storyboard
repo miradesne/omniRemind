@@ -857,11 +857,11 @@
             </objects>
             <point key="canvasLocation" x="496" y="1441"/>
         </scene>
-        <!--Navigation Controller - Reminder-->
+        <!--Navigation Controller - Tasks-->
         <scene sceneID="nr0-JS-2SH">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Tlc-Do-BmY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Reminder" image="reminder.png" id="2Qp-2V-rVY"/>
+                    <tabBarItem key="tabBarItem" title="Tasks" image="reminder.png" id="2Qp-2V-rVY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="poB-bO-8q7">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

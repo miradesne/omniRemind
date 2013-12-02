@@ -179,6 +179,9 @@
 - (IBAction)finishedSetting:(id)sender {
     
     OmniRemindAddViewController *addController = (OmniRemindAddViewController*)[self backViewController];
+    if ([self.repeatDict[REPEAT_TYPE_KEY]  isEqual: @(NO_REPEAT)]) {
+        self.repeatDict = nil;
+    }
     addController.repeatDict = self.repeatDict;
     NSLog(@"%@",self.repeatDict);
     [self.navigationController popViewControllerAnimated:YES];

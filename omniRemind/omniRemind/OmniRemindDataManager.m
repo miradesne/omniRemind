@@ -188,6 +188,20 @@
     return events;
 }
 
+- (NSArray*)fetchTasksToDo{
+    NSArray *events;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"repeat_attribute == nil"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:EVENT_START_TIME_KEY ascending:YES]];
+    request.predicate = predicate;
+    
+    NSError *error = nil;
+    events = [self.managedObjectContext executeFetchRequest:request error:&error];
+    events;
+    
+    return events;
+}
+
 
 
 @end

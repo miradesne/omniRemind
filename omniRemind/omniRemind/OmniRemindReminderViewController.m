@@ -7,18 +7,23 @@
 //
 
 #import "OmniRemindReminderViewController.h"
+#import "OmniRemindDataManager.h"
 
 @interface OmniRemindReminderViewController ()
-
+@property (strong,nonatomic)NSArray *events;
+@property (strong,nonatomic)OmniRemindDataManager *manager;
 @end
 
 @implementation OmniRemindReminderViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Custom initialization
+        // self.events = nil;
+        if (!self.manager) {
+            self.manager = [[OmniRemindDataManager alloc]init];
+        }
+        //        [self initializeSampleData];
     }
     return self;
 }
@@ -27,17 +32,12 @@
 {
     [super viewDidLoad];
     self.title = @"Tasks";
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//    self.events = self.manager
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated{
+    self.events = [self.manager fetchTasksToDo];
 }
 
 #pragma mark - Table view data source
@@ -51,7 +51,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 6;
+    return [self.events count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
