@@ -488,7 +488,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="searchCourse:" destination="j8o-G3-0wf" eventType="touchUpInside" id="w3Q-hT-Kt0"/>
+                                    <action selector="searchCloudEvent:" destination="j8o-G3-0wf" eventType="touchUpInside" id="0Wp-oW-HXh"/>
                                 </connections>
                             </button>
                         </subviews>
