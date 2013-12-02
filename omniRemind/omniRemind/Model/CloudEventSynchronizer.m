@@ -17,7 +17,7 @@
     event[EVENT_DATE_KEY] = startDate;
     event[EVENT_FROM_KEY] = startTime;
     event[EVENT_TO_KEY] = endTime;
-    [event saveEventually:^(BOOL succeeded, NSError *error) {
+    [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         [Event storeCloudEventWithEventInfo:eventTitle date:startDate from:startTime to:endTime at:location withRepeat:repeatDict withReminder:reminder myLocationKey:myLocationKey otherLocationKey:otherLocationKey cloudEventId:[event objectId] inManagedObjectContext:manager];
     }];
    

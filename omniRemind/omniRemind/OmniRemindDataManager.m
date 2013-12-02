@@ -25,6 +25,13 @@
         manager = [super init];
         [self constructDatabase];
     }
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:EVENT_START_TIME_KEY ascending:YES]];
+    
+    NSError *error = nil;
+    NSArray *events = [self.managedObjectContext executeFetchRequest:request error:&error];
+    NSLog(@"eee %@", events);
     return manager;
 }
 
@@ -37,6 +44,7 @@
             if (success){
                 NSLog(@"successfully print");
                 self.managedObjectContext = document.managedObjectContext;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"Dbload" object:self];
             }
             else{
                 NSLog(@"fail..");
@@ -51,6 +59,7 @@
             if(success){
                 NSLog(@"mirasuccess");
                 self.managedObjectContext = document.managedObjectContext;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"Dbload" object:self];
             }
             else{
                 NSLog(@"cannot open it");

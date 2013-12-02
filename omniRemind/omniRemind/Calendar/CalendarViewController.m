@@ -12,6 +12,8 @@
 #import <Parse/Parse.h>
 #import "CourseDataFetcher.h"
 #import "EventScheduler.h"
+#import "OmniRemindDataManager.h"
+#import "Event.h"
 
 @interface CalendarViewController ()
 
@@ -21,6 +23,7 @@
 @property (weak, nonatomic) NSString *dayViewName;
 @property (strong, nonatomic) NSArray *dates;
 @property (strong, nonatomic) NSArray *dateComponents;
+@property (strong, nonatomic) OmniRemindDataManager *manager;
 
 // This date is going to determine the month that we are looking at.
 // Would init to the current date at the beginning.
@@ -37,12 +40,26 @@
 #define TITLE_FONT_SIZE 18
 @implementation CalendarViewController
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onDBFinishLoad:)
+                                                 name:@"Dbload"
+                                               object:nil];
+}
+
+- (void) onDBFinishLoad:(NSNotification *) notification {
+    [self.collectionView reloadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initCalendar];
     [self setUpCollectionView];
-    PFObject *c = [CourseDataFetcher fetchCourse:@"comp446"];
-    [CourseDataFetcher fetchAssignments:c];
+    self.manager = [[OmniRemindDataManager alloc] init];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)registerChannel:(NSString *)channelName {
@@ -56,7 +73,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = NO;
     [super viewWillAppear:animated];
-    
 }
 
 - (NSDate *)referenceDate {
@@ -233,6 +249,16 @@
     }
     int day = [((NSString *)self.dates[indexPath.row]) intValue];
     calendarCell.date = [self createDateFromReferenceDate:day deltaMonth:deltaMonth];
+    NSArray *events = [self.manager fetchEventsWithDate:calendarCell.date];
+    NSLog(@"%@", events);
+    calendarCell.eventLabel1.text = @"";
+    calendarCell.eventLabel2.text = @"";
+    if ([events count] > 0) {
+        calendarCell.eventLabel1.text = ((Event *)events[0]).event_title;
+        if ([events count] > 1) {
+            calendarCell.eventLabel2.text = ((Event *)events[1]).event_title;
+        }
+    }
     return cell;
 }
 

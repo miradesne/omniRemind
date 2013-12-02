@@ -7,7 +7,8 @@
 //
 
 #import "OmniRemindCalendarCollectionViewCell.h"
-
+#import "OmniRemindDataManager.h"
+#import "Event.h"
 @implementation OmniRemindCalendarCollectionViewCell
 
 - (id)initWithFrame:(CGRect)frame
