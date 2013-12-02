@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @interface OmniRemindEventDetailViewController : UIViewController
 
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) NSString *cloudId;
 @property (strong, nonatomic) NSString *myLocationKey;
 @property (strong, nonatomic) NSString *otherLocationKey;
+@property (strong, nonatomic) NSManagedObjectID *oid;
 
--(void)call;
+
 @end

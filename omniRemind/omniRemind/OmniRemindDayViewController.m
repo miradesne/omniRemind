@@ -341,15 +341,17 @@
     if ([segue.identifier isEqualToString:@"seeEventDetail"]) {
         OmniRemindEventDetailViewController *destViewController = segue.destinationViewController;
         destViewController.title = @"Event Detail";
-        [destViewController call];
         Event *event = (Event *)sender;
         destViewController.eventTitle = event.event_title;
         destViewController.date = event.event_date;
         destViewController.startTime = event.start_time;
         destViewController.endTime = event.end_time;
         destViewController.location = event.event_location;
+        destViewController.oid = [event objectID];
         if (event.cloud_event_id) {
             destViewController.cloudId = event.cloud_event_id;
+            destViewController.myLocationKey = event.my_location_key;
+            destViewController.otherLocationKey = event.other_location_key;
         }
     }
 }

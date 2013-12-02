@@ -9,8 +9,10 @@
 #import "OmniRemindEventDetailViewController.h"
 #import "OmniRemindDayViewController.h"
 #import "OmniRemindMapViewController.h"
+#import "OmniRemindDataManager.h"
+#import "OmniRemindAppDelegate.h"
 
-@interface OmniRemindEventDetailViewController ()
+@interface OmniRemindEventDetailViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
@@ -19,19 +21,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *cloudIdTitle;
 @property (weak, nonatomic) IBOutlet UIButton *showMapBtn;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-
+@property (strong, nonatomic) OmniRemindDataManager *manager;
 @end
 
 @implementation OmniRemindEventDetailViewController
 
-- (void)call {
-    NSLog(@"calll");
-}
-
 - (void)viewDidLoad {
+    self.manager = [[OmniRemindDataManager alloc] init];
     self.titleLabel.text = self.eventTitle;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSLog(@"%@", self.eventTitle);
     [formatter setDateFormat:@"MM-dd-yyyy"];
     self.dateLabel.text = [formatter stringFromDate:self.date];
     [formatter setDateFormat:@"h:mm:ss a"];
@@ -47,6 +45,20 @@
     }
 }
 
+- (IBAction)removeEvent:(id)sender {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Remove Event" message:@"Are you sure to remove this event?" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Yes", @"No", nil];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        // Yes. Remove.
+        [self.manager removeEvent:self.oid];
+            OmniRemindAppDelegate *delegate = (OmniRemindAppDelegate *)[[UIApplication sharedApplication] delegate];
+            [delegate.window.rootViewController dismissViewControllerAnimated:NO completion:^{
+            }];
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isKindOfClass:[UIButton class]]) {

@@ -99,18 +99,18 @@
 
 - (void)storeCourse:(PFObject*)course{
     NSArray *assignments = [CourseDataFetcher fetchAssignments:course];
-    NSArray *exams = [CourseDataFetcher fetchExams:course];
+//    NSArray *exams = [CourseDataFetcher fetchExams:course];
     for (PFObject *assignment in assignments) {
         if (assignment) {
             [self storeAssignment:assignment];
         }
     }
     
-    for (PFObject *exam in exams) {
-        if (exam) {
-            [self storeExam:exam];
-        }
-    }
+//    for (PFObject *exam in exams) {
+//        if (exam) {
+//            [self storeExam:exam];
+//        }
+//    }
 }
 
 - (void)storeAssignment:(PFObject*)assignment{
@@ -145,8 +145,9 @@
     
 }
 
-- (void)storeExam:(PFObject*)exam{
-    
+- (void)removeEvent:(NSManagedObjectID *)oid {
+    NSManagedObject *eventToDelete = [self.managedObjectContext objectWithID:oid];
+    [self.managedObjectContext deleteObject:eventToDelete];
 }
 
 #pragma mark - fetchEvent
