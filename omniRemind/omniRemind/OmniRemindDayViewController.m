@@ -343,8 +343,8 @@
         destViewController.title = @"Event Detail";
         [destViewController call];
         Event *event = (Event *)sender;
-        destViewController.title = event.event_title;
-        NSLog(@"dest title %@", destViewController.title);
+        destViewController.eventTitle = event.event_title;
+        destViewController.date = event.event_date;
         destViewController.startTime = event.start_time;
         destViewController.endTime = event.end_time;
         destViewController.location = event.event_location;

@@ -31,8 +31,10 @@
 - (void)viewDidLoad {
     self.titleLabel.text = self.eventTitle;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH-mm-ss"];
+    NSLog(@"%@", self.eventTitle);
+    [formatter setDateFormat:@"MM-dd-yyyy"];
     self.dateLabel.text = [formatter stringFromDate:self.date];
+    [formatter setDateFormat:@"h:mm:ss a"];
     self.startTimeLabel.text = [formatter stringFromDate:self.startTime];
     self.endTimeLabel.text = [formatter stringFromDate:self.endTime];
     if (self.location) {
@@ -40,7 +42,8 @@
     }
     if (self.cloudId) {
         self.cloudIdLabel.text = self.cloudId;
-            self.cloudIdTitle.text = @"Cloud Event Id";
+    } else {
+        self.cloudIdTitle.text = @"";
     }
 }
 
