@@ -104,6 +104,7 @@
     
     
     if (self.tabBarController.selectedIndex == 1) {
+        self.title = @"Today";
         self.dateComp = [self getDatecomponentFromNSDate:[NSDate date]];
     }
     NSLog(@"%d",self.tabBarController.selectedIndex);
