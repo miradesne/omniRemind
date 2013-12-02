@@ -185,7 +185,7 @@
     NSArray *events;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"repeat_attribute == nil"];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:EVENT_START_TIME_KEY ascending:YES]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:EVENT_START_TIME_KEY ascending:NO]];
     request.predicate = predicate;
     
     NSError *error = nil;

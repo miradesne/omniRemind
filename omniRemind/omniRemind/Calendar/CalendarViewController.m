@@ -285,7 +285,7 @@
             indexPath = [self.collectionView indexPathForCell:sender];
         }
         OmniRemindCalendarCollectionViewCell *cell =
-        (OmniRemindCalendarCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+        (OmniRemindCalendarCollectionViewCell*)sender;
         
         
         UILabel *titleView = (UILabel*)[self.navigationItem.titleView subviews][0];
