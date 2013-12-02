@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cloudIdLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cloudIdTitle;
 
 @end
 
@@ -39,5 +41,10 @@
     self.locationLabel.text = location;
 }
 
+- (void)setCloudId:(NSString *)cloudId {
+    _cloudId = cloudId;
+    self.cloudIdTitle.text = @"Cloud Event Id";
+    self.cloudIdLabel.text = cloudId;
+}
 
 @end

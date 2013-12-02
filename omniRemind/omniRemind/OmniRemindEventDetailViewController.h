@@ -14,6 +14,6 @@
 @property (strong, nonatomic) NSString *startTime;
 @property (strong, nonatomic) NSString *endTime;
 @property (strong, nonatomic) NSString *location;
-
+@property (strong, nonatomic) NSString *cloudId;
 
 @end
