@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *cloudIdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cloudIdTitle;
 @property (weak, nonatomic) IBOutlet UIButton *showMapBtn;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -50,7 +51,9 @@
     self.cloudIdLabel.text = cloudId;
 }
 
-- (IBAction)showMap:(id)sender {
+- (void)setDate:(NSString *)date {
+    _date = date;
+    self.dateLabel.text = date;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

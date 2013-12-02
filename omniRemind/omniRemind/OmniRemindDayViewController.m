@@ -14,6 +14,10 @@
 @property (nonatomic,strong) NSMutableArray* events;
 @property (nonatomic,strong) NSMutableArray* occupied;
 @property (nonatomic,strong) OmniRemindDataManager *manager;
+@property (nonatomic, strong) NSMutableArray *rects;
+// Events map by the rects.
+@property (nonatomic,strong) NSMutableArray* eventsInOrder;
+
 @end
 
 @implementation OmniRemindDayViewController
@@ -40,6 +44,13 @@
     return self;
 }
 
+- (NSMutableArray *)rects {
+    if (!_rects) {
+        _rects = [[NSMutableArray alloc] init];
+    }
+    return _rects;
+}
+
 - (NSMutableArray*)events{
     if (!_events) {
         _events = [[NSMutableArray alloc]init];
@@ -52,6 +63,13 @@
         _occupied = [[NSMutableArray alloc]init];
     }
     return _occupied;
+}
+
+- (NSMutableArray *)eventsInOrder {
+    if (!_eventsInOrder) {
+        _eventsInOrder = [[NSMutableArray alloc] init];
+    }
+    return _eventsInOrder;
 }
 
 - (void)initializeSampleData{
@@ -76,8 +94,6 @@
     for (int i = 0 ; i < 24 ; i++){
         [self.occupied addObject:[NSNumber numberWithInt:0]];
     }
-    
-    
     [self calculateOccupied];
     
     
@@ -205,7 +221,11 @@
     int eventWidth = floor(CONTENT_WIDTH/(float)numberOfEvent);
     float topMargin = startHour * CELL_HEIGHT+startTime.minute/60.0 * CELL_HEIGHT ;
     float bottom = endTime.hour * CELL_HEIGHT + endTime.minute/60.0 * CELL_HEIGHT;
-    UIView *eventView = [[UIView alloc]initWithFrame:CGRectMake(LEFT_MARGIN+indentation*eventWidth,topMargin , eventWidth, bottom - topMargin)];
+    CGRect rect = CGRectMake(LEFT_MARGIN+indentation*eventWidth,topMargin , eventWidth, bottom - topMargin);
+    UIView *eventView = [[UIView alloc] initWithFrame:rect];
+    // Add the rect.
+    [self.rects addObject:[NSValue valueWithCGRect:rect]];
+    [self.eventsInOrder addObject:event];
     eventView.backgroundColor = [UIColor colorWithRed:181/255.0 green:214/255.0 blue:236/255.0 alpha:0.8];
     eventView.layer.cornerRadius = 5 ;
     eventView.layer.masksToBounds = YES;
@@ -232,6 +252,7 @@
     [eventView addSubview:locationLabel];
     [self.tableView addSubview:eventView];
     
+    NSLog(@"%i %f %i %f", LEFT_MARGIN+indentation*eventWidth,topMargin , eventWidth, bottom - topMargin);
     if (indentation < numberOfEvent-1){
         indentation +=1;
     }
@@ -255,10 +276,22 @@
 }
 
 #pragma mark - transitionToDetailView
-- (IBAction)tapOnEvent:(id)sender {
-    
-    
+- (IBAction)tapEventHandler:(UITapGestureRecognizer *)sender {
+    CGPoint location = [sender locationInView:self.view];
+    for (int t = 0; t < [self.rects count]; t++) {
+        NSValue *value = self.rects[t];
+        CGRect rect = value.CGRectValue;
+        if (location.x > rect.origin.x && location.y > rect.origin.y) {
+            if (location.x < rect.origin.x + rect.size.width && location.y < rect.origin.y + rect.size.height) {
+                // Find an event on the point...
+                NSLog(@"%@", self.eventsInOrder[t]);
+                [self performSegueWithIdentifier:@"seeEventDetail" sender:self.eventsInOrder[t]];
+                break;
+            }
+        }
+    }
 }
+
 
 
 /*
@@ -308,6 +341,14 @@
     if ([segue.identifier isEqualToString:@"seeEventDetail"]) {
         OmniRemindEventDetailViewController *destViewController = segue.destinationViewController;
         destViewController.title = @"Event Detail";
+        Event *event = (Event *)sender;
+        destViewController.title = event.event_title;
+        destViewController.startTime = event.start_time;
+        destViewController.endTime = event.end_time;
+        destViewController.location = event.event_location;
+        if (event.cloud_event_id) {
+            destViewController.cloudId = event.cloud_event_id;
+        }
     }
 }
 
