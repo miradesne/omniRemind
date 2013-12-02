@@ -65,6 +65,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 # pragma mark - init
 
 - (UIDatePicker*) datePicker{
@@ -82,13 +84,6 @@
     }
     return _timePicker;
 }
-
-//- (OmniRemindDataManager*) manager{
-//    if (!_manager) {
-//        _manager = [[OmniRemindDataManager alloc]init];
-//    }
-//    return _manager;
-//}
 
 # pragma mark - toolBar
 
@@ -315,7 +310,7 @@
             // So this is a cloud event.
             [self.manager storeCloudEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text myLocationKey:LOCATION_KEY1 otherLocationKey:LOCATION_KEY2 withRepeat:@{} withReminder:@{}];
         } else {
-            [self.manager storeEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text withRepeat:@{} withReminder:@{}];
+            [self.manager storeEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text withRepeat:self.repeatDict withReminder:self.remindDict];
         }
     }
     [self dismissCurrentController];

@@ -22,11 +22,15 @@
     newEvent.event_date = date;
     newEvent.start_time = time1;
     newEvent.end_time = time2;
-    newEvent.remind_time = reminder[REMIND_TIME_KEY];
-    newEvent.remind_message = reminder[REMIND_MESSAGE_KEY];
-    
-    Repeat *repeat = [Repeat repeatWithDictionary:repeatDict inManagedObjectContext:context];
-    newEvent.repeat_attribute = repeat;
+    if (reminder) {
+        newEvent.remind_time = reminder[REMIND_TIME_KEY];
+        newEvent.remind_message = eventTitle;
+    }
+    if (repeatDict) {
+        Repeat *repeat = [Repeat repeatWithDictionary:repeatDict inManagedObjectContext:context];
+        newEvent.repeat_attribute = repeat;
+
+    }
     
 
 }

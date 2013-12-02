@@ -8,6 +8,6 @@
 
 #import "OmniRemindInputViewController.h"
 
-@interface OmniRemindAddReminderViewController : OmniRemindInputViewController
+@interface OmniRemindAddReminderViewController : OmniRemindInputViewController<UIActionSheetDelegate>
 
 @end

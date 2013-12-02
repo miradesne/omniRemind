@@ -7,8 +7,11 @@
 //
 
 #import "OmniRemindAddReminderViewController.h"
-
+#import "OmniRemindAddViewController.h"
 @interface OmniRemindAddReminderViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *remindTypeButton;
+@property (weak, nonatomic) IBOutlet UIButton *remindTimeButton;
+@property (strong, nonatomic) NSMutableDictionary *remindDict;
 
 @end
 
@@ -29,10 +32,106 @@
 	// Do any additional setup after loading the view.
 }
 
+#define REMIND_TYPE_KEY @"remindType"
+#define REMIND_TIME_KEY @"remindTime"
+#define NO_REMINDER 0
+#define PUSH_NOTIFICATION 1
+#define SMS_NOTIFICATION 2
+
+
+#define MINUTES_15 0
+#define MINUTES_30 1 
+#define HOUR_BEFORE 2 
+#define DAY_BEFORE 3 
+#define WEEK_BEFORE 4
+
+- (NSMutableDictionary*)remindDict{
+    if (!_remindDict) {
+        _remindDict = [[NSMutableDictionary alloc] initWithDictionary:@{REMIND_TYPE_KEY:@(NO_REMINDER),REMIND_TIME_KEY:@(MINUTES_15)}];
+        
+    }
+    return _remindDict;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)changeRemindType:(id)sender {
+    UIActionSheet *selectTypeActionSheet = [[UIActionSheet alloc]initWithTitle:@"Remind Type:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"No Reminder",@"Push Notification",@"SMS(not in beta version)",nil];
+    selectTypeActionSheet.tag = 100;
+    [selectTypeActionSheet showInView:self.view];
+}
+
+- (IBAction)changeRemindTime:(id)sender {
+    UIActionSheet *selectTypeActionSheet = [[UIActionSheet alloc]initWithTitle:@"Remind:" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"15 mins before",@"30 mins before",@"1 hour before",@"1 day before", @"1 week before",nil];
+    selectTypeActionSheet.tag = 101;
+    [selectTypeActionSheet showInView:self.view];
+}
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (actionSheet.tag == 100) {
+        switch (buttonIndex) {
+            case 0:
+                [self.remindDict setValue:@(NO_REMINDER) forKey:REMIND_TYPE_KEY];
+                [self.remindTypeButton setTitle:@"No Reminder" forState:UIControlStateNormal];
+                break;
+                
+            case 1:
+                [self.remindDict setValue:@(PUSH_NOTIFICATION) forKey:REMIND_TYPE_KEY];
+                [self.remindTypeButton setTitle:@"Push" forState:UIControlStateNormal];
+                break;
+                
+            case 2:
+                [self.remindDict setValue:@(SMS_NOTIFICATION) forKey:REMIND_TYPE_KEY];
+                [self.remindTypeButton setTitle:@"SMS" forState:UIControlStateNormal];
+                break;            default:
+                NSLog(@"default");
+                break;
+        }
+    }
+    else{
+        switch (buttonIndex) {
+            case 0:
+                [self.remindDict setValue:@(MINUTES_15) forKey:REMIND_TIME_KEY];
+                [self.remindTimeButton setTitle:@"15 mins before" forState:UIControlStateNormal];
+                break;
+                
+            case 1:
+                [self.remindDict setValue:@(MINUTES_30) forKey:REMIND_TIME_KEY];
+                [self.remindTimeButton setTitle:@"30 mins before" forState:UIControlStateNormal];
+                break;
+                
+            case 2:
+                [self.remindDict setValue:@(HOUR_BEFORE) forKey:REMIND_TIME_KEY];
+                [self.remindTimeButton setTitle:@"1 hour before" forState:UIControlStateNormal];
+                break;
+            
+            case 3:
+                [self.remindDict setValue:@(DAY_BEFORE) forKey:REMIND_TIME_KEY];
+                [self.remindTimeButton setTitle:@"1 day before" forState:UIControlStateNormal];
+                break;
+                
+            case 4:
+                [self.remindDict setValue:@(HOUR_BEFORE) forKey:REMIND_TIME_KEY];
+                [self.remindTimeButton setTitle:@"1 week before" forState:UIControlStateNormal];
+                break;
+            
+            default:
+                NSLog(@"default");
+                break;
+        }
+ 
+    }
+}
+- (IBAction)finishReminderSetting:(id)sender {
+    OmniRemindAddViewController *addController = (OmniRemindAddViewController*)[self backViewController];
+    addController.remindDict = self.remindDict;
+    NSLog(@"%@",self.remindDict);
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 @end

@@ -161,6 +161,14 @@
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
         theDate = [dateFormat stringFromDate:self.datePicker.date];
         textField.text = [NSString stringWithFormat:@"%@",theDate];
+        if (textField == self.startDateTextField) {
+            [self.repeatDict setObject:textField.text forKey:REPEAT_START_KEY];
+            
+        }
+        else{
+            [self.repeatDict setObject:textField.text forKey:REPEAT_END_KEY];
+            
+        }
         
     }
     [textField resignFirstResponder];
@@ -170,8 +178,10 @@
 
 - (IBAction)finishedSetting:(id)sender {
     
-    
-    
+    OmniRemindAddViewController *addController = (OmniRemindAddViewController*)[self backViewController];
+    addController.repeatDict = self.repeatDict;
+    NSLog(@"%@",self.repeatDict);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

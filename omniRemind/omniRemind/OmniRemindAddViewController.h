@@ -10,5 +10,6 @@
 #import <objc/runtime.h>
 #import "OmniRemindInputViewController.h"
 @interface OmniRemindAddViewController : OmniRemindInputViewController<UIAlertViewDelegate>
-
+@property (strong,nonatomic) NSDictionary *repeatDict;
+@property (strong,nonatomic) NSDictionary *remindDict;
 @end
