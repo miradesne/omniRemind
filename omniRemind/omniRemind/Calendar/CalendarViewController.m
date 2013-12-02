@@ -58,10 +58,6 @@
     self.manager = [[OmniRemindDataManager alloc] init];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 - (void)registerChannel:(NSString *)channelName {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation addUniqueObject:channelName forKey:@"channels"];
@@ -73,6 +69,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = NO;
     [super viewWillAppear:animated];
+    [self.collectionView reloadData];
 }
 
 - (NSDate *)referenceDate {
@@ -250,7 +247,6 @@
     int day = [((NSString *)self.dates[indexPath.row]) intValue];
     calendarCell.date = [self createDateFromReferenceDate:day deltaMonth:deltaMonth];
     NSArray *events = [self.manager fetchEventsWithDate:calendarCell.date];
-    NSLog(@"%@", events);
     calendarCell.eventLabel1.text = @"";
     calendarCell.eventLabel2.text = @"";
     if ([events count] > 0) {
@@ -295,7 +291,6 @@
         UILabel *titleView = (UILabel*)[self.navigationItem.titleView subviews][0];
         destViewController.title = [NSString stringWithFormat:@"%@ %@",titleView.text,self.dates[indexPath.row]];
         destViewController.indexPath = indexPath;
-        NSLog(@"%@",cell.date);
         destViewController.dateComp = cell.date;
         
     }
