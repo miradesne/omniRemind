@@ -27,6 +27,7 @@
 #define TIME_LABEL_HEIGHT 40
 #define CONTENT_WIDTH 230
 #define LEFT_MARGIN 60
+#define LABEL_TAG 1977
 
 #pragma mark - initialization
 
@@ -100,17 +101,18 @@
 }
 
 - (void)loadActuallData{
+    if (self.tabBarController.selectedIndex == 1) {
+        self.dateComp = [self getDatecomponentFromNSDate:[NSDate date]];
+    }
     NSArray *fetchedEvents = [self.manager fetchEventsWithDate:self.dateComp];
     
     
     
     
-    NSLog(@"%@",fetchedEvents);
     self.events = [[NSMutableArray alloc]initWithArray:fetchedEvents];
     for (int i = 0 ; i < 24 ; i++){
         [self.occupied addObject:[NSNumber numberWithInt:0]];
     }
-    
     
     [self calculateOccupied];
 }
@@ -126,10 +128,9 @@
     [self updateCalendarUI];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self clearTheLabels];
 }
 
 #pragma mark - Table view data source
@@ -211,6 +212,20 @@
     }
 }
 
+
+- (void)clearTheLabels{
+    NSArray *views = [self.tableView subviews];
+    for (UIView *view in views) {
+        if (view.tag == LABEL_TAG) {
+            [view removeFromSuperview];
+        }
+    }
+    
+    self.events = nil;
+    self.occupied = nil;
+    
+}
+
 #define EVENT_LABEL_HEIGHT 20
 - (int)drawEvent:(Event*)event withIndent:(int)indentation{
     NSDateComponents *startTime = [self getDatecomponentFromNSDate:event.start_time];
@@ -229,6 +244,7 @@
     eventView.backgroundColor = [UIColor colorWithRed:181/255.0 green:214/255.0 blue:236/255.0 alpha:0.8];
     eventView.layer.cornerRadius = 5 ;
     eventView.layer.masksToBounds = YES;
+    eventView.tag = LABEL_TAG;
     UILabel *timeLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 5, 50, EVENT_LABEL_HEIGHT)];
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 15, eventWidth - 20, EVENT_LABEL_HEIGHT)];
     UILabel *locationLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 35, 50, EVENT_LABEL_HEIGHT)];
@@ -294,44 +310,6 @@
 
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - Navigation
@@ -348,6 +326,7 @@
         destViewController.startTime = event.start_time;
         destViewController.endTime = event.end_time;
         destViewController.location = event.event_location;
+        [self clearTheLabels];
         if (event.cloud_event_id) {
             destViewController.cloudId = event.cloud_event_id;
         }

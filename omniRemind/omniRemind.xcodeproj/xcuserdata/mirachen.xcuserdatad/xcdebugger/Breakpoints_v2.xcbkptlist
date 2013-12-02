@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDayViewController.m"
-            timestampString = "407620956.579437"
+            timestampString = "407649011.68956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "-updateCalendarUI"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-calculateOccupied"
             landmarkType = "5">
             <Locations>
                <Location
@@ -56,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDayViewController.m"
-            timestampString = "407620956.579437"
+            timestampString = "407647302.558567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-initializeSampleData"
             landmarkType = "5">
             <Locations>
@@ -102,11 +102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDayViewController.m"
-            timestampString = "407620956.579437"
+            timestampString = "407649011.68956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-drawEvent:withIndent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -118,11 +118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDayViewController.m"
-            timestampString = "407620956.579437"
+            timestampString = "407649011.68956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
             landmarkName = "-drawEvent:withIndent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -134,12 +134,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDayViewController.m"
-            timestampString = "407620956.579437"
+            timestampString = "407649011.68956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "-updateCalendarUI"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "-calculateOccupied"
             landmarkType = "5">
             <Locations>
                <Location
@@ -176,47 +176,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDayViewController.m"
-            timestampString = "407620956.579437"
+            timestampString = "407649011.68956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "-getEventNumber:withEndTime:"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "-drawEvent:withIndent:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[OmniRemindDayViewController getEventNumber:withEndTime:]"
-                  moduleName = "omniRemind"
-                  urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindDayViewController.m"
-                  timestampString = "407638096.311217"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "246"
-                  endingLineNumber = "246"
-                  offsetFromSymbolStart = "184">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[OmniRemindDayViewController getEventNumber:withEndTime:]"
-                  moduleName = "omniRemind"
-                  urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindDayViewController.m"
-                  timestampString = "407638096.311502"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "246"
-                  endingLineNumber = "246"
-                  offsetFromSymbolStart = "289">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -279,8 +249,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
-            landmarkName = "@implementation OmniRemindDataManager"
-            landmarkType = "3">
+            landmarkName = "-storeCloudEventWithTitle:date:from:to:at:myLocationKey:otherLocationKey:withRepeat:cloudId:withReminder:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -295,7 +265,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "-storeCourse:"
+            landmarkName = "-storeEventWithTitle:date:from:to:at:withRepeat:withReminder:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -366,7 +336,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDataManager.m"
@@ -386,12 +356,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDayViewController.m"
-            timestampString = "407620956.579437"
+            timestampString = "407647302.558567"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "-loadActuallData"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "-initializeSampleData"
             landmarkType = "5">
             <Locations>
                <Location
@@ -432,12 +402,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDayViewController.m"
-            timestampString = "407621242.353353"
+            timestampString = "407649011.68956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "-drawEvent:withIndent:"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "-calculateOccupied"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -470,6 +440,22 @@
             startingLineNumber = "305"
             endingLineNumber = "305"
             landmarkName = "-addEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "omniRemind/OmniRemindDayViewController.m"
+            timestampString = "407649011.68956"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-loadActuallData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

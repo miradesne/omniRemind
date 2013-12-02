@@ -175,9 +175,6 @@
         events = [self.managedObjectContext executeFetchRequest:request error:&error];
     }
     
-        events;
-    
-    
     return events;
 }
 
