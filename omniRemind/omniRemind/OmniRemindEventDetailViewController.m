@@ -24,37 +24,26 @@
 
 @implementation OmniRemindEventDetailViewController
 
-
-- (void)setEventTitle:(NSString *)eventTitle {
-    _eventTitle = eventTitle;
-    self.titleLabel.text = eventTitle;
+- (void)call {
+    NSLog(@"calll");
 }
 
-- (void)setStartTime:(NSString *)startTime {
-    _startTime = startTime;
-    self.startTimeLabel.text = startTime;
+- (void)viewDidLoad {
+    self.titleLabel.text = self.eventTitle;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH-mm-ss"];
+    self.dateLabel.text = [formatter stringFromDate:self.date];
+    self.startTimeLabel.text = [formatter stringFromDate:self.startTime];
+    self.endTimeLabel.text = [formatter stringFromDate:self.endTime];
+    if (self.location) {
+        self.locationLabel.text = self.location;
+    }
+    if (self.cloudId) {
+        self.cloudIdLabel.text = self.cloudId;
+            self.cloudIdTitle.text = @"Cloud Event Id";
+    }
 }
 
-- (void)setEndTime:(NSString *)endTime {
-    _endTime = endTime;
-    self.endTimeLabel.text = endTime;
-}
-
-- (void)setLocation:(NSString *)location {
-    _location = location;
-    self.locationLabel.text = location;
-}
-
-- (void)setCloudId:(NSString *)cloudId {
-    _cloudId = cloudId;
-    self.cloudIdTitle.text = @"Cloud Event Id";
-    self.cloudIdLabel.text = cloudId;
-}
-
-- (void)setDate:(NSString *)date {
-    _date = date;
-    self.dateLabel.text = date;
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([sender isKindOfClass:[UIButton class]]) {
