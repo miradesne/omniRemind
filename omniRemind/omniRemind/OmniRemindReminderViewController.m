@@ -8,7 +8,8 @@
 
 #import "OmniRemindReminderViewController.h"
 #import "OmniRemindDataManager.h"
-
+#import "OmniRemindEventDetailViewController.h"
+#import "Event.h"
 @interface OmniRemindReminderViewController ()
 @property (strong,nonatomic)NSArray *events;
 @property (strong,nonatomic)OmniRemindDataManager *manager;
@@ -60,8 +61,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.detailTextLabel.text = @"detail";
-    cell.textLabel.text = [NSString stringWithFormat:@"Task: %d",indexPath.row];
+    Event *event = self.events[indexPath.row];
+    cell.detailTextLabel.text = event.event_title;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    cell.textLabel.text = [dateFormat stringFromDate:event.event_date];
     
     return cell;
 }
@@ -105,16 +109,36 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"seeEventDetail"]) {
+        OmniRemindEventDetailViewController *destViewController = segue.destinationViewController;
+        destViewController.title = @"Event Detail";
+        NSIndexPath *indexPath;
+        if ([sender isKindOfClass:[UITableViewCell class]]) {
+            indexPath = [self.tableView indexPathForCell:sender];
+        }
+        Event *event = self.events[indexPath.row];
+        destViewController.eventTitle = event.event_title;
+        destViewController.date = event.event_date;
+        destViewController.startTime = event.start_time;
+        destViewController.endTime = event.end_time;
+        destViewController.location = event.event_location;
+        destViewController.oid = [event objectID];
+        if (event.cloud_event_id) {
+            destViewController.cloudId = event.cloud_event_id;
+            destViewController.myLocationKey = event.my_location_key;
+            destViewController.otherLocationKey = event.other_location_key;
+        }
+    }
 }
 
- */
+
 
 @end
