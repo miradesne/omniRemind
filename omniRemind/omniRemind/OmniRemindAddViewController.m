@@ -185,9 +185,6 @@
     if (alertView.tag == 1100) {
         if (buttonIndex == 1) {
             searchTerm = [alertView textFieldAtIndex:0].text;
-//            self.searchButton.hidden = YES ;
-//                NSLog(searchTerm);
-                //MiraBug
             PFObject *courseObject = [CourseDataFetcher fetchCourse:searchTerm];
             NSLog(@"%@", courseObject);
             if (courseObject) {
@@ -197,19 +194,13 @@
                 dispatch_async(dispatch_get_main_queue(),^{
                     if (searchedCourse) {
                         [self showSearchedCourse:searchedCourse];
-                    } else {
-                        [self didNotFindCourse];
+
                     }
                 });
-
+            } else {
+                [self didNotFindCourse];
             }
-            
         }
-//        else {
-//            [self addSearchButton];
-//            
-//        }
-
     } else if (alertView.tag == 1200) {
         if (buttonIndex == 1) {
             NSString *cloudEventId = [alertView textFieldAtIndex:0].text;
@@ -220,10 +211,33 @@
                 [self addCloudEvent:event];
             }
         }
+    } else if (alertView.tag == 1400) {
+        if (buttonIndex == 0) {
+            // Add a event.
+            if (self.eventType.on) {
+                // So this is a cloud event.
+                NSString *lk1, *lk2;
+                if (!self.cloudId) {
+                    lk1 = LOCATION_KEY1;
+                    lk2 = LOCATION_KEY2;
+                } else {
+                    lk1 = LOCATION_KEY2;
+                    lk2 = LOCATION_KEY1;
+                }
+                [self.manager storeCloudEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.     locationInput.text myLocationKey:lk1 otherLocationKey:lk2
+                                            withRepeat:self.repeatDict cloudId:self.cloudId withReminder:self.remindDict];
+                
+            } else {
+                [self.manager storeEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text withRepeat:self.repeatDict withReminder:self.remindDict];
+            }
+            [self dismissCurrentController];
+        }
+    } else if (alertView.tag == 1500) {
+        if (buttonIndex == 0) {
+            [self.manager storeCourse:self.fetchedCourse];
+            [self dismissCurrentController];
+        }
     }
-    
-    
-    
 }
 
 - (void)showCourseSearchAlert{
@@ -232,7 +246,6 @@
                                                          delegate:self
                                                 cancelButtonTitle:@"Cancel"
                                                 otherButtonTitles:@"Search", nil];
-    
     myAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     myAlertView.tag = 1100;
     [myAlertView show];
@@ -244,10 +257,9 @@
                                                          delegate:self
                                                 cancelButtonTitle:@"Ok"
                                                 otherButtonTitles:nil];
+    myAlertView.tag = 1600;
     [myAlertView show];
 //    [self addSearchButton];
-    
-
 }
 
 - (void)showSearchedCourse: (OmniRemindCourse*)searchedCourse{
@@ -262,8 +274,6 @@
     //[courseInfoLabel sizeToFit];
     [self.addClassView addSubview:infoLabel];
     
-    
-    
     int height = 40;
     for (int i = 0; i < numberOfProperties; i++) {
         objc_property_t property = propertyArray[i];
@@ -277,9 +287,7 @@
             courseDescriptionLabel.editable = NO;
             courseDescriptionLabel.textContainer.lineFragmentPadding = 0;
             [self.addClassView addSubview:courseDescriptionLabel];
-
-        }
-        else{
+        } else{
             UILabel *courseInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, height+i*COURSE_INFO_HEIGHT, 280, COURSE_INFO_HEIGHT)];
             courseInfoLabel.text = courseInfo ;
             courseInfoLabel.backgroundColor = [UIColor clearColor];
@@ -289,10 +297,7 @@
             //[courseInfoLabel sizeToFit];
             [self.addClassView addSubview:courseInfoLabel];
         }
-        
     }
-    
-    
 }
 
 - (IBAction)searchCourse:(id)sender {
@@ -304,27 +309,32 @@
 - (IBAction)addEvent:(id)sender {
     int isCourse = self.addSegmentedControl.selectedSegmentIndex;
     if (isCourse) {
-        [self.manager storeCourse:self.fetchedCourse];
-    } else{
-        // Add a event.
-        if (self.eventType.on) {
-            // So this is a cloud event.
-            NSString *lk1, *lk2;
-            if (!self.cloudId) {
-                lk1 = LOCATION_KEY1;
-                lk2 = LOCATION_KEY2;
-            } else {
-                lk1 = LOCATION_KEY2;
-                lk2 = LOCATION_KEY1;
-            }
-            [self.manager storeCloudEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.     locationInput.text myLocationKey:lk1 otherLocationKey:lk2
-                                         withRepeat:self.repeatDict cloudId:self.cloudId withReminder:self.remindDict];
-            
+        if (self.fetchedCourse) {
+            UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Add Course"
+                                                                  message:@"Do you want to add all course info?"
+                                                                 delegate:self
+                                                        cancelButtonTitle:nil
+                                                        otherButtonTitles:@"YES", @"NO", nil];
+            myAlertView.tag = 1500;
+            [myAlertView show];
         } else {
-            [self.manager storeEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text withRepeat:self.repeatDict withReminder:self.remindDict];
+            UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Couse Error"
+                                                                  message:@"Please search for a valid course before adding"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Cancel"
+                                                        otherButtonTitles:nil, nil];
+            myAlertView.tag = 1600;
+            [myAlertView show];
         }
+    } else {
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Add Event"
+                                                              message:@"Do you want to add this event?"
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                                    otherButtonTitles:@"YES", @"NO", nil];
+        myAlertView.tag = 1400;
+        [myAlertView show];
     }
-    [self dismissCurrentController];
 }
 
 //- (void)addSearchButton{

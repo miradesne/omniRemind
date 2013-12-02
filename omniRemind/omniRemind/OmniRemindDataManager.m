@@ -25,13 +25,6 @@
         manager = [super init];
         [self constructDatabase];
     }
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
-    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:EVENT_START_TIME_KEY ascending:YES]];
-    
-    NSError *error = nil;
-    NSArray *events = [self.managedObjectContext executeFetchRequest:request error:&error];
-    NSLog(@"eee %@", events);
     return manager;
 }
 
