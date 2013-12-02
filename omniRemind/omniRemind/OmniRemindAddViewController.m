@@ -350,7 +350,7 @@
     int controllerIndex = 0;
     UIView * fromView = self.tabBarController.selectedViewController.view;
     UIView * toView = [[self.tabBarController.viewControllers objectAtIndex:controllerIndex] view];
-    
+    self.tabBarController.tabBar.hidden = NO;
     // Transition using a page curl.
     [UIView transitionFromView:fromView
                         toView:toView

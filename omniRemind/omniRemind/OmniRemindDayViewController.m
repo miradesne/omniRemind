@@ -101,9 +101,12 @@
 }
 
 - (void)loadActuallData{
+    
+    
     if (self.tabBarController.selectedIndex == 1) {
         self.dateComp = [self getDatecomponentFromNSDate:[NSDate date]];
     }
+    NSLog(@"%d",self.tabBarController.selectedIndex);
     NSArray *fetchedEvents = [self.manager fetchEventsWithDate:self.dateComp];
     
     
@@ -123,7 +126,7 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
     [self loadActuallData];
     [self updateCalendarUI];
 }
