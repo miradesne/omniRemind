@@ -14,6 +14,9 @@
 @property (strong, nonatomic) NSString *startTime;
 @property (strong, nonatomic) NSString *endTime;
 @property (strong, nonatomic) NSString *location;
+// Set these two when setting the event id.
 @property (strong, nonatomic) NSString *cloudId;
+@property (strong, nonatomic) NSString *myLocationKey;
+@property (strong, nonatomic) NSString *otherLocationKey;
 
 @end

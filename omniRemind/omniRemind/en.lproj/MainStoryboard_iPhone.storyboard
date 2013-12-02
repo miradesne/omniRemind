@@ -273,6 +273,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="csV-iI-bHl">
+                                <rect key="frame" x="137" y="435" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show Map">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMap:" destination="3uS-sg-FBV" eventType="touchUpInside" id="RFK-V9-Kh8"/>
+                                    <segue destination="mxT-hf-pFp" kind="push" identifier="showMap" id="T9m-xY-Pc0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -282,6 +293,7 @@
                         <outlet property="cloudIdTitle" destination="rpL-oe-hG4" id="eIM-Z8-fb6"/>
                         <outlet property="endTimeLabel" destination="CJ0-6D-QDa" id="g7L-bL-pHX"/>
                         <outlet property="locationLabel" destination="DiI-KO-mZN" id="dgM-19-Blf"/>
+                        <outlet property="showMapBtn" destination="csV-iI-bHl" id="Wja-QM-2gL"/>
                         <outlet property="startTimeLabel" destination="iXW-B4-ZIq" id="SmJ-Va-NW1"/>
                         <outlet property="titleLabel" destination="SGO-U5-cqD" id="uFz-iD-rkz"/>
                     </connections>
@@ -289,50 +301,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zs-rz-PFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2012" y="-720"/>
-        </scene>
-        <!--Omni Remind Event Detail View Controller-->
-        <scene sceneID="eHs-jz-rVd">
-            <objects>
-                <tableViewController id="faA-Vw-UU4" customClass="OmniRemindEventDetailViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="190" sectionHeaderHeight="10" sectionFooterHeight="10" id="sj7-Be-fRA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventDetailCell" rowHeight="190" id="I49-0t-Cg5">
-                                <rect key="frame" x="0.0" y="55" width="320" height="190"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I49-0t-Cg5" id="5Pp-ef-avh">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="senior Design" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQc-3C-P4i">
-                                            <rect key="frame" x="20" y="20" width="105" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OEDK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cs-oN-sTC">
-                                            <rect key="frame" x="20" y="49" width="47" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="faA-Vw-UU4" id="Emi-zM-wbF"/>
-                            <outlet property="delegate" destination="faA-Vw-UU4" id="mBc-17-WUO"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="033-Fp-PTs"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WRg-yK-CiF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2012" y="8"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oSB-zB-cEv">
@@ -792,23 +760,24 @@
                         <viewControllerLayoutGuide type="bottom" id="x5G-DC-Q0I"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N0T-Ig-0ym">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sEG-ck-kIr">
-                                <rect key="frame" x="0.0" y="-2" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="-2" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="AQ5-P5-l4S"/>
                     <connections>
                         <outlet property="mapView" destination="sEG-ck-kIr" id="tCn-JQ-h66"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oId-Wa-RCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-333" y="1478"/>
+            <point key="canvasLocation" x="2485" y="-728"/>
         </scene>
         <!--Omni Remind Web View Controller-->
         <scene sceneID="ri7-2E-hKd">

@@ -8,6 +8,8 @@
 
 #import "OmniRemindEventDetailViewController.h"
 #import "OmniRemindDayViewController.h"
+#import "OmniRemindMapViewController.h"
+
 @interface OmniRemindEventDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
@@ -15,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cloudIdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cloudIdTitle;
+@property (weak, nonatomic) IBOutlet UIButton *showMapBtn;
 
 @end
 
@@ -45,6 +48,22 @@
     _cloudId = cloudId;
     self.cloudIdTitle.text = @"Cloud Event Id";
     self.cloudIdLabel.text = cloudId;
+}
+
+- (IBAction)showMap:(id)sender {
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([sender isKindOfClass:[UIButton class]]) {
+        if ([segue.identifier isEqualToString:@"showMap"]) {
+            if ([segue.destinationViewController isKindOfClass:[OmniRemindMapViewController class]]) {
+                OmniRemindMapViewController *mvc = (OmniRemindMapViewController *)segue.destinationViewController;
+                mvc.myLocationKey = self.myLocationKey;
+                mvc.otherLocationKey = self.otherLocationKey;
+                mvc.cloudEventId = self.cloudId;    
+            }
+        }
+    }
 }
 
 @end
