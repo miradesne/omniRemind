@@ -28,6 +28,7 @@
 @property (strong,nonatomic) OmniRemindDataManager *manager;
 @property (strong,nonatomic) PFObject *fetchedCourse;
 @property (weak, nonatomic) IBOutlet UISwitch *eventType;
+@property (strong, nonatomic) NSString *cloudId;
 @end
 
 
@@ -308,7 +309,17 @@
         // Add a event.
         if (self.eventType.on) {
             // So this is a cloud event.
-            [self.manager storeCloudEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text myLocationKey:LOCATION_KEY1 otherLocationKey:LOCATION_KEY2 withRepeat:@{} withReminder:@{}];
+            NSString *lk1, *lk2;
+            if (!self.cloudId) {
+                lk1 = LOCATION_KEY1;
+                lk2 = LOCATION_KEY2;
+            } else {
+                lk1 = LOCATION_KEY2;
+                lk2 = LOCATION_KEY1;
+            }
+            [self.manager storeCloudEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.     locationInput.text myLocationKey:lk1 otherLocationKey:lk2
+                                         withRepeat:self.repeatDict cloudId:self.cloudId withReminder:self.remindDict];
+            
         } else {
             [self.manager storeEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text withRepeat:self.repeatDict withReminder:self.remindDict];
         }
@@ -383,6 +394,7 @@
     self.startTime.text = [dateFormat stringFromDate:event[EVENT_FROM_KEY]];
     self.endTime.text = [dateFormat stringFromDate:event[EVENT_TO_KEY]];
     self.eventType.on = YES;
+    self.cloudId = [event objectId];
 }
 
 @end

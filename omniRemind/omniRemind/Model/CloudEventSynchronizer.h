@@ -19,7 +19,7 @@
 
 @interface CloudEventSynchronizer : NSObject
 
-+ (NSString *)getEventFromId:(NSString *)cloudEventId;
++ (PFObject *)getEventFromId:(NSString *)cloudEventId;
 
 + (void)syncEvent:(NSString *)eventTitle startDate:(NSDate *)startDate startTime:(NSDate *)startTime endTime:(NSDate *)endTime at:(NSString*)location myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder manager:(NSManagedObjectContext *)manager;
 

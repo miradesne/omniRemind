@@ -65,16 +65,24 @@
 
 #pragma mark - storeEvents
 
-- (void)storeCloudEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder {
+- (void)storeCloudEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey withRepeat:(NSDictionary*)repeatDict cloudId:(NSString *)cloudId
+                    withReminder:(NSDictionary*)reminder {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSDate *dateToPut = [dateFormat dateFromString:date];
-    [dateFormat setDateFormat:@"yyyy-MM-dd h:mm a"];
-    NSString *startTimeString = [date stringByAppendingString:[NSString stringWithFormat:@" %@", time1]];
-    NSString *endTimeString = [date stringByAppendingString:[NSString stringWithFormat:@" %@", time2]];
-    NSDate *startTime = [dateFormat dateFromString:startTimeString];
-    NSDate *endTime = [dateFormat dateFromString:endTimeString];
-    [CloudEventSynchronizer syncEvent:eventTitle startDate:dateToPut startTime:startTime endTime:endTime at:location myLocationKey:myLocationKey otherLocationKey:otherLocationKey withRepeat:repeatDict withReminder:reminder manager:self.managedObjectContext];
+    if (!cloudId) {
+        [dateFormat setDateFormat:@"yyyy-MM-dd h:mm a"];
+        NSString *startTimeString = [date stringByAppendingString:[NSString stringWithFormat:@" %@", time1]];
+        NSString *endTimeString = [date stringByAppendingString:[NSString stringWithFormat:@" %@", time2]];
+        NSDate *startTime = [dateFormat dateFromString:startTimeString];
+        NSDate *endTime = [dateFormat dateFromString:endTimeString];
+        [CloudEventSynchronizer syncEvent:eventTitle startDate:dateToPut startTime:startTime endTime:endTime at:location myLocationKey:myLocationKey otherLocationKey:otherLocationKey withRepeat:repeatDict withReminder:reminder manager:self.managedObjectContext];
+    } else {
+        [dateFormat setDateFormat:@"h:mm a"];
+        NSDate *startTime = [dateFormat dateFromString:time1];
+        NSDate *endTime = [dateFormat dateFromString:time2];
+        [Event storeCloudEventWithEventInfo:eventTitle date:dateToPut from:startTime to:endTime at:location withRepeat:repeatDict withReminder:reminder myLocationKey:myLocationKey otherLocationKey:otherLocationKey cloudEventId:cloudId inManagedObjectContext:self.managedObjectContext];
+    }
 }
 
 - (void)storeEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder{
