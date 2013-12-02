@@ -10,7 +10,6 @@
 #import "OmniRemindDayViewController.h"
 #import "OmniRemindMapViewController.h"
 #import "OmniRemindDataManager.h"
-#import "OmniRemindAppDelegate.h"
 
 @interface OmniRemindEventDetailViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -54,9 +53,7 @@
     if (buttonIndex == 0) {
         // Yes. Remove.
         [self.manager removeEvent:self.oid];
-            OmniRemindAppDelegate *delegate = (OmniRemindAppDelegate *)[[UIApplication sharedApplication] delegate];
-            [delegate.window.rootViewController dismissViewControllerAnimated:NO completion:^{
-            }];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
