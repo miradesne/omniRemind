@@ -201,7 +201,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "309"
             endingLineNumber = "309"
-            landmarkName = "-searchCourse:"
+            landmarkName = "-showSearchedCourse:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -217,8 +217,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "244"
             endingLineNumber = "244"
-            landmarkName = "@implementation OmniRemindAddViewController"
-            landmarkType = "3">
+            landmarkName = "-alertView:didDismissWithButtonIndex:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -249,7 +249,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
-            landmarkName = "-storeCloudEventWithTitle:date:from:to:at:myLocationKey:otherLocationKey:withRepeat:cloudId:withReminder:"
+            landmarkName = "-storeCloudEventWithTitle:date:from:to:at:myLocationKey:otherLocationKey:withRepeat:cloudId:withRemindDate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -265,7 +265,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "-storeEventWithTitle:date:from:to:at:withRepeat:withReminder:"
+            landmarkName = "-storeEventWithTitle:date:from:to:at:withRepeat:withRemindDate:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -345,8 +345,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "@implementation OmniRemindDataManager"
-            landmarkType = "3">
+            landmarkName = "-fetchEventsWithDate:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -439,7 +439,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "310"
             endingLineNumber = "310"
-            landmarkName = "-searchCourse:"
+            landmarkName = "-showSearchedCourse:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -553,6 +553,146 @@
             endingLineNumber = "144"
             landmarkName = "-mapView:rendererForOverlay:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "omniRemind/OmniRemindEventDetailViewController.m"
+            timestampString = "407795162.121606"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-gotRoute:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OmniRemindEventDetailViewController gotRoute:]"
+                  moduleName = "omniRemind"
+                  urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindEventDetailViewController.m"
+                  timestampString = "407794904.16045"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OmniRemindEventDetailViewController gotRoute:]"
+                  moduleName = "omniRemind"
+                  urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindEventDetailViewController.m"
+                  timestampString = "407794904.160757"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "258">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "omniRemind/OmniRemindEventDetailViewController.m"
+            timestampString = "407795913.383032"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "omniRemind/MapNavigator.m"
+            timestampString = "407794792.552031"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-getRouteFromLocation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "omniRemind/OmniRemindEventDetailViewController.m"
+            timestampString = "407794823.516485"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-awakeFromNib"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "omniRemind/OmniRemindEventDetailViewController.m"
+            timestampString = "407795698.899331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-gotRoute:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OmniRemindEventDetailViewController gotRoute:]"
+                  moduleName = "omniRemind"
+                  urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindEventDetailViewController.m"
+                  timestampString = "407795761.357399"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "458">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OmniRemindEventDetailViewController gotRoute:]"
+                  moduleName = "omniRemind"
+                  urlString = "file:///Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/OmniRemindEventDetailViewController.m"
+                  timestampString = "407795761.357541"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "490">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

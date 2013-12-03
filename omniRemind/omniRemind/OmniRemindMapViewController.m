@@ -80,6 +80,11 @@
     if (self.cloudEventId && self.myLocationKey && self.otherLocationKey) {
         [self setupLocationSyncTimer];
     }
+    else{
+        if (self.routeToShow) {
+            [self showRoute:self.routeToShow];
+        }
+    }
 }
 
 // Track use self.
@@ -121,6 +126,30 @@
     [self.mapView addAnnotation:geoPointAnnotation];
 }
 
+- (void)showRoute:(MKRoute *)route
+{
+
+    [self.mapView addOverlay:route.polyline level:MKOverlayLevelAboveRoads];
+    
+    for (MKRouteStep *step in route.steps)
+    {
+        NSLog(@"%@", step.instructions);
+    }
+    MKRouteStep *lastStep = [route.steps lastObject];
+    MKPointAnnotation *pin = [[MKPointAnnotation alloc]init];
+    pin.coordinate = lastStep.polyline.coordinate ;
+    [self.mapView addAnnotation:pin];
+    
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
+{
+    MKPolylineRenderer *renderer =
+    [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+    renderer.strokeColor = [UIColor blueColor];
+    renderer.lineWidth = 7.0;
+    return renderer;
+}
 
 
 @end

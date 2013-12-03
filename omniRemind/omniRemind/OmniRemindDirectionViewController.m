@@ -144,7 +144,7 @@
     MKPolylineRenderer *renderer =
     [[MKPolylineRenderer alloc] initWithOverlay:overlay];
     renderer.strokeColor = [UIColor blueColor];
-    renderer.lineWidth = 10.0;
+    renderer.lineWidth = 7.0;
     return renderer;
 }
 
