@@ -32,19 +32,6 @@
 	// Do any additional setup after loading the view.
 }
 
-#define REMIND_TYPE_KEY @"remindType"
-#define REMIND_TIME_KEY @"remindTime"
-#define NO_REMINDER 0
-#define PUSH_NOTIFICATION 1
-#define SMS_NOTIFICATION 2
-
-
-#define MINUTES_15 0
-#define MINUTES_30 1 
-#define HOUR_BEFORE 2 
-#define DAY_BEFORE 3 
-#define WEEK_BEFORE 4
-
 - (NSMutableDictionary*)remindDict{
     if (!_remindDict) {
         _remindDict = [[NSMutableDictionary alloc] initWithDictionary:@{REMIND_TYPE_KEY:@(NO_REMINDER),REMIND_TIME_KEY:@(MINUTES_15)}];
@@ -130,8 +117,39 @@
     OmniRemindAddViewController *addController = (OmniRemindAddViewController*)[self backViewController];
     addController.remindDict = self.remindDict;
     NSLog(@"%@",self.remindDict);
+    NSValue *v = self.remindDict[REMIND_TIME_KEY];
+    NSLog(@"%i", [v isEqualToValue:@(NO_REMINDER)]);
     [self.navigationController popViewControllerAnimated:YES];
 
+}
+
++ (NSDate *)remindTimeStringToDate:(NSString *)rtime remindDict:(NSDictionary *)remindDict {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd h:mm a"];
+    NSDate *date = [df dateFromString:rtime];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:date];
+    NSValue *timeValue = remindDict[REMIND_TIME_KEY];
+    int time;
+    [timeValue getValue:&time];
+    switch (time) {
+        case MINUTES_15:
+            [comp setMinute:[comp minute] - 15];
+            break;
+        case MINUTES_30:
+            [comp setMinute:[comp minute] - 30];
+            break;
+        case HOUR_BEFORE:
+            [comp setHour:[comp hour] - 1];
+            break;
+        case DAY_BEFORE:
+            [comp setDay:[comp day] - 1];
+            break;
+        case WEEK_BEFORE:
+            [comp setDay:[comp day] - 7];
+            break;
+    }
+    return [calendar dateFromComponents:comp];
 }
 
 @end

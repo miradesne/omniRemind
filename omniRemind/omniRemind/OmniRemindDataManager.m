@@ -68,7 +68,7 @@
 #pragma mark - storeEvents
 
 - (void)storeCloudEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey withRepeat:(NSDictionary*)repeatDict cloudId:(NSString *)cloudId
-                    withReminder:(NSDictionary*)reminder {
+                    withRemindDate:(NSDate *)remindDate {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSDate *dateToPut = [dateFormat dateFromString:date];
@@ -78,16 +78,16 @@
         NSString *endTimeString = [date stringByAppendingString:[NSString stringWithFormat:@" %@", time2]];
         NSDate *startTime = [dateFormat dateFromString:startTimeString];
         NSDate *endTime = [dateFormat dateFromString:endTimeString];
-        [CloudEventSynchronizer syncEvent:eventTitle startDate:dateToPut startTime:startTime endTime:endTime at:location myLocationKey:myLocationKey otherLocationKey:otherLocationKey withRepeat:repeatDict withReminder:reminder manager:self.managedObjectContext];
+        [CloudEventSynchronizer syncEvent:eventTitle startDate:dateToPut startTime:startTime endTime:endTime at:location myLocationKey:myLocationKey otherLocationKey:otherLocationKey withRepeat:repeatDict withRemindDate:remindDate manager:self.managedObjectContext];
     } else {
         [dateFormat setDateFormat:@"h:mm a"];
         NSDate *startTime = [dateFormat dateFromString:time1];
         NSDate *endTime = [dateFormat dateFromString:time2];
-        [Event storeCloudEventWithEventInfo:eventTitle date:dateToPut from:startTime to:endTime at:location withRepeat:repeatDict withReminder:reminder myLocationKey:myLocationKey otherLocationKey:otherLocationKey cloudEventId:cloudId inManagedObjectContext:self.managedObjectContext];
+        [Event storeCloudEventWithEventInfo:eventTitle date:dateToPut from:startTime to:endTime at:location withRepeat:repeatDict withRemindDate:remindDate myLocationKey:myLocationKey otherLocationKey:otherLocationKey cloudEventId:cloudId inManagedObjectContext:self.managedObjectContext];
     }
 }
 
-- (void)storeEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder{
+- (void)storeEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withRemindDate:(NSDate *)remindDate {
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
@@ -95,7 +95,7 @@
     [dateFormat setDateFormat:@"h:mm a"];
     NSDate *startTime = [dateFormat dateFromString:time1];
     NSDate *endTime = [dateFormat dateFromString:time2];
-    [Event storeEventWithEventInfo:eventTitle date:dateToPut from:startTime to:endTime at:location withRepeat:repeatDict withReminder:reminder inManagedObjectContext:self.managedObjectContext];
+    [Event storeEventWithEventInfo:eventTitle date:dateToPut from:startTime to:endTime at:location withRepeat:repeatDict withRemindDate:remindDate inManagedObjectContext:self.managedObjectContext];
 }
 
 
@@ -136,9 +136,8 @@
         NSDateComponents *comp = [calendar components:(NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit) fromDate:dueDate];
         [comp setHour:comp.hour - 1];
         NSDate *startTime = [calendar dateFromComponents:comp];
-        NSDictionary *reminder = @{REMIND_TIME_KEY: startTime,REMIND_MESSAGE_KEY: assignmentName};
-        
-        [Event storeEventWithEventInfo:assignmentName date:dueDate from:startTime to:dueDate at:nil withRepeat:nil withReminder:reminder inManagedObjectContext:self.managedObjectContext];
+//        NSDictionary *reminder = @{REMIND_TIME_KEY: startTime,REMIND_MESSAGE_KEY: assignmentName};
+        [Event storeEventWithEventInfo:assignmentName date:dueDate from:startTime to:dueDate at:nil withRepeat:nil withRemindDate:startTime inManagedObjectContext:self.managedObjectContext];
 
     }
     else{

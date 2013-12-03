@@ -7,15 +7,20 @@
 //
 
 #import "EventScheduler.h"
+#import "OmniRemindAddReminderViewController.h"
 
 @implementation EventScheduler
 
 + (void)schduleEvent:(NSDictionary *)eventInfo {
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"CST"];
-    notification.fireDate = (NSDate *)eventInfo[EVENT_DATE_KEY];
-    notification.alertBody = eventInfo[EVENT_INFO_KEY];
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    NSValue *type = eventInfo[EVENT_REMIND_KEY][REMIND_TYPE_KEY];
+    if ([@(PUSH_NOTIFICATION) isEqualToValue:type]) {
+        NSDate *remindDate = eventInfo[EVENT_DATE_KEY];
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+//        notification.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"CST"];
+        notification.fireDate = remindDate;
+        notification.alertBody = eventInfo[EVENT_INFO_KEY];
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
 }
 
 @end

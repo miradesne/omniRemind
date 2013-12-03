@@ -15,9 +15,9 @@
 @interface Event (Create)
 
 // Save a local event.
-+ (void)storeEventWithEventInfo:(NSString*)eventTitle date:(NSDate*)date from:(NSDate*)time1 to:(NSDate*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder inManagedObjectContext:(NSManagedObjectContext*)context;
++ (void)storeEventWithEventInfo:(NSString*)eventTitle date:(NSDate*)date from:(NSDate*)time1 to:(NSDate*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withRemindDate:(NSDate *)remindDate inManagedObjectContext:(NSManagedObjectContext*)context;
 
 // Save a cloud event.
-+ (void)storeCloudEventWithEventInfo:(NSString*)eventTitle date:(NSDate*)date from:(NSDate*)time1 to:(NSDate*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey cloudEventId:(NSString *)cloudEventId inManagedObjectContext:(NSManagedObjectContext*)context;
++ (void)storeCloudEventWithEventInfo:(NSString*)eventTitle date:(NSDate*)date from:(NSDate*)time1 to:(NSDate*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withRemindDate:(NSDate *)remindDate myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey cloudEventId:(NSString *)cloudEventId inManagedObjectContext:(NSManagedObjectContext*)context;
 
 @end

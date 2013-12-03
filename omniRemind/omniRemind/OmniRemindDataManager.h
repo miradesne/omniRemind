@@ -18,10 +18,10 @@
 
 - (void)removeEvent:(NSManagedObjectID *)oid;
 
-- (void)storeEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withReminder:(NSDictionary*)reminder;
+- (void)storeEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location withRepeat:(NSDictionary*)repeatDict withRemindDate:(NSDate *)remindDate;
 
 - (void)storeCloudEventWithTitle:(NSString*)eventTitle date:(NSString*)date from:(NSString*)time1 to:(NSString*)time2 at:(NSString*)location myLocationKey:(NSString *)myLocationKey otherLocationKey:(NSString *)otherLocationKey withRepeat:(NSDictionary*)repeatDict cloudId:(NSString *)cloudId
-                    withReminder:(NSDictionary*)reminder;
+                    withRemindDate:(NSDate *)remindDate;
 
 - (NSArray*)fetchTasksToDo;
 @end

@@ -12,6 +12,8 @@
 #import "OmniRemindCourse.h"
 #import "OmniRemindDataManager.h"
 #import "CloudEventSynchronizer.h"
+#import "EventScheduler.h"
+#import  "OmniRemindAddReminderViewController.h"
 
 @interface OmniRemindAddViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleInput;
@@ -213,6 +215,10 @@
         }
     } else if (alertView.tag == 1400) {
         if (buttonIndex == 0) {
+            NSDate *remindTime;
+            if (self.remindDict) {
+                remindTime = [OmniRemindAddReminderViewController remindTimeStringToDate:[NSString stringWithFormat:@"%@ %@", self.startDate.text, self.startTime.text] remindDict:self.remindDict];
+            }
             // Add a event.
             if (self.eventType.on) {
                 // So this is a cloud event.
@@ -225,10 +231,19 @@
                     lk2 = LOCATION_KEY1;
                 }
                 [self.manager storeCloudEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.     locationInput.text myLocationKey:lk1 otherLocationKey:lk2
-                                            withRepeat:self.repeatDict cloudId:self.cloudId withReminder:self.remindDict];
-                
+                                            withRepeat:self.repeatDict cloudId:self.cloudId withRemindDate:remindTime];
             } else {
-                [self.manager storeEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text withRepeat:self.repeatDict withReminder:self.remindDict];
+                [self.manager storeEventWithTitle:self.titleInput.text date:self.startDate.text from:self.startTime.text to:self.endTime.text at:self.locationInput.text withRepeat:self.repeatDict withRemindDate:remindTime];
+                if (self.remindDict) {
+                    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+                    dict[EVENT_DATE_KEY] = remindTime;
+                    dict[EVENT_INFO_KEY] = self.titleInput.text;
+                    dict[EVENT_REMIND_KEY] = self.remindDict;
+                    if (self.repeatDict) {
+                        dict[EVENT_REPEAT_KEY] = self.repeatDict;
+                    }
+                    [EventScheduler schduleEvent:dict];
+                }
             }
             [self dismissCurrentController];
         }

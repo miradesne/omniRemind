@@ -10,6 +10,8 @@
 
 #define EVENT_DATE_KEY @"date"
 #define EVENT_INFO_KEY @"info"
+#define EVENT_REPEAT_KEY @"repeat"
+#define EVENT_REMIND_KEY @"remind"
 
 @interface EventScheduler : NSObject
 
