@@ -12,7 +12,7 @@
 #import "GeoPointAnnotation.h"
 #import "CloudEventSynchronizer.h"
 
-#define LOCATION_SYNC_INTERVAL 5.0
+#define LOCATION_SYNC_INTERVAL 2.0
 
 @interface OmniRemindMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -98,6 +98,13 @@
     [self stopLocationUpdateTimer];
 }
 
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *last = [locations lastObject];
+     NSLog(@"manager %@ %@", [NSNumber numberWithDouble:last.coordinate.latitude], [NSNumber numberWithDouble:last.coordinate.longitude]);
+}
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
         return nil;
@@ -120,7 +127,7 @@
 - (void)updateLocation:(PFObject *)object {
     PFGeoPoint *geoPoint = object[self.otherLocationKey];
     NSLog(@"other %@ %@", [NSNumber numberWithDouble:geoPoint.latitude], [NSNumber numberWithDouble:geoPoint.longitude]);
-    NSLog(@"my %@", self.locationManager.location);
+    NSLog(@"my %@ %@", [NSNumber numberWithDouble:self.locationManager.location.coordinate.latitude], [NSNumber numberWithDouble:self.locationManager.location.coordinate.longitude]);
     GeoPointAnnotation *geoPointAnnotation = [[GeoPointAnnotation alloc] initWithGeoPoint:geoPoint];
     [self.mapView removeAnnotations:self.mapView.annotations];
     [self.mapView addAnnotation:geoPointAnnotation];
