@@ -36,6 +36,7 @@
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
     NSLog(@"launch options: %@", launchOptions);
+    [NSThread sleepForTimeInterval:2];
     return YES;
 }
 
