@@ -12,7 +12,7 @@
 #import "GeoPointAnnotation.h"
 #import "CloudEventSynchronizer.h"
 
-#define LOCATION_SYNC_INTERVAL 5.0
+#define LOCATION_SYNC_INTERVAL 2.0
 
 @interface OmniRemindMapViewController ()
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;

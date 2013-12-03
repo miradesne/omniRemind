@@ -319,7 +319,7 @@
     CGPoint originCenter = self.collectionView2.center;
     CGPoint origin = self.view.frame.origin;
     CGSize size = self.view.frame.size;
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.8 animations:^{
         self.collectionView2.center = CGPointMake(origin.x - size.width, origin.y - size.height);
     } completion:^(BOOL success) {
         self.collectionView2.hidden = YES;
@@ -334,7 +334,7 @@
     CGPoint originCenter = self.collectionView2.center;
     CGPoint origin = self.view.frame.origin;
     CGSize size = self.view.frame.size;
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.8 animations:^{
         self.collectionView2.center = CGPointMake(origin.x + size.width * 2, origin.y + size.height * 2);
     } completion:^(BOOL success) {
         self.collectionView2.hidden = YES;
