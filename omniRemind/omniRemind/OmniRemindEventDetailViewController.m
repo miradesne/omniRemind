@@ -16,10 +16,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *cloudIdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *cloudIdTitle;
 @property (weak, nonatomic) IBOutlet UIButton *showMapBtn;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UITextView *cloudIdLabel;
 @property (strong, nonatomic) OmniRemindDataManager *manager;
 @end
 

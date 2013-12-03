@@ -114,7 +114,8 @@
 
 - (void)updateLocation:(PFObject *)object {
     PFGeoPoint *geoPoint = object[self.otherLocationKey];
-    NSLog(@"%@ %@", [NSNumber numberWithDouble:geoPoint.latitude], [NSNumber numberWithDouble:geoPoint.longitude]);
+    NSLog(@"other %@ %@", [NSNumber numberWithDouble:geoPoint.latitude], [NSNumber numberWithDouble:geoPoint.longitude]);
+    NSLog(@"my %@", self.locationManager.location);
     GeoPointAnnotation *geoPointAnnotation = [[GeoPointAnnotation alloc] initWithGeoPoint:geoPoint];
     [self.mapView removeAnnotations:self.mapView.annotations];
     [self.mapView addAnnotation:geoPointAnnotation];
