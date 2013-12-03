@@ -161,15 +161,15 @@
         [comp setMinute:0];
         [comp setSecond:0];
         NSDate *startDate = [calender dateFromComponents:comp];
-        NSLog(@"%@",startDate);
+//        NSLog(@"%@",startDate);
         [comp setHour:23];
         [comp setMinute:59];
         [comp setSecond:59];
         NSDate *endDate = [calender dateFromComponents:comp];
-        NSLog(@"%@",endDate);
+//        NSLog(@"%@",endDate);
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(event_date >= %@) AND (event_date <= %@)", startDate, endDate];
-        NSLog(@"(event_date >= %@) AND (event_date <= %@)", startDate, endDate);
+//        NSLog(@"(event_date >= %@) AND (event_date <= %@)", startDate, endDate);
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:EVENT_START_TIME_KEY ascending:YES]];
         request.predicate = predicate;
         
