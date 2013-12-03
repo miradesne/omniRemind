@@ -101,6 +101,7 @@
     [self.nextMonth setTitle:nextMonthName forState:UIControlStateNormal];
     [self.lastMonth setTitle:lastMonthName forState:UIControlStateNormal];
     [self initDates];
+    [self addGestureRecognizers];
 }
 
 - (void)initDates {
@@ -126,6 +127,16 @@
         [dates addObject:[NSString stringWithFormat:@"%i", t++]];
     }
     self.dates = dates;
+}
+
+- (void)addGestureRecognizers{
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goToLastMonth:)];
+    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft ];
+    [self.collectionView addGestureRecognizer:swipeLeft];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(goToNextMonth:)];
+    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight ];
+    [self.collectionView addGestureRecognizer:swipeRight];
 }
 
 // Costemize title here.
@@ -328,5 +339,6 @@
     [comp setDay: day];
     return comp;
 }
+
 
 @end
