@@ -11,7 +11,7 @@
 #import "OmniRemindEventDetailViewController.h"
 #import "Event.h"
 @interface OmniRemindReminderViewController ()
-@property (strong,nonatomic)NSArray *events;
+@property (strong,nonatomic)NSMutableArray *events;
 @property (strong,nonatomic)OmniRemindDataManager *manager;
 @end
 
@@ -38,7 +38,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    self.events = [self.manager fetchTasksToDo];
+    NSArray *fetchedEvents =[self.manager fetchTasksToDo];
+    self.events = [[NSMutableArray alloc]initWithArray:fetchedEvents];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -69,6 +71,8 @@
     
     return cell;
 }
+
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -109,10 +113,23 @@
 }
 */
 
+#pragma mark - Swipe to delete
 
-#pragma mark - Navigation
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
 
-// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //remove the deleted object from your data source.
+        //If your data source is an NSMutableArray, do this
+        Event *event = self.events[indexPath.row];
+        [self.manager removeEvent:event.objectID];
+        [self.events removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+    }
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
