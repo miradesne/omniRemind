@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 @interface OmniRemindEventDetailViewController : UIViewController
 
 @property (strong, nonatomic) NSString *eventTitle;

@@ -16,4 +16,5 @@
 @property (strong, nonatomic) NSString *otherLocationKey;
 @property (strong, nonatomic) NSString *cloudEventId;
 
+@property (strong, nonatomic) MKRoute *routeToShow;
 @end
