@@ -61,7 +61,7 @@
 - (CLLocationManager *)locationManager {
     if (!_locationManager) {
         _locationManager = [[CLLocationManager alloc] init];
-//        [_locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         [_locationManager setDelegate:self];
 //        [_locationManager setPurpose:@"Your current location is used to demonstrate PFGeoPoint and Geo Queries."];
     }
@@ -114,6 +114,8 @@
 
 - (void)updateLocation:(PFObject *)object {
     PFGeoPoint *geoPoint = object[self.otherLocationKey];
+    NSLog(@"other %@ %@", [NSNumber numberWithDouble:geoPoint.latitude], [NSNumber numberWithDouble:geoPoint.longitude]);
+    NSLog(@"my %@", self.locationManager.location);
     GeoPointAnnotation *geoPointAnnotation = [[GeoPointAnnotation alloc] initWithGeoPoint:geoPoint];
     [self.mapView removeAnnotations:self.mapView.annotations];
     [self.mapView addAnnotation:geoPointAnnotation];
