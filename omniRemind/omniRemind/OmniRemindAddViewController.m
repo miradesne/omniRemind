@@ -163,6 +163,8 @@
 # pragma mark - courseSearching
 
 #define COURSE_INFO_HEIGHT 30
+#define COURSE_LABEL_HEIGHT 30
+#define COURSE_DESCRIPTION_HEIGHT 200
 - (IBAction)changedSelection:(id)sender {
     int isCourse = self.addSegmentedControl.selectedSegmentIndex;
     if (isCourse) {
@@ -274,7 +276,7 @@
     //[courseInfoLabel sizeToFit];
     [self.addClassView addSubview:infoLabel];
     
-    int height = 40;
+    int previousHeight = 40;
     for (int i = 0; i < numberOfProperties; i++) {
         objc_property_t property = propertyArray[i];
         NSString *propertyName = [[NSString alloc] initWithUTF8String:property_getName(property)];
@@ -282,13 +284,14 @@
         NSString *courseInfo = [NSString stringWithFormat:@"%@ : %@",propertyName,propertyValue];
         
         if ([propertyName isEqualToString:@"courseDescription"]) {
-            UITextView *courseDescriptionLabel = [[UITextView alloc] initWithFrame:CGRectMake(20, height+i*COURSE_INFO_HEIGHT, 280, COURSE_INFO_HEIGHT)];
+            UITextView *courseDescriptionLabel = [[UITextView alloc] initWithFrame:CGRectMake(20, previousHeight, 280, COURSE_DESCRIPTION_HEIGHT)];
             courseDescriptionLabel.text = courseInfo;
             courseDescriptionLabel.editable = NO;
             courseDescriptionLabel.textContainer.lineFragmentPadding = 0;
             [self.addClassView addSubview:courseDescriptionLabel];
+            previousHeight += COURSE_DESCRIPTION_HEIGHT;
         } else{
-            UILabel *courseInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, height+i*COURSE_INFO_HEIGHT, 280, COURSE_INFO_HEIGHT)];
+            UILabel *courseInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, previousHeight, 280, COURSE_LABEL_HEIGHT)];
             courseInfoLabel.text = courseInfo ;
             courseInfoLabel.backgroundColor = [UIColor clearColor];
             courseInfoLabel.font = [UIFont systemFontOfSize:12];
@@ -296,6 +299,8 @@
             courseInfoLabel.numberOfLines = 0;
             //[courseInfoLabel sizeToFit];
             [self.addClassView addSubview:courseInfoLabel];
+            previousHeight += COURSE_LABEL_HEIGHT;
+            
         }
     }
 }
