@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *lastMonth;
 @property (weak, nonatomic) IBOutlet UIButton *nextMonth;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView2;
 @property (weak, nonatomic) NSString *dayViewName;
 @property (strong, nonatomic) NSArray *dates;
 @property (strong, nonatomic) NSArray *dateComponents;
@@ -56,6 +57,7 @@
     [self initCalendar];
     [self setUpCollectionView];
     self.manager = [[OmniRemindDataManager alloc] init];
+//    self.collectionView2.hidden = YES;
 }
 
 - (void)registerChannel:(NSString *)channelName {
@@ -313,10 +315,31 @@
 
 - (IBAction)goToLastMonth:(id)sender {
     [self adjustReferenceDate:-1];
+    self.collectionView2.hidden = NO;
+    CGPoint originCenter = self.collectionView2.center;
+    CGPoint origin = self.view.frame.origin;
+    CGSize size = self.view.frame.size;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.collectionView2.center = CGPointMake(origin.x - size.width, origin.y - size.height);
+    } completion:^(BOOL success) {
+        self.collectionView2.hidden = YES;
+        self.collectionView2.center = originCenter;
+
+    }];
 }
 
 - (IBAction)goToNextMonth:(id)sender {
     [self adjustReferenceDate:1];
+    self.collectionView2.hidden = NO;
+    CGPoint originCenter = self.collectionView2.center;
+    CGPoint origin = self.view.frame.origin;
+    CGSize size = self.view.frame.size;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.collectionView2.center = CGPointMake(origin.x + size.width * 2, origin.y + size.height * 2);
+    } completion:^(BOOL success) {
+        self.collectionView2.hidden = YES;
+        self.collectionView2.center = originCenter;
+    }];
 }
 
 // Based on the reference date, change the reference month by delta amount, and reset the UI.
@@ -329,6 +352,7 @@
     [self initCalendar];
     [self setUpCollectionView];
     [self.collectionView reloadData];
+    
 }
 
 // create Date:  year | referenceDate.month + deltaMonth | day
