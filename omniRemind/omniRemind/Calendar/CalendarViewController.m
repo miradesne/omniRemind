@@ -57,7 +57,7 @@
     [self initCalendar];
     [self setUpCollectionView];
     self.manager = [[OmniRemindDataManager alloc] init];
-//    self.collectionView2.hidden = YES;
+    self.collectionView2.hidden = YES;
 }
 
 - (void)registerChannel:(NSString *)channelName {
