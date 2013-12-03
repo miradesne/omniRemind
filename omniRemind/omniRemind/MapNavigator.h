@@ -10,6 +10,6 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 @interface MapNavigator : NSObject
-- (MKRoute*)getRouteFromLocation:(NSString*)location;
+- (void)getRouteFromLocation:(NSString*)location;
 
 @end

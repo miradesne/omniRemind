@@ -22,7 +22,7 @@
     return _geocoder;
 }
 
-- (MKRoute*)getRouteFromLocation:(NSString*)location{
+- (void)getRouteFromLocation:(NSString*)location{
     __block MKRoute *fastestRoute;
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
     request.source = [MKMapItem mapItemForCurrentLocation];
@@ -65,6 +65,5 @@
     }];
 
     
-    return fastestRoute;
 }
 @end

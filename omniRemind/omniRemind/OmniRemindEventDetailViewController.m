@@ -64,7 +64,7 @@
         self.locationLabel.text = self.location;
         
         MapNavigator *navigator = [[MapNavigator alloc]init];
-        MKRoute *route = [navigator getRouteFromLocation:self.location];
+        [navigator getRouteFromLocation:self.location];
         
     }
 }
