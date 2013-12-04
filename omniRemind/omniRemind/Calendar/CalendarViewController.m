@@ -317,10 +317,9 @@
     [self adjustReferenceDate:-1];
     self.collectionView2.hidden = NO;
     CGPoint originCenter = self.collectionView2.center;
-    CGPoint origin = self.view.frame.origin;
     CGSize size = self.view.frame.size;
     [UIView animateWithDuration:0.8 animations:^{
-        self.collectionView2.center = CGPointMake(origin.x - size.width, origin.y - size.height);
+        self.collectionView2.center = CGPointMake(originCenter.x - size.width, originCenter.y);
     } completion:^(BOOL success) {
         self.collectionView2.hidden = YES;
         self.collectionView2.center = originCenter;
@@ -332,10 +331,9 @@
     [self adjustReferenceDate:1];
     self.collectionView2.hidden = NO;
     CGPoint originCenter = self.collectionView2.center;
-    CGPoint origin = self.view.frame.origin;
     CGSize size = self.view.frame.size;
     [UIView animateWithDuration:0.8 animations:^{
-        self.collectionView2.center = CGPointMake(origin.x + size.width * 2, origin.y + size.height * 2);
+        self.collectionView2.center = CGPointMake(originCenter.x + size.width, originCenter.y);
     } completion:^(BOOL success) {
         self.collectionView2.hidden = YES;
         self.collectionView2.center = originCenter;
