@@ -196,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindAddViewController.m"
-            timestampString = "407728728.376271"
+            timestampString = "407871325.771249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "-showSearchedCourse:"
             landmarkType = "5">
          </BreakpointContent>
@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindAddViewController.m"
-            timestampString = "407728728.376271"
+            timestampString = "407871325.771249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "-alertView:didDismissWithButtonIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -228,11 +228,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindAddViewController.m"
-            timestampString = "407728728.376271"
+            timestampString = "407871325.771249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "-showSearchedCourse:"
             landmarkType = "5">
          </BreakpointContent>
@@ -292,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindAddViewController.m"
-            timestampString = "407728728.376271"
+            timestampString = "407871325.771249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "-showSearchedCourse:"
             landmarkType = "5">
          </BreakpointContent>
@@ -329,8 +329,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "281"
             endingLineNumber = "281"
-            landmarkName = "@implementation CalendarViewController"
-            landmarkType = "3">
+            landmarkName = "-viewEventDetail:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -434,11 +434,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindAddViewController.m"
-            timestampString = "407728728.376271"
+            timestampString = "407871325.771249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "-showSearchedCourse:"
             landmarkType = "5">
          </BreakpointContent>
@@ -466,12 +466,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "omniRemind/OmniRemindDataManager.m"
-            timestampString = "407803765.849696"
+            timestampString = "407871070.793853"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "-fetchEventsWithDate:"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "-fetchTasksToDo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

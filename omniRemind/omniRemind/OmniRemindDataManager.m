@@ -172,10 +172,56 @@
         
         NSError *error = nil;
         events = [self.managedObjectContext executeFetchRequest:request error:&error];
+        
+        
+        
+        
     }
     
     return events;
 }
+
+- (NSArray*)fetchEventsWithDate:(NSDateComponents*)comp withRepeat:(BOOL)repeat{
+    NSArray *events;
+    if (comp) {
+        NSCalendar *calender = [NSCalendar currentCalendar];
+        [comp setHour:0];
+        [comp setMinute:0];
+        [comp setSecond:0];
+        NSDate *startDate = [calender dateFromComponents:comp];
+        [comp setHour:23];
+        [comp setMinute:59];
+        [comp setSecond:59];
+        NSDate *endDate = [calender dateFromComponents:comp];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Event"];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(event_date >= %@) AND (event_date <= %@)", startDate, endDate];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:EVENT_START_TIME_KEY ascending:YES]];
+        request.predicate = predicate;
+        
+        NSError *error = nil;
+        events = [self.managedObjectContext executeFetchRequest:request error:&error];
+        
+        NSFetchRequest *request2 = [NSFetchRequest fetchRequestWithEntityName:@"Repeat"];
+        NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"( repeat_end >= %@) AND (repeat_start <= %@)", endDate, startDate];
+        request2.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"repeat_start" ascending:YES]];
+        request2.predicate = predicate2;
+        
+        NSError *error2 = nil;
+        NSArray *repeats = [self.managedObjectContext executeFetchRequest:request2 error:&error2];
+        for (Repeat *repeat in repeats) {
+//            BOOL isValid = [self calculateIfOnTheDay:comp forRepeat:repeat];
+            continue;
+        }
+
+        
+        
+    }
+    
+
+        return events;
+}
+
+
 
 - (NSArray*)fetchTasksToDo{
     NSArray *events;
@@ -186,9 +232,13 @@
     
     NSError *error = nil;
     events = [self.managedObjectContext executeFetchRequest:request error:&error];
-    events;
     
     return events;
+}
+
+- (BOOL)calculateIfOnTheDay:(NSDateComponents*)comp forRepeat:(Repeat*)repeat{
+ 
+    return YES;
 }
 
 

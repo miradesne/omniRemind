@@ -177,11 +177,28 @@
     else{
         self.addEventView.hidden = NO;
         self.addClassView.hidden = YES;
-        NSMutableArray *subviewArray = [[NSMutableArray alloc]initWithArray:[self.addClassView subviews]];
-        [subviewArray removeObject:self.searchButton];
-        [subviewArray makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        [self clearCoursePage];
     }
     
+}
+
+- (void)clearCoursePage{
+    
+    NSMutableArray *subviewArray = [[NSMutableArray alloc]initWithArray:[self.addClassView subviews]];
+    [subviewArray removeObject:self.searchButton];
+    [subviewArray makeObjectsPerformSelector:@selector(removeFromSuperview)];
+}
+
+- (void)clearEventPage{
+    self.titleInput.text = nil;
+    self.locationInput.text = nil;
+    self.startDate.text = nil;
+    self.startTime.text = nil;
+    self.endTime.text = nil;
+    self.locationInput.text = nil;
+    self.addSegmentedControl.selectedSegmentIndex = 0;
+    self.addEventView.hidden = NO;
+    self.addClassView.hidden = YES;
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -255,6 +272,7 @@
             [self dismissCurrentController];
         }
     }
+    
 }
 
 - (void)showCourseSearchAlert{
@@ -381,6 +399,8 @@
     UIView * fromView = self.tabBarController.selectedViewController.view;
     UIView * toView = [[self.tabBarController.viewControllers objectAtIndex:controllerIndex] view];
     self.tabBarController.tabBar.hidden = NO;
+    [self clearCoursePage];
+    [self clearEventPage];
     // Transition using a page curl.
     [UIView transitionFromView:fromView
                         toView:toView
