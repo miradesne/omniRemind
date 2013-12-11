@@ -2,6 +2,9 @@
 //  GeoPointAnnotation.h
 //  omniRemind
 //
+//
+//    Customized geopoint annotation to put on the map
+//
 //  Created by WenXuan Cai on 11/13/13.
 //  Copyright (c) 2013 Rice University. All rights reserved.
 //

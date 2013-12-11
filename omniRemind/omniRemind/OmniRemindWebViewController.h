@@ -2,6 +2,9 @@
 //  OmniRemindWebViewController.h
 //  omniRemind
 //
+//    The web view to display the assignment page
+//    This is going to be created by the storyboard
+//
 //  Created by WenXuan Cai on 11/26/13.
 //  Copyright (c) 2013 Rice University. All rights reserved.
 //

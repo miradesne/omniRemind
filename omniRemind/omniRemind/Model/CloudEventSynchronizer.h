@@ -2,6 +2,9 @@
 //  CloudEventSynchronizer.h
 //  omniRemind
 //
+//    API to talk with parse to sync cloud event
+//
+//
 //  Created by WenXuan Cai on 11/14/13.
 //  Copyright (c) 2013 Rice University. All rights reserved.
 //

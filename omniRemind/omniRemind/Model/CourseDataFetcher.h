@@ -2,6 +2,9 @@
 //  CourseDataFetcher.h
 //  omniRemind
 //
+//
+//  The data fetcher that talks to the parse backend and get the course info
+//
 //  Created by WenXuan Cai on 11/12/13.
 //  Copyright (c) 2013 Rice University. All rights reserved.
 //

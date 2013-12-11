@@ -38,9 +38,6 @@
 
 // Sync with the event, get the other's position, update ours.
 - (void)syncLocation {
-//    static float l = 38;
-//    PFGeoPoint *point = [PFGeoPoint geoPointWithLocation:[[CLLocation alloc] initWithLatitude:l longitude:-122]];
-//    l += 0.1;
 
     PFQuery *query = [PFQuery queryWithClassName:EVENT_TABLE];
     
@@ -49,8 +46,6 @@
         
         // Now let's update it with some new data. In this case, only cheatMode and score
         // will get sent to the cloud. playerName hasn't changed.
-        NSLog(@"UPPP");
-//        event[self.otherLocationKey] = point;
         [self updateLocation:event];
         CLLocation *location = self.locationManager.location;
         event[self.myLocationKey] = [PFGeoPoint geoPointWithLocation:[[CLLocation alloc] initWithLatitude:location.coordinate.latitude longitude:location.coordinate.longitude]];
@@ -63,7 +58,6 @@
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         [_locationManager setDelegate:self];
-//        [_locationManager setPurpose:@"Your current location is used to demonstrate PFGeoPoint and Geo Queries."];
     }
     return _locationManager;
 }
