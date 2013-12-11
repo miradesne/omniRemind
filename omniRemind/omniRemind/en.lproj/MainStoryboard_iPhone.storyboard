@@ -779,36 +779,6 @@
             </objects>
             <point key="canvasLocation" x="1592" y="1198"/>
         </scene>
-        <!--Omni Remind Direction View Controller-->
-        <scene sceneID="eaZ-XO-dF3">
-            <objects>
-                <viewController id="Te8-0Y-MLE" customClass="OmniRemindDirectionViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IVF-JD-8XI"/>
-                        <viewControllerLayoutGuide type="bottom" id="Zgc-nb-rtK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OFn-Qj-eaV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Pa-Kf-TIP">
-                                <rect key="frame" x="0.0" y="31" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="Te8-0Y-MLE" id="QCq-Eg-BAn"/>
-                                </connections>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="mapView" destination="5Pa-Kf-TIP" id="r67-ea-UZ5"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sGz-Oa-kaH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2178" y="1489"/>
-        </scene>
         <!--Omni Remind Add Reminder View Controller - Reminder-->
         <scene sceneID="YAs-Qc-r6f">
             <objects>
