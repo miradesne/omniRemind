@@ -584,7 +584,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
-					/Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/frameWork,
 					/Users/wenxuancai/appDevBranch/omniRemind,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -607,7 +606,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/wenxuancai/CS/iOS/appDevBranch/omniRemind,
-					/Users/mirachen/Documents/studyInfo/comp/comp446/omniRemind/omniRemind/omniRemind/frameWork,
 					/Users/wenxuancai/appDevBranch/omniRemind,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
