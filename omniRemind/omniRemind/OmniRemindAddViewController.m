@@ -375,17 +375,8 @@
     }
 }
 
-//- (void)addSearchButton{
-//    self.searchButton.hidden = NO;
-//}
 
 #pragma mark - Segue and other transitions
-//transfer the Image to the next view
-//- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [self performSegueWithIdentifier:@"seeDayView" sender:collectionView];
-//}
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

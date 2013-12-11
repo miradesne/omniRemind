@@ -5,6 +5,10 @@
 //  Created by Mira Chen on 11/8/13.
 //  Copyright (c) 2013 Rice University. All rights reserved.
 //
+//  The event detail view shows the information of the event
+//  If the location is not empty, it will call the map navigator class
+//  to calculate the estimated travel time and navigation routes
+//
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
