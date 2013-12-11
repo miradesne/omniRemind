@@ -25,11 +25,8 @@
 		0E69354818157B520095563C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E69354618157B520095563C /* InfoPlist.strings */; };
 		0E69354A18157B520095563C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69354918157B520095563C /* main.m */; };
 		0E69354E18157B520095563C /* OmniRemindAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E69354D18157B520095563C /* OmniRemindAppDelegate.m */; };
-		0E69355018157B520095563C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E69354F18157B520095563C /* Default.png */; };
-		0E69355218157B520095563C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355118157B520095563C /* Default@2x.png */; };
 		0E69355418157B520095563C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355318157B520095563C /* Default-568h@2x.png */; };
 		0E69355718157B520095563C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355518157B520095563C /* MainStoryboard_iPhone.storyboard */; };
-		0E69355A18157B520095563C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E69355818157B520095563C /* MainStoryboard_iPad.storyboard */; };
 		0E697BB01832CC3800D37AD4 /* plus-sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E697BAF1832CC3800D37AD4 /* plus-sign.png */; };
 		0E697BB31832CE0400D37AD4 /* OmniRemindAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E697BB21832CE0400D37AD4 /* OmniRemindAddViewController.m */; };
 		0E6CC1BA1849204B0045A109 /* OmniRemindDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6CC1B91849204B0045A109 /* OmniRemindDataManager.m */; };
@@ -108,7 +105,6 @@
 		0E69355118157B520095563C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0E69355318157B520095563C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0E69355618157B520095563C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		0E69355918157B520095563C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		0E697BAF1832CC3800D37AD4 /* plus-sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-sign.png"; sourceTree = "<group>"; };
 		0E697BB11832CE0400D37AD4 /* OmniRemindAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OmniRemindAddViewController.h; sourceTree = "<group>"; };
 		0E697BB21832CE0400D37AD4 /* OmniRemindAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OmniRemindAddViewController.m; sourceTree = "<group>"; };
@@ -324,7 +320,6 @@
 				0E69354C18157B520095563C /* OmniRemindAppDelegate.h */,
 				0E69354D18157B520095563C /* OmniRemindAppDelegate.m */,
 				0E69355518157B520095563C /* MainStoryboard_iPhone.storyboard */,
-				0E69355818157B520095563C /* MainStoryboard_iPad.storyboard */,
 				0E59F916182762F800942B12 /* viewControllers */,
 				3A8EE4C618219C8B001EB511 /* CoreDataModel */,
 				0E59F9181827630C00942B12 /* views */,
@@ -446,9 +441,7 @@
 				0E73D203184D81DB000425B5 /* Omnireminder_appIcon.png in Resources */,
 				0E69354818157B520095563C /* InfoPlist.strings in Resources */,
 				0E73D1E4184AF814000425B5 /* correct-small.png in Resources */,
-				0E69355018157B520095563C /* Default.png in Resources */,
 				0E73D205184D8259000425B5 /* Images.xcassets in Resources */,
-				0E69355218157B520095563C /* Default@2x.png in Resources */,
 				0E697BB01832CC3800D37AD4 /* plus-sign.png in Resources */,
 				0E73D200184D81DB000425B5 /* Default@2x.png in Resources */,
 				0E69355418157B520095563C /* Default-568h@2x.png in Resources */,
@@ -456,7 +449,6 @@
 				0E69355718157B520095563C /* MainStoryboard_iPhone.storyboard in Resources */,
 				0E21ABEF182CC3A500C22BA0 /* reminder.png in Resources */,
 				3A5703131835BDFA004E25F1 /* Circle_Yellow.png in Resources */,
-				0E69355A18157B520095563C /* MainStoryboard_iPad.storyboard in Resources */,
 				0EB0E24E1833B791008506BE /* disclosure.png in Resources */,
 				0E73D201184D81DB000425B5 /* Default~iphone.png in Resources */,
 			);
@@ -517,14 +509,6 @@
 				0E69355618157B520095563C /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		0E69355818157B520095563C /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0E69355918157B520095563C /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -608,6 +592,7 @@
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -630,6 +615,7 @@
 				INFOPLIST_FILE = "omniRemind/omniRemind-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

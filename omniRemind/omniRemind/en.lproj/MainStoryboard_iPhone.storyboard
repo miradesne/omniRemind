@@ -26,14 +26,14 @@
             <objects>
                 <viewController id="2" customClass="CalendarViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Uvf-7M-PJX"/>
-                        <viewControllerLayoutGuide type="bottom" id="Eqi-Kd-opb"/>
+                        <viewControllerLayoutGuide type="top" id="Wge-0y-YD6"/>
+                        <viewControllerLayoutGuide type="bottom" id="xOP-yh-xJw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QIX-va-rAq">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QIX-va-rAq">
                                 <rect key="frame" x="3" y="44" width="315" height="475"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -166,13 +166,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="QIX-va-rAq" secondAttribute="trailing" constant="2" id="5z5-1H-g7Z"/>
-                            <constraint firstItem="QIX-va-rAq" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="3" id="nxb-l0-9LC"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="up2-dg-YBt">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="PHA-gB-W6J">
+                        <barButtonItem key="leftBarButtonItem" id="PHA-gB-W6J">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uFd-1S-dzI">
                                 <rect key="frame" x="16" y="5" width="71" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -185,12 +181,9 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="mXK-gd-wmH">
+                        <barButtonItem key="rightBarButtonItem" id="mXK-gd-wmH">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lTN-hU-MSu">
                                 <rect key="frame" x="251" y="8" width="53" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="53" id="M1h-9Q-sA0"/>
-                                </constraints>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -257,8 +250,8 @@
             <objects>
                 <viewController id="3uS-sg-FBV" customClass="OmniRemindEventDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Oa1-Yx-e8Y"/>
-                        <viewControllerLayoutGuide type="bottom" id="Q8V-B3-oCV"/>
+                        <viewControllerLayoutGuide type="top" id="fNH-ed-UWh"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Dl-aq-ENy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SoZ-sd-cf8" customClass="OmniRemindEventDetail">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
@@ -468,8 +461,8 @@
             <objects>
                 <viewController extendedLayoutIncludesOpaqueBars="YES" id="j8o-G3-0wf" customClass="OmniRemindAddViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Php-FC-VQg"/>
-                        <viewControllerLayoutGuide type="bottom" id="5Jo-J5-2Wv"/>
+                        <viewControllerLayoutGuide type="top" id="hKq-ZH-saJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="aaO-QQ-t1y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1PG-Va-WxU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -713,8 +706,8 @@
             <objects>
                 <viewController extendedLayoutIncludesOpaqueBars="YES" id="EUb-03-44p" customClass="OmniRemindAddDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ug7-FE-eSw"/>
-                        <viewControllerLayoutGuide type="bottom" id="ujw-pd-LfP"/>
+                        <viewControllerLayoutGuide type="top" id="yGe-3u-wJr"/>
+                        <viewControllerLayoutGuide type="bottom" id="kqi-ud-QHc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vMW-dq-XOk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -791,8 +784,8 @@
             <objects>
                 <viewController id="Te8-0Y-MLE" customClass="OmniRemindDirectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FW1-B0-BxH"/>
-                        <viewControllerLayoutGuide type="bottom" id="5Tu-Sg-VdA"/>
+                        <viewControllerLayoutGuide type="top" id="IVF-JD-8XI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zgc-nb-rtK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OFn-Qj-eaV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -821,8 +814,8 @@
             <objects>
                 <viewController extendedLayoutIncludesOpaqueBars="YES" id="icG-0G-5ve" customClass="OmniRemindAddReminderViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dWJ-mw-f8N"/>
-                        <viewControllerLayoutGuide type="bottom" id="aDj-dc-nZi"/>
+                        <viewControllerLayoutGuide type="top" id="frp-bf-fhw"/>
+                        <viewControllerLayoutGuide type="bottom" id="iXL-3u-gmz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lVi-8v-uA3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -885,8 +878,8 @@
             <objects>
                 <viewController id="mxT-hf-pFp" customClass="OmniRemindMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1ze-a0-Bo7"/>
-                        <viewControllerLayoutGuide type="bottom" id="x5G-DC-Q0I"/>
+                        <viewControllerLayoutGuide type="top" id="fz1-W3-bfX"/>
+                        <viewControllerLayoutGuide type="bottom" id="vh0-9k-Hih"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N0T-Ig-0ym">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
@@ -913,8 +906,8 @@
             <objects>
                 <viewController storyboardIdentifier="OmniRemindWebViewController" id="ciu-Zo-E7l" customClass="OmniRemindWebViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qwC-PJ-uFC"/>
-                        <viewControllerLayoutGuide type="bottom" id="OQm-Tk-tsu"/>
+                        <viewControllerLayoutGuide type="top" id="dhU-8O-BZq"/>
+                        <viewControllerLayoutGuide type="bottom" id="cL5-0t-P3d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sSq-p7-TUK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
