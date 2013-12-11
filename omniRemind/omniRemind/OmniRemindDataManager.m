@@ -108,11 +108,6 @@
         }
     }
     
-//    for (PFObject *exam in exams) {
-//        if (exam) {
-//            [self storeExam:exam];
-//        }
-//    }
 }
 
 - (void)storeAssignment:(PFObject*)assignment{

@@ -5,6 +5,9 @@
 //  Created by Mira Chen on 11/29/13.
 //  Copyright (c) 2013 Rice University. All rights reserved.
 //
+//  This class is the interface between user interface and the database
+//  It does all the data storage, fetching and removing functions
+//
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
